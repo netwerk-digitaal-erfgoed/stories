@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  apache:
+    image: 'httpd:latest'
+    ports:
+      - '80:80'
+    volumes:
+      - ./html/:/usr/local/apache2/htdocs/
+      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf

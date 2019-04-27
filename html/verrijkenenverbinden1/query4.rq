@@ -1,0 +1,28 @@
+# definities als verkorte schrijfwijze
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix schema: <http://schema.org/>
+prefix thes: <http://data.bibliotheken.nl/id/thes/>
+
+# begin het maken van de selectie
+# de term 'distinct' zorgt er voor dat dubbele resultaten onderdrukt worden
+select ?titel ?boek {
+      
+    # selecteer alles met type boek
+    ?boek a schema:Book .
+
+    ?boek schema:name ?titel .
+    # selecteer alles over 'dieren'
+    {
+        ?boek schema:about thes:p075635178
+    }
+    # of 
+    UNION
+    # alles met 'dieren' als bovenliggende term
+    {
+        ?boek schema:about ?onderwerp_uri .
+        ?onderwerp_uri skos:broader+ thes:p075635178 .
+    }
+}
+limit 10
+
+
