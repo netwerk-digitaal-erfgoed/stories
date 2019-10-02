@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="NDE Data Stories - Verrijken en Verbinden">
+    <meta name="description" content="NDE Data Stories - HackaLOD 2019 -Geheugen van Nederland">
     <meta name="author" content="Enno Meijers">
     <link href="/stories/assets/imgs/nde_logo.png" rel="icon" type="image/png">
-    <title>NDE Data Stories - Verrijken en Verbinden</title>
+    <title>NDE Data Stories - HackaLOD 2019 - Geheugen van Nederland</title>
+    <link href="https://stories.triply.cc/shared/css/yasgui/stories.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" 
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" 
@@ -20,17 +21,23 @@
     <nav class="navbar fixed-top ">
       <div class="navbar-content">
         <div class="navbar-icon">
-          <a class="navbar-brand" href="/stories/">
-            <img alt="NDE Data Stories home" src="/stories/assets/imgs/nde_logo.png">
+          <a class="navbar-brand" href="/stories/hackalod2019/">
+            <img alt="NDE Data Stories home HackaLOD 2019" src="/stories/assets/imgs/nde_logo.png">
           </a>
         </div>
         <div class="navbar-title">
-          <a class="navbar-brand" href="/stories/">NDE Data Stories</a>
+          <a class="navbar-brand" href="/stories/hackalod2019/">NDE Data Stories - HackaLOD 2019</a>
         </div>
       </div>
     </nav>
+
+    <div class="container story">
+        <h4><b>Voorbeelden uit enkele Geheugen van Nederland datasets op het <a href="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/GVN/" target="_blank">NDE LOD Platform</a></b></h4>
+    </div>
+    <p></p>    
+
     <ul>
-    <div class="container story"><h3>Voorbeeld queries voor de HackaLOD - Geheugen van Nederland datasets</h3>
+     <div class="container story">
       <li><h4>Topografie van Nederland. Een collectie van Bijzondere Collecties Leiden.</h4>
 
       <p>
@@ -56,11 +63,11 @@
       materiaal te zien.
       </p>
       <p>
-      <b>Naam van de dataset: UBL01</b><br>
-      <b>Beschikbaar in endpoint:</b> <a href="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/GVN/sparql/GVN">HackaLOD GvN endpoint</a><br>
+      <b>Beschikbaar in endpoint:</b> <a href="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/GVN/" target="_blank">NDE Data Platform</a><br>
       <b>Naam van de graph:</b> &lt;https://data.netwerkdigitaalerfgoed.nl/hackalod/gvn/ubl01&gt; 
       </p>
     </div>
+
     <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/hackalod/GVN/services/GVN/sparql">
       Hieronder een voorbeeld van een query die de top 10 van onderwerpen geeft die voorkomen in deze dataset.
       <query data-config-ref="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/GVN/queries/top-10-topics-in-ubl01"></query>
@@ -78,23 +85,30 @@
          Tentoonstelling te Parijs in 1931.
       </p>
       <p>
-          <b>Naam van de dataset: PKL01</b><br>
-          <b>Beschikbaar in endpoint:</b> <a href="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/GVN/sparql/GVN">HackaLOD GvN endpoint</a><br>
+          <b>Beschikbaar in endpoint:</b> <a href="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/GVN/" target="_blank">NDE Data Platform</a><br>
           <b>Naam van de graph:</b> &lt;https://data.netwerkdigitaalerfgoed.nl/hackalod/gvn/pkl01&gt; 
           </p>
       <p>Een voorbeeld van een query voor het opvragen van wat foto's van objecten uit Borneo die in de PKL01 dataset voorkomen.</p>
       <query data-config-ref="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/GVN/queries/pkl01-objects-from-borneo/"></query>
     </div> 
     </ul>
+
+    <!--
     <script src="https://cdn.jsdelivr.net/gh/thednp/bootstrap.native@2.0.24/dist/bootstrap-native-v4.min.js" crossorigin="anonymous"></script>
-    <!--<script src="//nightly.yasgui.triply.cc/yasgui.polyfill.min.js"></script>
+    <script src="//nightly.yasgui.triply.cc/yasgui.polyfill.min.js"></script>
     <script src='/stories/assets/js/yasgui.min.js'></script>
     -->
+    <script src="https://stories.triply.cc/shared/js/stories.min.js"></script>
+    <script>window.onload = function() {window.stories()};</script>
+
+    <!--
     <script src="/stories/assets/js/stories.min.js"></script>
     <script>
       window.onload = function () {
         window.stories()
       };
     </script>
+  -->
+
   </body>
 </html>
