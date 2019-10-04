@@ -61,6 +61,10 @@ body.withSink {
   height: 2.5rem;
 }
 
+.story {
+  margin-top: 20px;
+}
+
 .storyBanner {
   display: flex;
   flex-direction: row;

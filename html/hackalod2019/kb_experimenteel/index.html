@@ -3,14 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="NDE Data Stories - Verrijken en Verbinden">
+    <meta name="description" content="NDE Data Stories - HackaLOD 2019 - Data Stories over experimentele KB-datasets">
     <meta name="author" content="Enno Meijers">
     <link href="/stories/assets/imgs/nde_logo.png" rel="icon" type="image/png">
-    <title>NDE Data Stories - Verrijken en Verbinden</title>
-    <link rel="stylesheet" 
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" 
-          crossorigin="anonymous">
+    <title>NDE Data Stories - HackaLOD 2019 - Data Stories over experimentele KB-datasets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/yasgui.min.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
@@ -21,7 +18,7 @@
       <div class="navbar-content">
         <div class="navbar-icon">
           <a class="navbar-brand" href="/stories/hackalod2019/">
-            <img alt="NDE Data Stories home" src="/stories/assets/imgs/nde_logo.png">
+            <img alt="NDE Data Stories - HackaLOD 2019" src="/stories/assets/imgs/nde_logo.png">
           </a>
         </div>
         <div class="navbar-title">
@@ -29,50 +26,34 @@
         </div>
       </div>
     </nav>
+    <div class="container">
+      <h1>Data Stories over experimentele KB-datasets in het NDE LOD Platform</h1>
 
-    <div class="container story">
-        <h4><b>Data Stories HackaLOD 2019 - Data Stories over collecties experimentele KB datasets op het NDE LOD Platform</b></h4>
+      <div class="story">
+        <h2>ANP Radiobulletins</h2>
+        <p>
+          De open dataset ANP Radiobulletins Digitaal bevat 1,5 miljoen gedigitaliseerde typoscripten van nieuwsuitzendingen
+          uit het midden van de 20e eeuw (1937 – 1984). De set biedt het nieuws van elke dag, zoals het werd voorgelezen op de radio.
+        </p>
+        <p>
+          De Koninklijke Bibliotheek (KB) biedt deze data aan onder (semi-)vrije licenties: voor de metadata geldt een CC0-licentie,
+          voor de individuele objecten (afbeeldingen & full-texts) geldt een CC-BY-NC-ND- licentie.
+          De website waarop dit materiaal doorzocht kan worden is Delpher.
+          Op deze site wordt de ANP-set de 'Delpher Radiobulletins' genoemd.
+          Hier is ook meer achtergrondinformatie over het materiaal te vinden.
+        </p>
+        <p>
+          <strong>Bron voor de Linked Data</strong>: <a href="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/KB" target="_blank">NDE LOD Platform</a><br>
+          <strong>Te bevragen via</strong>: het <a href="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/KB/sparql/KB" target="_blank">SPARQL endpoint</a> in de named graph <code>https://data.netwerkdigitaalerfgoed.nl/hackalod/kb/anp</code>
+        </p>
+        <p>
+          Een voorbeeld van een query die het aantal beschikbare artikelen door de tijd heen laat zien:
+        </p>
+        <query data-config-ref="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/KB/queries/Aantal-ANP-berichten-per-jaar"></query>
+      </div>
+
     </div>
-    <p></p>
-
-    <ul>
-    <div class="container story">
-
-      <li><h4>ANP Radiobulletins.</h4>
-
-      <p>De open dataset ANP Radiobulletins Digitaal bevat 1,5 miljoen gedigitaliseerde typoscripten van nieuwsuitzendingen
-         uit het midden van de 20e eeuw (1937 – 1984). De set biedt het nieuws van elke dag, zoals het werd voorgelezen op de radio.
-      </p>
-      <p>De Koninklijke Bibliotheek (KB) biedt deze data aan onder (semi-)vrije licenties: voor de metadata geldt een CC0-licentie, 
-        voor de individuele objecten (afbeeldingen & full-texts) geldt een CC-BY-NC-ND- licentie. 
-        De website waarop dit materiaal doorzocht kan worden is Delpher. 
-        Op deze site wordt de ANP-set de 'Delpher Radiobulletins' genoemd. 
-        Hier is ook meer achtergrondinformatie over het materiaal te vinden.
-      </p>
-
-     </p>
-      <p>
-      <b>Naam van de dataset: ANP</b><br>
-      <b>Beschikbaar in endpoint:</b> <a href="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/KB" target="_blank">NDE LOD Platform</a><br>
-      <b>Naam van de graph:</b> &lt;https://data.netwerkdigitaalerfgoed.nl/hackalod/kb/anp&gt; 
-      </p>
-    </div>
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/hackalod/KB/services/KB/sparql">
-      Hieronder een voorbeeld van een query die het aantal beschikbare artikelen door de tijd heen laat zien.
-      <query data-config-ref="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/KB/queries/Aantal-ANP-berichten-per-jaar"></query>
-    </div> 
-    
-  
-    </ul>
-    <script src="https://cdn.jsdelivr.net/gh/thednp/bootstrap.native@2.0.24/dist/bootstrap-native-v4.min.js" crossorigin="anonymous"></script>
-    <!--<script src="//nightly.yasgui.triply.cc/yasgui.polyfill.min.js"></script>
-    <script src='/stories/assets/js/yasgui.min.js'></script>
-    -->
-    <script src="/stories/assets/js/stories.min.js"></script>
-    <script>
-      window.onload = function () {
-        window.stories()
-      };
-    </script>
+    <script src="https://stories.triply.cc/shared/js/stories.min.js"></script>
+    <script>window.onload = function() {window.stories()};</script>
   </body>
 </html>
