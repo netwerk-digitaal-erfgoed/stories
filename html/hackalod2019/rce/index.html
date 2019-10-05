@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="NDE Data Stories - HackaLOD 2019 KB Productie">
+    <meta name="description" content="NDE Data Stories - HackaLOD 2019 - Data Stories over datasets in het RCE LOD Platform">
     <meta name="author" content="Enno Meijers">
     <link href="/stories/assets/imgs/nde_logo.png" rel="icon" type="image/png">
-    <title>NDE Data Stories - HackaLOD 2019 - KB Productie</title>
-    <link rel="stylesheet" 
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" 
-          crossorigin="anonymous">
+    <title>NDE Data Stories - HackaLOD 2019 - Data Stories over datasets in het RCE LOD Platform</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/yasgui.min.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
@@ -29,43 +26,40 @@
         </div>
       </div>
     </nav>
+    <div class="container">
+      <h1>Data Stories over datasets in het RCE LOD Platform</h1>
 
-    <div class="container story">
-      <h4><b>Data Stories over datasets in het RCE LOD Platform</b></h4>
-    </div>
-    <p></p>
-    <ul>
-      <div class="container story">
-        <li>
-          <h4>RCE LOD Platform</h4>
-          Dit platform biedt linked open data van het Archeologisch Informatiesysteem (Archis) en het Rijksmonumentenregister. 
+      <div class="story">
+        <h2>RCE LOD Platform</h2>
+        <p>
+          Dit platform biedt linked open data van het Archeologisch Informatiesysteem (Archis) en het Rijksmonumentenregister.
           Beide databases worden onderhouden door de RCE. Archis bevat gegevens over archeologische vindplaatsen en terreinen (sites)
           in Nederland. Het Rijksmonumentenregister bevat gegevens van alle monumenten in Nederland die door het Rijk zijn aangewezen
-          als beschermd monument. Dit zijn historische gebouwen, archeologische vindplaatsen of groene, aangelegde bouwwerken. 
+          als beschermd monument. Dit zijn historische gebouwen, archeologische vindplaatsen of groene, aangelegde bouwwerken.
           Op https://linkeddata.cultureelerfgoed.nl/datamodel is meer informatie over het datamodel te vinden.
           NB Van Vondsten, Vondstlocaties, Archeologische complexen en Archeologische terreinen zijn géén geometrieën opgenomen.
           Van Gebouwde en archeologische rijksmonumenten, Archeologische onderzoeksgebieden, Complexen en Grondsporen wel.
-          
-          <p>Zie voor meer informatie <a href="https://linkeddata.cultureelerfgoed.nl/" target="_blank">
-          de website van RCE</a>.</p> 
-
-          <p>Hieronder een voorbeeld van een zoekvraag naar Archeologische onderzoeksgebieden waarin plaggen zijn gevonden:</p>
-          
-          <query data-config="https://api.nightly.triply.cc/s/tHsxwVWEO"></query>
-        </li>
+        </p>
+        <p>
+          Zie voor meer informatie <a href="https://linkeddata.cultureelerfgoed.nl/" target="_blank">
+          de website van RCE</a>.
+        </p>
+        <p>
+          Een voorbeeld van een zoekvraag naar archeologische onderzoeksgebieden waarin plaggen zijn gevonden:
+        </p>
+        <query data-config="https://api.nightly.triply.cc/s/tHsxwVWEO"></query>
       </div>
-<p></p>
-      <div class="container story">
-          <li>
-            <h4>Rijksmonumenten in Lisse</h4>      
-            Een overzicht van Rijksmonumenten in de gemeente Lisse met een pop-up met data.
-                       <query data-config="https://api.nightly.triply.cc/s/Xa9rnUiUL"></query>
-          </li>
-        </div>
 
-    </ul>
+      <div class="story">
+        <h2>Rijksmonumenten in Lisse</h2>
+        <p>
+          Een overzicht van Rijksmonumenten in de gemeente Lisse met een pop-up met data:
+        </p>
+        <query data-config="https://api.nightly.triply.cc/s/Xa9rnUiUL"></query>
+      </div>
+
+    </div>
     <script src="https://stories.triply.cc/shared/js/stories.min.js"></script>
     <script>window.onload = function() {window.stories()};</script>
-
   </body>
 </html>
