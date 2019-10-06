@@ -28,9 +28,34 @@
     </nav>
     <div class="container">
       <h1>Data Stories over datasets in het KB LOD Platform</h1>
+      
 
       <div class="story">
-        <h2>Dataset Centsprenten</h2>
+        <h2>Dataset: Nederlandse Bibliografie</h2>
+        <p>
+          De Koninklijke Bibliotheek (KB) verzamelt en bewaart in het 'Depot van Nederlandse publicaties' 
+          alle door erkende uitgevers uitgebrachte Nederlandse publicaties en daarnaast nog een groot deel 
+          van de Nederlandse publicaties die buiten de erkende kanalen verschijnen, de zogenaamde grijze literatuur. 
+          Op basis van dat materiaal produceert de Koninklijke Bibliotheek de Nederlandse Bibliografie.
+        </p>
+        <p>
+          <strong>Bron voor de Linked Data</strong>: <a href="http://data.bibliotheken.nl" target="_blank">KB LOD Platform</a><br>
+          <strong>Ingang voor deze de dataset</strong>: <a href="http://data.bibliotheken.nl/doc/dataset/nbt" target="_blank">Datasetbeschrijving</a><br>
+          <strong>Te bevragen via</strong>: het <a href="http://data.bibliotheken.nl/sparql" target="_blank">SPARQL endpoint</a> in de named graph <code>http://data.bibliotheken.nl/nbt-schema/</code>
+        </p>
+        <p>
+          Deze datset geeft inzicht in wat er in Nederland gepubliceerd is. 
+          Ter illustratie geven we met de volgende query antwoord op de vraag: 
+          <b><i>"Welke boeken zijn er in de jaren 60 over dieren gepubliceerd?</i></b>"
+          Zie een aparte <a href="http://demo.netwerkdigitaalerfgoed.nl/stories/kb_onderzoek/verrijkenenverbinden1/index.html">Data Story</a> 
+          voor een stapsgewijze aanpak voor het beantwoorden van zo'n vraag.
+          Hieronder de eerste 5 antwoorden op datum gesorteerd.</p>
+        <query data-config="https://api.nightly.triply.cc/s/8r2AlyXge"></query>
+      </div>
+
+
+      <div class="story">
+        <h2>Dataset: Centsprenten</h2>
         <p>
           Centsprenten zijn een goedkope vorm van massadrukwerk uit de achttiende en negentiende eeuw.
           De afgebeelde onderwerpen lopen uiteen van Hollandse helden tot bijbelverhalen en kinderspel.
@@ -57,7 +82,7 @@
       </div>
 
       <div class="story">
-        <h2>Dataset Alba amicorum</h2>
+        <h2>Dataset: Alba amicorum</h2>
         <p>
           Een album amicorum is een boekje waarin de eigenaar bijdragen verzamelde van vrienden, kennissen,
           dan wel beroemde tijdgenoten, waarmee hij of zij in contact stond. Het album is nauw verbonden
