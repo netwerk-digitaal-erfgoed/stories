@@ -25,7 +25,7 @@
     </nav>
     <div class="container story"><h2>De dataset van het Nationaal Museum voor Wereldculturen</h2>
     <p><img src="logos.png"></p>
-    <p>Het Nationaal Museum voor Wereldculturen heeft op zijn website zijn collectie beschikbaar gesteld in LOD-formaat. De dataset bevat de metadata over de objecten in de collectie en de termen in de NMvW-thesaurus. De data is gedownload en opgenomen in <a href="https://data.netwerkdigitaalerfgoed.nl/ivo/nmvw">de data-omgeving van NDE</a> zodat de data kan worden bevraagd via een SPARQL-endpoint. Hier is ook in detail uitgelegd wat de dataset is en waar deze te verkrijgen is. In deze datastory leggen we uit wat je in de dataset kunt verwachten en wat voor vragen je zou kunnen stellen. Om de onderliggende SPARQL-query te zien en desgewenst aan te passen, kun je klikken op dit symbool: <img src="/stories/assets/imgs/query_pijl.png" width=50px></p>
+    <p>Het Nationaal Museum voor Wereldculturen heeft op zijn website zijn collectie beschikbaar gesteld in LOD-formaat. De dataset bevat de metadata over de objecten in de collectie en de termen in de NMvW-thesaurus. De data is gedownload en opgenomen in <a href="https://data.netwerkdigitaalerfgoed.nl/ivo/nmvw">de data-omgeving van NDE</a> zodat de data kan worden bevraagd via een SPARQL-endpoint. Daar is ook in detail uitgelegd wat de dataset is en waar deze te verkrijgen is. In deze datastory leggen we uit wat je in de dataset kunt verwachten en wat voor vragen je zou kunnen stellen. Om de onderliggende SPARQL-query te zien en desgewenst aan te passen, kun je klikken op dit symbool: <img src="/stories/assets/imgs/query_pijl.png" width=50px></p>
     </div>
     <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql">
       <h3>Wat voor dingen zitten er in het endpoint?</h3>
@@ -39,12 +39,12 @@
     </div>
     <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql">
       <h4>De titel van het object: dc:title</h4>
-      <p>Bijna alle objecten hebben een titel. Deze kan in het Engels en/of in Nederlands zijn. Het object in de collectie zijn met elkaar verbonden door middel van het predikaat dc:title. Je kunt filteren op Nederland (ned) of Engelse (eng) titels.</p>
+      <p>Bijna alle objecten hebben een titel. Deze kan in het Engels en/of in Nederlands zijn. Het object in de collectie en de titel zijn met elkaar verbonden door middel van het predikaat dc:title. Je kunt filteren op Nederland (ned) of Engelse (eng) titels.</p>
       <query data-query-ref="getTitles.rq"></query>
     </div>
     <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql">
       <h4>Het type van het object: dc:type en edm:object</h4>
-      <p>Bijna alle objecten hebben een type, bijvoorbeeld "foto" of "hoed". Het object in de collectie zijn met elkaar verbonden door middel van het predikaat dc:type.</p>
+      <p>Bijna alle objecten hebben een type, bijvoorbeeld "foto" of "hoed". Het object in de collectie en het objecttype zijn met elkaar verbonden door middel van het predikaat dc:type.</p>
       <query data-query-ref="getDCTypes.rq"></query>
       <p>Je merkt dat er allerlei termen door elkaar zijn gebruikt. Als je alle foto's wilt hebben, moet je dus eerst ontdekken welke termen er allemaal worden gebruikt.</p>
       <query data-query-ref="getPhotos1.rq"></query>

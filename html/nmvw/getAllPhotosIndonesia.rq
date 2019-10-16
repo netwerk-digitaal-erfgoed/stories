@@ -19,3 +19,4 @@ SELECT ?cho ?title ?placeName ?type WHERE {
    	FILTER langMatches(lang(?title), "ned")
 
 }
+LIMIT 10

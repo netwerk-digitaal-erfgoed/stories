@@ -7,7 +7,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX edm: <http://www.europeana.eu/schemas/edm/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
-SELECT ?pred COUNT(?pred) AS ?predCount WHERE {
+SELECT ?pred (COUNT(?pred) AS ?predCount) WHERE {
   ?sub a dct:PhysicalResource ;
   		?pred ?obj .
 } 

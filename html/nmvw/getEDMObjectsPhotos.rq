@@ -7,7 +7,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX edm: <http://www.europeana.eu/schemas/edm/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
-SELECT ?type COUNT(?type) AS ?typeCount WHERE {
+SELECT ?type (COUNT(?type) AS ?typeCount) WHERE {
   ?sub edm:object ?type .
   <https://hdl.handle.net/20.500.11840/termmaster1397> skos:narrower* ?type .
   ?type skos:prefLabel ?typeLabel .

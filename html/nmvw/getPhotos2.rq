@@ -15,4 +15,4 @@ SELECT ?cho ?title ?typeLabel WHERE {
   ?cho edm:object ?type .
   ?cho dc:title ?title .
   FILTER langMatches(lang(?title), "ned")
-} LIMIT 100
+} LIMIT 10
