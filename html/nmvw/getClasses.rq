@@ -1,0 +1,8 @@
+#+ summary: Get all Classes
+#+ endpoint: http://data.bibliotheken.nl/sparql
+
+SELECT ?class (COUNT(?class) AS ?classCount) WHERE {
+  ?sub a ?class .
+} 
+GROUP BY ?class
+ORDER BY DESC(?classCount)

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="NDE Data Stories - Documentatie NMVW">
+    <meta name="author" content="Enno Meijers">
+    <link href="/stories/assets/imgs/nde_logo.png" rel="icon" type="image/png">
+    <title>Documentatie Collectie Nationaal Museum voor Wereldculturen</title>
+    <link rel="stylesheet" 
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" 
+          crossorigin="anonymous">
+    <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/yasgui.min.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="withNavbar">
+    <nav class="navbar fixed-top ">
+      <div class="navbar-content">
+        <div class="navbar-icon">
+          <a class="navbar-brand" href="/stories/kb_onderzoek/">
+            <img alt="NDE Data Stories / Nationaal Museum voor Wereldculturen  home" src="/stories/assets/imgs/nde_logo.png">
+          </a>
+        </div>
+        <div class="navbar-title">
+          <a class="navbar-brand" href="/stories/">NDE Data Stories</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container story"><h2>Overzicht van de LOD dataset van het Nationaal Museum voor Wereldculturen</h2>
+    <p><img src="logos.png"></p>
+    <p>Het Nationaal Museum voor Wereldculturen heeft op zijn website zijn collectie beschikbaar gesteld in LOD-formaat. De dataset bevat de metadata over de objecten in de collectie en de termen in de NMvW-thesaurus. De data is gedownload en opgenomen in <a href="https://data.netwerkdigitaalerfgoed.nl/ivo/nmvw">de data-omgeving van NDE</a> zodat de data kan worden bevraagd via een SPARQL-endpoint. Hier is ook in detail uitgelegd wat de dataset is en waar deze te verkrijgen is. In deze datastory leggen we uit wat je in de dataset kunt verwachten en wat voor vragen je zou kunnen stellen. Om de onderliggende SPARQL-query te zien en desgewenst aan te passen, kun je klikken op dit symbool: <img src="/stories/assets/imgs/query_pijl.png" width=50px></p>
+    </div>
+    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql">
+      <h3>Wat voor dingen zitten er in het endpoint?</h3>
+      <p>Het endpoint bevat verschillende "dingen". De belangrijkste zijn de objecten in de collectie (n = ) en de concepten (n = ) in de thesaurus.</p>
+      <query data-query-ref="getClasses.rq"></query>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/thednp/bootstrap.native@2.0.24/dist/bootstrap-native-v4.min.js" crossorigin="anonymous"></script>
+    <script src="//nightly.yasgui.triply.cc/yasgui.polyfill.min.js"></script>
+    <script src='/stories/assets/js/yasgui.min.js'></script>
+    <script>
+      window.onload = function () {
+        Yasgui.stories()
+      };
+    </script>
+  </body>
+</html>
