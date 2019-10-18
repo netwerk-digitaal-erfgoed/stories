@@ -7,7 +7,7 @@ prefix thes: <http://data.bibliotheken.nl/id/thes/>
 # begin het maken van de selectie
 # de term 'distinct' zorgt er voor dat dubbele resultaten onderdrukt worden
 select (count(?boek) as ?aantal) {
-      
+
     # selecteer alles met type boek
     ?boek a schema:Book .
 
@@ -18,7 +18,7 @@ select (count(?boek) as ?aantal) {
     {
         ?boek schema:about thes:p075635178
     }
-    # of 
+    # of
     UNION
     # alles met 'dieren' als bovenliggende term
     {
@@ -27,19 +27,16 @@ select (count(?boek) as ?aantal) {
     }
 
     ?boek schema:author ?nta_uri .
-  
-    # en filter alles uit de jaren 60 
+
+    # en filter alles uit de jaren 60
     # haal het jaar op uit het publicatie 'event'
     # hoewel hier een schema:startDate is gebruikt is het alleen met een jaartal gevuld
-    ?boek schema:publication [schema:startDate ?jaar]
+    ?boek schema:publication/schema:startDate ?jaar .
 
     # zet het jaar om naar een getal (integer) en filter dan het bereik tussen 1960 en 1970
-    FILTER(xsd:integer(?jaar)>1959 && xsd:integer(?jaar)<1970) 
-  
+    FILTER(xsd:integer(?jaar)>1959 && xsd:integer(?jaar)<1970)
+
     # tel alleen de boeken met gethesaureerde auteurs (daar kunnen we misschien meer over te weten komen)
     # even nagerekend: hiermee vallen twee boeken uit deze set
     FILTER(!isblank(?nta_uri))
 }
-
-
-

@@ -19,12 +19,12 @@
     <nav class="navbar fixed-top ">
       <div class="navbar-content">
         <div class="navbar-icon">
-          <a class="navbar-brand" href="/stories/kb_onderzoek/">
-            <img alt="NDE Data Stories / KB Onderzoek  home" src="/stories/assets/imgs/nde_logo.png">
+          <a class="navbar-brand" href="/stories/index.html">
+            <img alt="NDE Data Stories" src="/stories/assets/imgs/nde_logo.png">
           </a>
         </div>
         <div class="navbar-title">
-          <a class="navbar-brand" href="/stories/kb_onderzoek/">NDE Data Stories / KB Onderzoek</a>
+          <a class="navbar-brand" href="/stories/index.html">NDE Data Stories</a>
         </div>
       </div>
     </nav>
@@ -32,7 +32,7 @@
     Dit is een voorbeeld van een data story gebaseerd op de bibliografische informatie die de KB sinds kort als Linked Data publiceert via haar <a href="http://data.bibliotheken.nl">Linked Data omgeving</a>.
     De aanleiding voor deze story was een vraag van één van onze collega's over het werk van vrouwelijke auteurs in de jaren 60.
     De concrete vraag was hoeveel boeken over dieren in de jaren zestig door vrouwelijke auteurs geschreven zijn. Omdat dit natuurlijk een zeer specifieke vraag is vonden we het interessant om te laten zien hoe een redenering kan opbouwen om tot een antwoord op een dergelijke vraag te komen gebruik makend van de beschikbare Linked Data (bij de KB en daarbuiten).
-    <p><br>Hieronder het resultaat, om de onderliggende query te zien en desgewenst aan te passen klik dan op dit symbool: <img src="/stories/assets/imgs/query_pijl.png" width=50px>.</p>
+    <p><br>Hieronder het resultaat, om de onderliggende query te zien en desgewenst aan te passen klik dan op dit symbool: <img src="/stories/assets/imgs/query_pijl.png" width=50px>. Als je hier op klikt zie je de query met linksbovenaan het endpoint. Dit is de plek waar de query naar toe wordt gezonden.</p>
     </div>
     <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
       <p>Om eenvoudig te beginnen: een lijstje van 5 titels van het type 'boek'...</p>
@@ -73,7 +73,7 @@
       <p>
         Het geslacht is echter niet opgenomen in de NTA. Dit is wel in Wikidata te vinden. En Wikidata kent ook de NTA URI dus daarmee
         kunnen we een match maken. Omdat dit realtime niet werkt vanwege de performanceproblemen is er een aparte dump gemaakt en deze voorlopig
-        in demo omgeving van NDE gezet. Op basis van de Wikidata gegevens wordt er aan alle NTA ingangen (die in Wikidata bekend zijn) een extra veld voor geslacht op genomen.
+        in demo omgeving van NDE gezet (merk op dat we dus een ander endpoint bevragen). Op basis van de Wikidata gegevens wordt er aan alle NTA ingangen (die in Wikidata bekend zijn) een extra veld voor geslacht op genomen.
         Het resultaat ziet er als volgt uit.
       </p>
       <query data-query-ref="query6.rq"></query>

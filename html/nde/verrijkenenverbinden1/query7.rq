@@ -11,9 +11,9 @@ select distinct ?boek ?titel ?jaar ?nta_uri  {
 
     # we beginnen om met de eerder gemaakte query de geselecteerde titels op te halen
     # we voeren deze query uit vanaf de NDE server (zie het adres bovenaan dit schermpje)
-    # en roepen de 'remote' server op http://data.bibliotheken.nl aan
+    # en roepen de 'remote' server, een extra endpoint, op http://data.bibliotheken.nl aan
     # hieronder combineren we dit met de gegevens uit de dataset op de NDE server
-    # dit noemen we een 'federated' query en is eigenlijk hoe Linked Data bedoeld is 
+    # dit noemen we een 'federated' query en is eigenlijk hoe Linked Data bedoeld is
     # maar in veel gevallen werkt dit nog moeizaam (dit is nog een uitdaging voor de techniek)
     service <http://data.bibliotheken.nl/sparql> {
         # selecteer alles met type boek
@@ -29,7 +29,7 @@ select distinct ?boek ?titel ?jaar ?nta_uri  {
         {
             ?boek schema:about thes:p075635178
         }
-        # of 
+        # of
         UNION
         # alles met 'dieren' als bovenliggende term
         {
@@ -42,17 +42,17 @@ select distinct ?boek ?titel ?jaar ?nta_uri  {
         ?boek schema:publication [schema:startDate ?jaar]
 
         # zet het jaar om naar een getal (integer) en filter dan het bereik tussen 1960 en 1970
-        FILTER(xsd:integer(?jaar)>1959 && xsd:integer(?jaar)<1970) 
+        FILTER(xsd:integer(?jaar)>1959 && xsd:integer(?jaar)<1970)
 
-        # gebruik alleen gethesaureerde auteurs 
+        # gebruik alleen gethesaureerde auteurs
         FILTER(!isblank(?nta_uri))
     }
-    
+
     # nu filter we deze resultaten door te kijken welke titels een auteur heeft van het vrouwelijk geslacht
     # let op: het filteren werkt door eigenlijk een extra selectie criterium toe te voegen
     ?nta_uri schema:gender <http://www.wikidata.org/entity/Q6581072>
 
     # omdat niet alle auteurs uit de NTA in Wikidata voorkomen raken we gegevens kwijt
-    # even nagerekend: van de 255 auteurs (zie boven) zijn er 111 in wikidata terug te vinden 
+    # even nagerekend: van de 255 auteurs (zie boven) zijn er 111 in wikidata terug te vinden
     # (op het moment dat ik dit bestand gemaakt heb)
 }
