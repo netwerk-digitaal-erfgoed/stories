@@ -1,0 +1,38 @@
+# definities als verkorte schrijfwijze
+prefix schema: <http://schema.org/>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix void: <http://rdfs.org/ns/void#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# begin het maken van de selectie
+# de term 'distinct' zorgt er voor dat dubbele resultaten onderdrukt worden
+select distinct ?onderwerp ?uri ?bron {
+
+    # onderwerpen zijn opgenomen in het 'schema:about' als uri
+    # we kijken gewoonn eens naar alle onderwerpen die aan iets gekoppeld zijn
+    ?s schema:about ?uri .
+
+    # we willen zoeken naar het onderwerp dat bij deze uri hoort
+    # daarvoor moeten het label bij de uri ophalen
+    ?uri skos:prefLabel ?onderwerp .
+
+    # maar we willen ook weten in welke thesaurus dit voorkomt
+    # dit kan met een beetje knutselen
+    # Door / te gebruiken volgen we het property path, dit is equivalent met
+    # ?uri foaf:isPrimaryTopicOf ?dummy.
+    # ?dummy void:inDataset ?uri_dataset .
+    ?uri foaf:isPrimaryTopicOf/void:inDataset ?uri_dataset .
+    ?uri_dataset rdfs:label ?bron .
+
+    # nu filteren we op het voorkomen van de tekst 'dieren'
+    FILTER(REGEX(?onderwerp,"^dieren$","i"))
+    # door ^ er voor te zetten moet alles beginnen met dieren
+    # door $ er achter te zetten moet alles ook eindigen met dieren
+    # er wordt dus exact gezocht op "dieren"
+    # de 'i' geeft aan dat er geen verschil tussen hoofd en kleine letters gemaakt hoeft te worden
+}
+order by ?onderwerp
+
+# beperk het aantal resultaten tot 5
+limit 5
