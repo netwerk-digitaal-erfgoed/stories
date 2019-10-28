@@ -4,9 +4,8 @@ prefix schema: <http://schema.org/>
 prefix thes: <http://data.bibliotheken.nl/id/thes/>
 
 # begin het maken van de selectie
-# de term 'distinct' zorgt er voor dat dubbele resultaten onderdrukt worden
-select ?titel ?boek {
-      
+select ?titel (?boek as ?boekUri) {
+
     # selecteer alles met type boek
     ?boek a schema:Book .
 
@@ -15,7 +14,8 @@ select ?titel ?boek {
     {
         ?boek schema:about thes:p075635178
     }
-    # of 
+    # "of": we voegen hier resulaten van de graaf samen die aan een van deze
+    # voorwaarden voldoen
     UNION
     # alles met 'dieren' als bovenliggende term
     {
@@ -24,5 +24,3 @@ select ?titel ?boek {
     }
 }
 limit 10
-
-

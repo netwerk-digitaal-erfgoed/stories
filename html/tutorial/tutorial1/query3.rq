@@ -5,10 +5,10 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 # begin het maken van de selectie
 # de term 'distinct' zorgt er voor dat dubbele resultaten onderdrukt worden
 select distinct ?onderwerp ?uri {
-  
-    # laat alle termen zien waarvoor deze term en ergens in de hierarchie als 
-    # bovenliggende term voorkomt 
-    ?uri skos:broader+ <http://data.bibliotheken.nl/id/thes/p075635178> . 
+
+    # Door de "+" vragen we alle uri's op die
+    # als onderliggende of door tussennode onderliggende term voor dieren hebben 
+    ?uri skos:broader+ <http://data.bibliotheken.nl/id/thes/p075635178> .
 
     # en het label bij deze uri ophalen
     ?uri skos:prefLabel ?onderwerp .
@@ -16,5 +16,3 @@ select distinct ?onderwerp ?uri {
 }
 order by ?onderwerp
 limit 10
-
-

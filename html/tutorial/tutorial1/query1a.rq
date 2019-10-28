@@ -1,0 +1,23 @@
+# definities als verkorte schrijfwijze
+prefix schema: <http://schema.org/>
+
+# begin het maken van de selectie, geef de projectie weer die we in het resultaat
+# willen zien
+select ?boekNaam ?auteurNaam (?boekObject as ?uri) {
+
+    # selecteer alle titels van het type 'boek'
+    ?boekObject a schema:Book;
+                schema:name ?boekNaam;
+                #met het gebruik van de ";" wordt het subject van de triple steeds
+                #aangevuld met de laatstgenoemde, hier is dat dus ?boekobject
+                schema:author ?auteur.
+
+    # We hebben in het eerdere stukje graafpatroon matching auteur opgehaald als
+    # object bij boekObject. Dit is de formele definitie en we willen liever een
+    # Auteursnaam weergeven dus we vragen die ook op
+    ?auteur schema:name ?auteurNaam.
+
+}
+
+# beperk het aantal resultaten tot 5 voorbeelden
+limit 5

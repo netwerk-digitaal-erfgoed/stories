@@ -3,11 +3,11 @@ prefix schema: <http://schema.org/>
 
 # begin het maken van de selectie
 select ?boek {
-  
-    # selecteer alle titels van het type 'boek'
+
+    # selecteer alle titels van het type 'boek'. Dit is dus hetzelfde als
+    # ?boek rdf:type schema:Book
     ?boek a schema:Book
 }
 
 # beperk het aantal resultaten tot 5
 limit 5
-

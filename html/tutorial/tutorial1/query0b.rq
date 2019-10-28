@@ -1,0 +1,12 @@
+#Een prefix voor het rdf vocabulaire van w3
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+# Nu willen we weten welke typen objecten voorkomen in de dataset, we vragen dus unieke objecten
+select distinct (?object as ?TypeObject) {
+
+    # Nu hebbe we eindelijk een restrictie op het graafpatroon gelegd. We zeggen, geef ons alle triples
+    # die voldoen aan de restrictie dat het type precies matcht met "rdf:type"
+    ?subject rdf:type  ?object
+}
+
+# beperk de output tot 10 objecttypen
+limit 10

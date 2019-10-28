@@ -1,17 +1,19 @@
 # definities als verkorte schrijfwijze
 prefix schema: <http://schema.org/>
 
-# toon alle opgehaalde velden 
+# toon alle opgehaalde velden
 select * {
-  
-  # zorg dat we alleen de resultaten uit deze dataset ('graph') krijgen 
-  graph <https://data.netwerkdigitaalerfgoed.nl/enno/wd-nta-geslacht/graphs/default> 
+
+  # zorg dat we alleen de resultaten uit deze dataset ('graph') krijgen die we hebben gekopieerd van wikidata
+  graph <https://data.netwerkdigitaalerfgoed.nl/enno/wd-nta-geslacht/graphs/default>
   {
-     ?nta ?eigenschap ?waarde 
+     ?nta ?eigenschap ?waarde
   }
 }
 # sorteer het resultaat op het veld '?nta'
 order by ?nta
 
-# beperk het aantal resultaten tot 6
-limit 6
+# beperk het aantal resultaten tot 3
+limit 3
+# We slaan de eerste 4 entries over 
+offset 4

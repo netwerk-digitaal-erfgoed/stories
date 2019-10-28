@@ -4,8 +4,8 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix schema: <http://schema.org/>
 prefix thes: <http://data.bibliotheken.nl/id/thes/>
 
-# begin het maken van de selectie
-select ?titel ?auteur ?jaar  {
+# We passen hier alleen de projetie aan, maar de functie count doet op de achtergrond natuurlijk wel een aggregatie
+select (count(?boek) as ?aantal)  {
 
     # selecteer alles met type boek
     ?boek a schema:Book .
@@ -43,5 +43,3 @@ select ?titel ?auteur ?jaar  {
     # even nagerekend: hiermee vallen twee boeken uit deze set
     FILTER(!isblank(?nta_uri))
 }
-# De eerste 5 resulataten. Merk op dat deze corresponderen met de vijf categorieen uit de vorige query
-Limit 5

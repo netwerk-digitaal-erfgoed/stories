@@ -22,6 +22,8 @@ select distinct ?onderwerp ?uri ?bron {
     # Door / te gebruiken volgen we het property path, dit is equivalent met
     # ?uri foaf:isPrimaryTopicOf ?dummy.
     # ?dummy void:inDataset ?uri_dataset .
+    # We vragen dus met een tussennode op in welke dataset de uri zich bevindt en vragen
+    # de bron van deze dataset.
     ?uri foaf:isPrimaryTopicOf/void:inDataset ?uri_dataset .
     ?uri_dataset rdfs:label ?bron .
 
