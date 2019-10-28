@@ -1,0 +1,13 @@
+# Nu maken we gebruik van de projectie, we gebruiken variabele namen en geven die de naam die ze horen te krijgen in het resultaat
+# Ook tellen we direct hoeveel de distincte predicaten voorkomen in de dataset.
+select distinct (?predicaat as ?relatie) (count(?subject) as ?aantal) {
+
+    # We vragen nog steeds alle triples terug.
+    ?subject ?predicaat ?object
+}
+
+# Omdat we een count doen in de project plaatsen we hier expliciet bij dat we een group by op het predicaat doen. Dit is immers
+# waarvoor we de aantallen willen weten. Tenslotte willen we een aflopende lijst met de hoeveelheden van predicaten hebben.
+group by ?predicaat
+order by desc(?aantal)
+limit 10

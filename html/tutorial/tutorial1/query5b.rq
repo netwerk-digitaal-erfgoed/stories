@@ -1,17 +1,17 @@
 # definities als verkorte schrijfwijze
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix schema: <http://schema.org/>
 prefix thes: <http://data.bibliotheken.nl/id/thes/>
 
 # begin het maken van de selectie
-select ?titel ?auteur ?jaar  {
+select distinct ?auteur (SAMPLE(?image) as ?image) (SAMPLE(?widget) as ?widget) {
 
     # selecteer alles met type boek
     ?boek a schema:Book .
-
-    # haal de titel van het boek op
-    ?boek schema:name ?titel .
 
     # selecteer alles over 'dieren'
     {
@@ -42,6 +42,19 @@ select ?titel ?auteur ?jaar  {
     # tel alleen de boeken met gethesaureerde auteurs (daar kunnen we misschien meer over te weten komen)
     # even nagerekend: hiermee vallen twee boeken uit deze set
     FILTER(!isblank(?nta_uri))
+
+# Hier maken we de query federated. We vragen aan het wikidata endpoint wat hun identifier is voor de auteur die we bij de KB hebben opgehaald
+  service <https://query.wikidata.org/bigdata/namespace/wdq/sparql> {
+        ?wikidata_identifier ?_ ?nta_uri.
+    }
+# En vervolgens zoeken we dezelfde dbpedia identifier en vinden zo een plaatje erbij!
+  service <https://api.triplydb.com/datasets/wikimedia/dbpedia/services/dbpedia/sparql> {
+       ?dbpedia_identifier owl:sameAs  ?wikidata_identifier;
+                           foaf:depiction ?image.
+ }
+ #Via een bind statement maken we een stukje html en geven deze de naam widget. Widget wordt herkent door Yasgui als een speciaal keyword waardoor we de plaatjes in een gallerij kunnen weergeven.
+bind('<h1>{{auteur}}</h1><img src="{{image}}"/>' as ?widget)
 }
-# De eerste 5 resulataten. Merk op dat deze corresponderen met de vijf categorieen uit de vorige query
-Limit 5
+# De eerste 3 resulataten. Wegens performance met een dubbele service clause vragen we niet teveel op.
+GROUP BY ?auteur
+Limit 3
