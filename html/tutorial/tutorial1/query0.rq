@@ -1,5 +1,5 @@
 # begin het maken van de selectie query
-# Voor de "{" is het gedeelte van de project. Met een ster nemen we alle variabelen mee die worden gedefinieerd in de query
+# Voor de "{" is het gedeelte van de projectie. Met een ster nemen we alle variabelen mee die worden gedefinieerd in de query
 select * {
 
     # We vragen alle triples terug. De namen van de variabelen maken niet uit, maar door het "?" geven we aan dat
