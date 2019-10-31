@@ -14,8 +14,8 @@ select ?titel (?boek as ?boekUri) {
     {
         ?boek schema:about thes:p075635178
     }
-    # "of": we voegen hier resulaten van de graaf samen die aan een van deze
-    # voorwaarden voldoen
+    # "of": bij een UNION worden alle resultaten teruggegeven die ofwel voldoen
+    # aan het eerste gedeelte van de UNION ofwel aan het tweede 
     UNION
     # alles met 'dieren' als bovenliggende term
     {

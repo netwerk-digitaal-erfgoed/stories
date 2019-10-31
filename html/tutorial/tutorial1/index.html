@@ -29,36 +29,40 @@
       </div>
     </nav>
     <div class="container story"><h3>Introductie in het schrijven van SPARQL queries met interactieve voorbeelden.</h3>
-    In deze tutorial maken we de gebruiker bekend met het schrijven van queries in de querytaal SPARQL. Deze taal is speciaal gemaakt om Linked Data sets te bevragen.
-    We schrijven deze tutorial in de vorm van en data story, waardoor je na een stukje uitleg een query kunt bekijken, veranderen en opnieuw uitvoeren. Je ziet de query als je klinkt op dit symbool:
+    <p><br>In deze tutorial maken we de gebruiker bekend met het schrijven van queries in de querytaal SPARQL. Deze taal is speciaal gemaakt om Linked Data sets te bevragen.
+    We schrijven deze tutorial in de vorm van en data story, waardoor je na een stukje uitleg een query kunt bekijken, veranderen en opnieuw uitvoeren. In deze data story zie je de queries, maar bij andere stories
+    zijn ze nog wel eens verborgen. Je kunt de query alsnog laten verschijnen als je klinkt op dit symbool:
     <img src="/stories/assets/imgs/query_pijl.png" width=50px>. Als je de query openklapt zie je linksbovenaan het endpoint. Dit is de plek waar de query naar toe wordt gezonden.
     We maken voor deze tutorial gebruik van data met bibliografische informatie van de Koningklijke Bibliotheek (KB), dit wordt gepubliceerd op haar <a href="http://data.bibliotheken.nl">Linked Data omgeving</a>.
-    We proberen er achter te komen hoeveel boeken over dieren in de jaren zestig door vrouwelijke auteurs geschreven zijn.
+    We proberen er achter te komen hoeveel boeken over dieren in de jaren zestig door vrouwelijke auteurs geschreven zijn.</p>
+    </div>
 
-    <p><br>Linked data sets zijn vrijwel altijd opgeslagen als triples: alle data punten hebben het format "subject" "predicaat" "object". Het subject en object zijn vaak dataobjecten die waarvan de relatie wordt
-      gedefinieerd door het predicate. Een voorbeeld zou zijn "Max Havelaar" "isVanType" "Boek", of "Max Havelaar" "isGeschrevenDoor" "Multatuli". In linked data sets zijn de drie elementen van de triple altijd IRIs:
-      ze verwijzen naar hun formele definitie. De predicaten kunnen bijvoorbeeld zijn gedifineerd door een internationale organisatie (W3), terwijl de definitie van "Max Havelaar" door de KB wordt bijgehouden.
-      We richten ons in deze tutorial op de select query, zodat iederen eigen data stories kan gaan maken of bevragingen kunnen gaan inzetten in eigen apps. Er zitten drie elementen in een select query:
-      *Projectie, *Patroon en *Modifier. De projectie geeft aan welke variabelen er moeten worden teruggegeven. Het patroon is voor deze tutorial het belangrijkste: hier specificeren we welke data uit de dataset
-      we terug willen. Tenslotte is er de modifier, dit is de plek waar we nog extra berekeningen kunnen doen over onze opgevraagde data.  </p>
+    <div class = "container story">
+    <h4> De basis: hoe wordt een SPARQL query opgebouwd? </h4>
+
+    Linked data sets zijn vrijwel altijd opgeslagen als triples: alle data punten hebben het format <code>subject</code> <code>predicaat</code> <code>object</code>. Het subject en object zijn vaak dataobjecten die waarvan de relatie wordt
+      gedefinieerd door het predicate. Een voorbeeld zou zijn <code>Max Havelaar</code> <code>isVanType</code> <code>Boek</code>, of <code>Max Havelaar</code> <code>isGeschrevenDoor</code> <code>Multatuli</code>. In linked data sets zijn de de eerste twee elementen van de triple altijd IRIs:
+      ze verwijzen naar hun formele definitie. Het derde element kan ook een IRI zijn, ofwel een Literal, een waarde. De predicaten kunnen bijvoorbeeld zijn gedefinieerd door een internationale organisatie, bijvoorbeeld <a href="https://www.w3.org">W3C</a>, terwijl de definitie van <i>Max Havelaar</i> door de KB wordt bijgehouden.
+      We richten ons in deze tutorial op de select query, zodat iedereen eigen data stories kan gaan maken of bevragingen kunnen gaan inzetten in eigen apps. Er zitten drie elementen in een select query:
+      <code>Projectie</code> , <code>Patroon</code>  en <code>Modifier</code> . De projectie geeft aan welke variabelen er moeten worden teruggegeven. Het patroon is voor deze tutorial het belangrijkste: hier specificeren we welke data uit de dataset
+      we terug willen. Tenslotte is er de modifier, dit is de plek waar we nog extra berekeningen kunnen doen over onze opgevraagde data.
 
 
     </div>
     <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
-      <p>Laten we beginnen door het "subject" "predicaat" "object" patroon af te vuren op het endpoint, waarbij we alle drie als variabele meegeven. We leggen dus nog geen patroon
+      <p>Laten we beginnen door het <code>subject</code> <code>predicaat</code> <code>object</code> patroon af te vuren op het endpoint, waarbij we alle drie als variabele meegeven. We leggen dus nog geen patroon
       beperkingen op.</p>
       <query data-query-ref="query0.rq" data-show-query></query>
       <p>De voorgaande query was nog niet een heel nuttige query, we krijgen simpelweg vijf datapunten terug uit de dataset. We zien al wel dat we op alles kunnen klikken aangezien het allemaal IRIs zijn.
       De elementen in de subject posities verwijzen naar de data van de KB, als je hier op klikt zie je alle informatie over dat specifieke item in de browser </p>
     </div>
-
-
   </div>
+
   <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
-    <p>Als we nu graag willen welke unieke relaties, "predicaten" voorkomen in de data, dan kunnen we een <code>distinct</code> keyword meegeven. Laten we gelijk wat meer over de projectie leren. In de projectie
+    <p>Als we nu graag willen welke unieke relaties, <i>predicaten</i> voorkomen in de data, dan kunnen we een <code>distinct</code> keyword meegeven. Laten we gelijk wat meer over de projectie leren. In de projectie
     kunnen we variabele namen binden aan andere namen. Dit is bijvoorbeeld handig als je de query leesbaar wilt maken voor iemand die de dataset goed kent, maar het resultaat leesbaar wilt maken voor iemand die
-  alleen de selectie te zien krijgt. Tenslotte doen we ook al een intuitieve berekening in het projectie stukje: we tellen hoe veel ?subjects het unieke predicaat hebben, en dit noemen we het aantal. </p>
-    <query data-query-ref="query0a.rq"></query>
+  alleen de selectie te zien krijgt. Tenslotte doen we ook al een intuïtieve berekening in het projectie stukje: we tellen hoe veel ?subjects het unieke predicaat hebben, en dit noemen we het aantal. </p>
+    <query data-query-ref="query0a.rq" data-show-query></query>
   </div>
 
 
@@ -66,15 +70,15 @@
 <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
   <p> We hebben net gezien dat alle IRIs een beetje onoverzichtelijk kunnen worden. Zeker als we al kennis hebben over een data set en restricties op het patroon gaan opleggen willen we niet steeds een hele IRI hoeven opschrijven.
      Daarom wordt er vaak aan het begin van een SPARQL query een aantal prefixes. Deze zijn letterlijk een stuk hyperlink die op de plek dat we deze later in de query gebruiken wordt toegevoegd om een complete IRI te vormen.
-   We zagen in bij de vorige query dat het rdf:type (volledig http://www.w3.org/1999/02/22-rdf-syntax-ns#type) de meest gebruikte relatie. We definieren een prefix in de volgende query en kijken welke typen er voorkomen in de data. </p>
-  <query data-query-ref="query0b.rq"></query>
+   We zagen in bij de vorige query dat het <code>rdf:type</code> (volledig http://www.w3.org/1999/02/22-rdf-syntax-ns#type) de meest gebruikte relatie. We definieren een prefix in de volgende query en kijken welke typen er voorkomen in de data. </p>
+  <query data-query-ref="query0b.rq" data-show-query></query>
 </div>
 
 </div>
 <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
   <p> We zagen in de vorige query bij resultaat 9. dat http://schema.org/Book een type is dat voorkomt in de data, uiteraard is dat niet heel onverwacht voor een dataset van de KB! We kunen nu een paar boek objecten weergeven.
-  We gebruiken rdf:type zo vaak dat we deze zelfs de shorthand "a" hebben gegeven. Dit gebruiken we hier. </p>
-  <query data-query-ref="query1.rq"></query>
+  We gebruiken rdf:type zo vaak dat we deze zelfs de shorthand <code>a</code> hebben gegeven. Dit gebruiken we hier. </p>
+  <query data-query-ref="query1.rq" data-show-query></query>
   <p> Een kleine Disclaimer: we hebben nu de data een beetje verkend met SPARQL, maar dit is wellicht eenvoudiger met een visuele interface, door bijvoorbeeld door de data te browsen of pagina's van het data model te bekijken. Hopelijk
     is het nu wel duidelijk gemaakt hoe we een simpel patroon matchen. We gaan nu verder met het matchen van complexere patronen. Omdat veel hiervan in de query gebeurt staat daar vanaf nu het meeste commentaar.  </p>
 </div>
@@ -82,16 +86,17 @@
 
 </div>
 <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+  <h4> Het matchen van graafpatronen </h4>
   <p> We zagen zojuist vijf boekobjecten, maar dat is natuurlijk nog niet een heel mooie weergave, laten we wat extra informatie informatie ophalen. We maken nu een uitgebreider patroon om te matchen. </p>
-  <query data-query-ref="query1a.rq"></query>
+  <query data-query-ref="query1a.rq" data-show-query></query>
 
 
     <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
       <p>
-        Stel je wilt zoeken op een specifiek onderwerp, bijvoorbeeld 'dieren'.<br>
+        Stel je wilt zoeken op een specifiek onderwerp, bijvoorbeeld <i>dieren</i>.<br>
         Laten we eens kijken of dit onderwerp voorkomt in de beschikbare thesauri in de LOD omgeving.
       </p>
-      <query data-query-ref="query2.rq"></query>
+      <query data-query-ref="query2.rq" data-show-query></query>
       <p>Inspectie van het resultaat door de links te volgen brengt ons tot de conclusie dat 'dieren' uit de Brinkman het handigste trefwoord is.</p>
     </div>
 
@@ -99,18 +104,18 @@
       <p>
         Even een extra controle, welke onderwerp hebben deze Brinkman term als bovenliggende term (ergens in de hierarchie)
       </p>
-      <query data-query-ref="query3.rq"></query>
+      <query data-query-ref="query3.rq" data-show-query></query>
       <p>
-        De lijst is beperkt tot de eerste 10, verwijder 'limit 10' in de query om alle resultaten te zien.
+        De lijst is beperkt tot de eerste 10, verwijder <code>limit 10</code> in de query om alle resultaten te zien.
         Het resultaat ziet er goed uit!
       </p>
 
     </div>
     <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
       <p>
-        Dus nu boeken zoeken die over 'dieren' gaan.
+        Dus nu boeken zoeken die over <i>dieren</i> gaan. We maken hierbij gebruik van een <code>union</code> die een stuk graaf teruggeeft dat aan een van twee voorwaarden moet voldoen.
       </p>
-      <query data-query-ref="query4.rq"></query>
+      <query data-query-ref="query4.rq" data-show-query></query>
       <p>Opmerking: In deze lijst zien we titels beginnend met '#10#'' of '#20#'. Dit is het gevolg van een incorrecte conversie vanuit de bron naar Linked Data.</p>
 
     </div>
@@ -118,7 +123,7 @@
       <p>
         Nu selecteren we op boeken die in de jaren 60 gepubliceerd zijn gepubliceerd, dit levert de volgende boeken op:
       </p>
-      <query data-query-ref="query5.rq"></query>
+      <query data-query-ref="query5.rq" data-show-query></query>
     </div>
 
 
@@ -127,36 +132,37 @@
     <p>
       Maar misschien willen we liever weten hoeveel boeken er in de jaren 60 zijn gepubliceerd, dit doen we met bijna dezelfde query maar door alleen de projectie aan te passen (hier zit wel een impliciete agregatie in).
     </p>
-    <query data-query-ref="query5a.rq"></query>
+    <query data-query-ref="query5a.rq" data-show-query></query>
   </div>
 
 </div>
 <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+  <h4> Queries over meer dan een database </h4>
   <p>
     De KB heeft heel mooi alles bijgehouden over boeken en auteurs, maar we kunnen er helaas geen afbeeldingen vinden van auteurs. Gelukkig kunnen we dankzij de kracht van Linked (Open) Data er wel afbeeldingen bij zoeken!
-    We maken hiervoor een federated query: een query die van meerdere endpoints gebruik maakt. We gebruiken hiervoor de clause service. We weten bijvoorbeeld dat de nta_uri is opgenomen in de wikidata catlogus. Verder
-    kunnen we door wat zoeken in dbpedia terugvinden dat deze de wikidata identifiers kan koppelen aan eigen identifiers via owl:sameAs en aan deze eigen identifiers hebben ze wikipedia plaatjes gekoppeld. Het lijkt een omweg,
+    We maken hiervoor een <i>federated</i> query: een query die van meerdere endpoints gebruik maakt. We gebruiken hiervoor de clause service. We weten bijvoorbeeld dat de <code>nta_uri</code> is opgenomen in de wikidata catlogus. Verder
+    kunnen we door wat zoeken in dbpedia terugvinden dat deze de wikidata identifiers kan koppelen aan eigen identifiers via <code>owl:sameAs</code> en aan deze eigen identifiers hebben ze wikipedia plaatjes gekoppeld. Het lijkt een omweg,
     maar met een paar regels code bevragen we meerdere datasets in de wereld om zo onze gewenste informatie bij elkaar te krijgen. Stel je eens voor dat alle data zo werkte.
   </p>
-  <query data-query-ref="query5b.rq" data-output="gallery"></query>
+  <query data-query-ref="query5b.rq" data-show-query data-output="gallery"></query>
 </div>
 
 
     <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/enno/verrijken-en-verbinden/services/verrijken-en-verbinden/sparql">
       <p>
-        Het geslacht van een auteur is helaas niet opgenomen in de NTA. Dit is wel in Wikidata te vinden. Zoals we zagen bij de vorige query heeft Wikidata ook een relatie met de NTA URI, dus daarmee
+        Het geslacht van een auteur is helaas niet opgenomen in de NTA. Dit is wel in Wikidata te vinden. Zoals we zagen bij de vorige query heeft Wikidata ook een relatie met de <code>nta_uri</code>, dus daarmee
         kunnen we een match maken. Vanwege de performance hebben we er hier voor gekozen om een aparte dump te maken en deze voorlopig
         in demo omgeving van NDE te zetten (merk op dat dit geen federated query is maar we wel een ander endpoint bevragen als startpunt - we zoeken wel alleen in een bepaalde graph). Op basis van de Wikidata gegevens wordt er aan alle NTA ingangen (die in Wikidata bekend zijn) een extra veld voor geslacht op genomen.
         Het resultaat ziet er als volgt uit.
       </p>
-      <query data-query-ref="query6.rq"></query>
-      <p>De waarde voor 'schema:gender' zijn nog de oorspronkelijke waarden die Wikidata gebruikt om een geslacht te typeren: zo is Q6581097 'mannelijk' en Q6581072 'vrouwelijk'.</p>
+      <query data-query-ref="query6.rq" data-show-query></query>
+      <p>De waarde voor <code>schema:gender</code> zijn nog de oorspronkelijke waarden die Wikidata gebruikt om een geslacht te typeren: zo is <code>Q6581097</code> <i>mannelijk</i> en <code>Q6581072</code> <i>vrouwelijk</i>.</p>
     </div>
 
     <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/enno/verrijken-en-verbinden/services/verrijken-en-verbinden/sparql">
       <p>
         Als we dit alles combineren krijgen we het antwoord op de vraag die we ons aan het begin van deze tutorial stelde, namelijk welke boeken in de jaren 60 door vrouwen zijn geschreven.      </p>
-      <query data-query-ref="query7.rq"></query>
+      <query data-query-ref="query7.rq" data-show-query></query>
       <p><i>Als disclaimer noemen we dat deze berekening de volgende onnauwkeurigheden bevat:
         <br>- niet alles wat gepubliceerd is staat beschreven in de NBT Linked Data set
         <br>- boeken met niet gethesaureerde auteurs zijn niet mee geteld (in deze set: minder dan 1 procent)
