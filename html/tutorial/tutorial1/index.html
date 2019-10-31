@@ -47,7 +47,7 @@
     <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
       <p>Laten we beginnen door het "subject" "predicaat" "object" patroon af te vuren op het endpoint, waarbij we alle drie als variabele meegeven. We leggen dus nog geen patroon
       beperkingen op.</p>
-      <query data-query-ref="query0.rq"></query>
+      <query data-query-ref="query0.rq" data-show-query></query>
       <p>De voorgaande query was nog niet een heel nuttige query, we krijgen simpelweg vijf datapunten terug uit de dataset. We zien al wel dat we op alles kunnen klikken aangezien het allemaal IRIs zijn.
       De elementen in de subject posities verwijzen naar de data van de KB, als je hier op klikt zie je alle informatie over dat specifieke item in de browser </p>
     </div>
@@ -55,7 +55,7 @@
 
   </div>
   <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
-    <p>Als we nu graag willen welke unieke relaties, "predicaten" voorkomen in de data, dan kunnen we een distinct keyword meegeven. Laten we gelijk wat meer over de projectie leren. In de projectie
+    <p>Als we nu graag willen welke unieke relaties, "predicaten" voorkomen in de data, dan kunnen we een <code>distinct</code> keyword meegeven. Laten we gelijk wat meer over de projectie leren. In de projectie
     kunnen we variabele namen binden aan andere namen. Dit is bijvoorbeeld handig als je de query leesbaar wilt maken voor iemand die de dataset goed kent, maar het resultaat leesbaar wilt maken voor iemand die
   alleen de selectie te zien krijgt. Tenslotte doen we ook al een intuitieve berekening in het projectie stukje: we tellen hoe veel ?subjects het unieke predicaat hebben, en dit noemen we het aantal. </p>
     <query data-query-ref="query0a.rq"></query>
