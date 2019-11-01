@@ -28,11 +28,11 @@ select distinct ?onderwerp ?uri ?bron {
     ?uri_dataset rdfs:label ?bron .
 
     # nu filteren we op het voorkomen van de tekst 'dieren'
-    FILTER(REGEX(?onderwerp,"^dieren$","i"))
-    # door ^ er voor te zetten moet alles beginnen met dieren
-    # door $ er achter te zetten moet alles ook eindigen met dieren
+    FILTER(strstarts(lcase(?onderwerp),"dieren"))
+    FILTER(strends(lcase(?onderwerp),"dieren"))
+    # Door de eerste filter moet alles beginnen met dieren
+    # door de tweede filter moet alles ook eindigen met dieren
     # er wordt dus exact gezocht op "dieren"
-    # de 'i' geeft aan dat er geen verschil tussen hoofd en kleine letters gemaakt hoeft te worden
 }
 order by ?onderwerp
 
