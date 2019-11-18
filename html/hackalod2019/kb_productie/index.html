@@ -9,7 +9,6 @@
     <title>NDE Data Stories - HackaLOD 2019 - Data Stories over datasets in het RCE LOD Platform</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/yasgui.min.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
   </head>
@@ -28,13 +27,13 @@
     </nav>
     <div class="container">
       <h1>Data Stories over datasets in het KB LOD Platform</h1>
-      
+
       <div class="story">
         <h2>Dataset: Nederlandse Thesaurus van Auteursnamen</h2>
         <p>
-          In de Nederlandse Thesaurus van Auteursnamen (NTA), ook wel de Persoonsnamenthesaurus genoemd, 
-          worden naams- en andere persoonsgegevens van auteurs opgeslagen, zodat onderscheid gemaakt 
-          kan worden tussen auteurs met dezelfde naam. 
+          In de Nederlandse Thesaurus van Auteursnamen (NTA), ook wel de Persoonsnamenthesaurus genoemd,
+          worden naams- en andere persoonsgegevens van auteurs opgeslagen, zodat onderscheid gemaakt
+          kan worden tussen auteurs met dezelfde naam.
         </p>
         <p>
           <strong>Bron voor de Linked Data</strong>: <a href="http://data.bibliotheken.nl" target="_blank">KB LOD Platform</a><br>
@@ -42,10 +41,10 @@
           <strong>Te bevragen via</strong>: het <a href="http://data.bibliotheken.nl/sparql" target="_blank">SPARQL endpoint</a>
         </p>
         <p>
-          Ook in de Digitale Bibliotheek Nederlandse Letteren (DBNL) is auteurinformatie vastgelegd. 
+          Ook in de Digitale Bibliotheek Nederlandse Letteren (DBNL) is auteurinformatie vastgelegd.
           De volgende query bouwt een eenvoudig auteursportret op van informatie uit beide bronnen aanwezig
-          in het KB LOD Platform. In dezelfde query wordt ook de link gelegd met de beschikbare informatie 
-          in Wikidata en DBpedia. 
+          in het KB LOD Platform. In dezelfde query wordt ook de link gelegd met de beschikbare informatie
+          in Wikidata en DBpedia.
         </p>
         <query data-config="https://api.nightly.triply.cc/s/iCCHrGtYa"></query>
       </div>
@@ -54,9 +53,9 @@
       <div class="story">
         <h2>Dataset: Nederlandse Bibliografie</h2>
         <p>
-          De Koninklijke Bibliotheek (KB) verzamelt en bewaart in het 'Depot van Nederlandse publicaties' 
-          alle door erkende uitgevers uitgebrachte Nederlandse publicaties en daarnaast nog een groot deel 
-          van de Nederlandse publicaties die buiten de erkende kanalen verschijnen, de zogenaamde grijze literatuur. 
+          De Koninklijke Bibliotheek (KB) verzamelt en bewaart in het 'Depot van Nederlandse publicaties'
+          alle door erkende uitgevers uitgebrachte Nederlandse publicaties en daarnaast nog een groot deel
+          van de Nederlandse publicaties die buiten de erkende kanalen verschijnen, de zogenaamde grijze literatuur.
           Op basis van dat materiaal produceert de Koninklijke Bibliotheek de Nederlandse Bibliografie.
         </p>
         <p>
@@ -65,10 +64,10 @@
           <strong>Te bevragen via</strong>: het <a href="http://data.bibliotheken.nl/sparql" target="_blank">SPARQL endpoint</a> in de named graph <code>http://data.bibliotheken.nl/nbt-schema/</code>
         </p>
         <p>
-          Deze datset geeft inzicht in wat er in Nederland gepubliceerd is. 
-          Ter illustratie geven we met de volgende query antwoord op de vraag: 
+          Deze datset geeft inzicht in wat er in Nederland gepubliceerd is.
+          Ter illustratie geven we met de volgende query antwoord op de vraag:
           <b><i>"Welke boeken zijn er in de jaren 60 over dieren gepubliceerd?</i></b>"
-          Zie een aparte <a href="http://demo.netwerkdigitaalerfgoed.nl/stories/kb_onderzoek/verrijkenenverbinden1/index.html">Data Story</a> 
+          Zie een aparte <a href="http://demo.netwerkdigitaalerfgoed.nl/stories/kb_onderzoek/verrijkenenverbinden1/index.html">Data Story</a>
           voor een stapsgewijze aanpak voor het beantwoorden van zo'n vraag.
           Hieronder de eerste 5 antwoorden op datum gesorteerd.</p>
         <query data-config="https://api.nightly.triply.cc/s/8r2AlyXge"></query>
@@ -77,10 +76,10 @@
       <div class="story">
         <h2>Dataset: Brinkman trefwoorden</h2>
         <p>
-          De Depot-trefwoorden of Brinkmantrefwoorden worden door de KB sinds 1974 in de catalogus aangebracht. 
-          In 1974 werd het Depot voor Nederlandse Publicaties ingesteld: het principe dat van elk boek of 
-          tijdschrift uit Nederland één exemplaar door de KB wordt bewaard. 
-          Sindsdien gebruikt de KB deze trefwoorden voor haar depot-collectie. 
+          De Depot-trefwoorden of Brinkmantrefwoorden worden door de KB sinds 1974 in de catalogus aangebracht.
+          In 1974 werd het Depot voor Nederlandse Publicaties ingesteld: het principe dat van elk boek of
+          tijdschrift uit Nederland één exemplaar door de KB wordt bewaard.
+          Sindsdien gebruikt de KB deze trefwoorden voor haar depot-collectie.
         </p>
         <p>
           Lees meer over de Brinkman trefwoorden <a href="https://www.kb.nl/bronnen-zoekwijzers/zoekwijzers/meer-informatie-over-zoeken/trefwoorden-in-de-kb-catalogus#toc-2" target="_blank">
@@ -100,7 +99,7 @@
       <div class="story">
         <h2>Dataset: GTT trefwoorden</h2>
         <p>
-          Gemeenschappelijke Trefwoordenthesaurus (GTT), ook wel Gemeenschappelijk Onderwerpsontsluiting (GOO) genoemd, 
+          Gemeenschappelijke Trefwoordenthesaurus (GTT), ook wel Gemeenschappelijk Onderwerpsontsluiting (GOO) genoemd,
           is ontwikkeld om de onderwerpsontsluiting door wetenschappelijke bibliotheken gezamenlijk uit te voeren als
           onderdeel van het Gemeenschappelijk Geautomatiseerd Catalogiseersysteem (GGC).
         </p>
@@ -117,7 +116,7 @@
           Een voorbeeld van 'nauwere' termen van de term 'Onderwijs':
         </p>
         <query data-config="https://api.nightly.triply.cc/s/dMogC-V60"></query>
-      </div>      
+      </div>
 
       <div class="story">
         <h2>Dataset: Centsprenten</h2>
@@ -172,7 +171,7 @@
       </div>
 
     </div>
-    <script src="https://stories.triply.cc/shared/js/stories.min.js"></script>
+    <script src="/stories/assets/js/stories.min.js"></script>
     <script>window.onload = function() {window.stories()};</script>
   </body>
 </html>

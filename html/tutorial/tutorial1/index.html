@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Data Stories - Tutorial">
-    <meta name="author" content="Enno Meijers">
+    <meta name="description" content="Data Stories - Tutorial 1">
+    <meta name="author" content="Enno Meijers, modified by Jurriaan Duyne">
     <link href="/stories/assets/imgs/nde_logo_simplified.png" rel="icon" type="image/png">
     <title>Data Stories - Tutorial 1</title>
     <link rel="stylesheet"
@@ -12,7 +12,7 @@
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
           crossorigin="anonymous">
     <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/yasgui.min.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
   </head>
   <body class="withNavbar">
@@ -24,7 +24,7 @@
           </a>
         </div>
         <div class="navbar-title">
-          <a class="navbar-brand" href="/stories/tutorial/index.html">Data Stories - Tutorial</a>
+          <a class="navbar-brand" href="/stories/tutorial/index.html">Data Stories - Tutorial 1</a>
         </div>
       </div>
     </nav>
@@ -77,7 +77,7 @@
 </div>
 <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
   <p> We zagen in de vorige query bij resultaat 9. dat http://schema.org/Book een type is dat voorkomt in de data, uiteraard is dat niet heel onverwacht voor een dataset van de KB! We kunen nu een paar boek objecten weergeven.
-  We gebruiken rdf:type zo vaak dat we deze zelfs de shorthand <code>a</code> hebben gegeven. Dit gebruiken we hier. </p>
+  We gebruiken <code>rdf:type</code> zo vaak dat we deze zelfs de shorthand <code>a</code> hebben gegeven. Dit gebruiken we hier. </p>
   <query data-query-ref="query1.rq" data-show-query></query>
   <p> Een kleine Disclaimer: we hebben nu de data een beetje verkend met SPARQL, maar dit is wellicht eenvoudiger met een visuele interface, door bijvoorbeeld door de data te browsen of pagina's van het data model te bekijken. Hopelijk
     is het nu wel duidelijk gemaakt hoe we een simpel patroon matchen. We gaan nu verder met het matchen van complexere patronen. Omdat veel hiervan in de query gebeurt staat daar vanaf nu het meeste commentaar.  </p>
@@ -97,7 +97,7 @@
         Laten we eens kijken of dit onderwerp voorkomt in de beschikbare thesauri in de LOD omgeving.
       </p>
       <query data-query-ref="query2.rq" data-show-query></query>
-      <p>Inspectie van het resultaat door de links te volgen brengt ons tot de conclusie dat 'dieren' uit de Brinkman het handigste trefwoord is.</p>
+      <p>Inspectie van het resultaat door de links te volgen brengt ons tot de conclusie dat <i>dieren</i> uit de Brinkman het handigste trefwoord is.</p>
     </div>
 
     <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
@@ -137,7 +137,7 @@
 
 </div>
 <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
-  <h4> Queries over meer dan een database </h4>
+  <h4> Queries over meer dan één database </h4>
   <p>
     De KB heeft heel mooi alles bijgehouden over boeken en auteurs, maar we kunnen er helaas geen afbeeldingen vinden van auteurs. Gelukkig kunnen we dankzij de kracht van Linked (Open) Data er wel afbeeldingen bij zoeken!
     We maken hiervoor een <i>federated</i> query: een query die van meerdere endpoints gebruik maakt. We gebruiken hiervoor de clause service. We weten bijvoorbeeld dat de <code>nta_uri</code> is opgenomen in de wikidata catlogus. Verder
@@ -177,10 +177,10 @@
 
     <script src="https://cdn.jsdelivr.net/gh/thednp/bootstrap.native@2.0.24/dist/bootstrap-native-v4.min.js" crossorigin="anonymous"></script>
     <script src="//nightly.yasgui.triply.cc/yasgui.polyfill.min.js"></script>
-    <script src='/stories/assets/js/yasgui.min.js'></script>
+    <script src='/stories/assets/js/stories.min.js'></script>
     <script>
       window.onload = function () {
-        Yasgui.stories()
+        window.stories()
       };
     </script>
   </body>

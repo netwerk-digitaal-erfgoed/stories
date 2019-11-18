@@ -25,6 +25,12 @@ div.modal-dialog.google-visualization-charteditor-dialog
   width: 120px;
   height: 80px;
 }
-yasgui .copy_btn {
+.yasgui .copy_btn {
   box-sizing: unset;
+}
+.yasgui .tabContextButton {
+  box-sizing: content-box;
+}
+.yasgui .autocomplete {
+  line-height: normal;
 }
