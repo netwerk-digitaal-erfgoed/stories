@@ -12,7 +12,6 @@
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
           crossorigin="anonymous">
     <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/yasgui.min.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
   </head>
@@ -47,7 +46,7 @@
       file teruggegeven, oftewel een .ttl file. Deze kun je downloaden door op de download knop (pijl naar beneden) te drukken onder de query aan de rechterkant.
     </div>
 
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/enno/verrijken-en-verbinden/services/verrijken-en-verbinden/sparql">
+    <div class="container story">
       <h4>Visualisatie: charts</h4>
       <p>In de vorige tutorial hebben we gezien welke vrouwelijke auteurs schreven over dieren in de jaren 80. Dit kwam neer op een tabel met namen, maar het zou natuurlijk ook
         leuk zijn om statistieken te laten zien waar ze over schreven. Of nog, beter een visualisatie van die statistieken! Laten we de vragen beantwoorden over welke dieren
@@ -55,7 +54,7 @@
       <query data-config-ref="https://data.netwerkdigitaalerfgoed.nl/enno/verrijken-en-verbinden/queries/Dieren-en-vrouwen" data-show-query></query>
     </div>
 
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/enno/verrijken-en-verbinden/services/verrijken-en-verbinden/sparql">
+    <div class="container story">
       <p>Een andere visualisatie die we met de charts functie van YASGUI kunnen doen is de pie chart, het taartdiagram. We geven hier een kort voorbeeld met de top 20 van
         aantal vertaalde werken in de <i>Short Title Catalogue Netherlands (STCN)</i> (met dank aan Inger Leeman - VU)</p>
       <query data-config-ref="https://data.netwerkdigitaalerfgoed.nl/enno/verrijken-en-verbinden/queries/STCN-voorbeeld" data-show-query></query>
@@ -82,7 +81,7 @@
       <query data-config="https://api.nightly.triply.cc/s/ePboyTQz" data-show-query></query>
     </div>
 
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/hackalod/GVN/services/GVN/sparql">
+    <div class="container story">
       <p>Yasgui van Triply heeft sindskort ook een nieuwe functie genaamd timeline. Hiermee kunnen we bijvoorbeeld verschillende plaatjes op een tijdlijn tonen. We geven een simpel voorbeeld
         op basis van plaatjes uit de dataset van geheugen van Nederland (GVN)
        </p>
@@ -99,9 +98,6 @@
 
 
     <script src="https://cdn.jsdelivr.net/gh/thednp/bootstrap.native@2.0.24/dist/bootstrap-native-v4.min.js" crossorigin="anonymous"></script>
-    <!--<script src="//nightly.yasgui.triply.cc/yasgui.polyfill.min.js"></script>
-    <script src='/stories/assets/js/yasgui.min.js'></script>
-    -->
     <script src="/stories/assets/js/stories.min.js"></script>
     <script>
       window.onload = function () {
