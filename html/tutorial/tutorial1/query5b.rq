@@ -1,4 +1,5 @@
 # definities als verkorte schrijfwijze
+PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -7,8 +8,9 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix schema: <http://schema.org/>
 prefix thes: <http://data.bibliotheken.nl/id/thes/>
 
-# begin het maken van de selectie
-select distinct ?auteur (SAMPLE(?image) as ?image) (SAMPLE(?widget) as ?widget) {
+# Begin het maken van de selectie, de widget wordt hieronder uitgelegd, het is een speciaal keyword waarmee
+# we aangeven dat we willen dat er iets wordt getoond met de plaatjes
+select distinct ?auteur (SAMPLE(?image) as ?image) ?dbpedia_identifier ?abstract (SAMPLE(?widget) as ?widget) {
 
     # selecteer alles met type boek
     ?boek a schema:Book .
@@ -47,14 +49,17 @@ select distinct ?auteur (SAMPLE(?image) as ?image) (SAMPLE(?widget) as ?widget) 
   service <https://query.wikidata.org/bigdata/namespace/wdq/sparql> {
         ?wikidata_identifier ?_ ?nta_uri.
     }
-# En vervolgens zoeken we dezelfde dbpedia identifier en vinden zo een plaatje erbij!
+# En vervolgens zoeken we dezelfde dbpedia identifier en vinden zo een plaatje (en verhaaltje) erbij!
   service <https://api.triplydb.com/datasets/wikimedia/dbpedia/services/dbpedia/sparql> {
        ?dbpedia_identifier owl:sameAs  ?wikidata_identifier;
+                           dbo:abstract ?abstract;
                            foaf:depiction ?image.
+                           filter (lang(?abstract) = 'nl')
  }
  #Via een bind statement maken we een stukje html en geven deze de naam widget. Widget wordt herkent door Yasgui als een speciaal keyword waardoor we de plaatjes in een gallerij kunnen weergeven.
-bind('<h1>{{auteur}}</h1><img src="{{image}}"/>' as ?widget)
+ # variabelen geven we mee door {{}} te gebruiken, we stoppen hier de variabelen zonder "?".
+bind('<h1>{{auteur}}</h1><img src="{{image}}"/> <p><dt>{{abstract}}(<a href={{dbpedia_identifier}} target="blank">bron DBpedia</a>)</dt></p>' as ?widget)
 }
 # De eerste 3 resulataten. Wegens performance met een dubbele service clause vragen we niet teveel op.
-GROUP BY ?auteur
+GROUP BY ?auteur ?abstract ?dbpedia_identifier
 Limit 3
