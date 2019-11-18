@@ -62,4 +62,4 @@ bind('<h1>{{auteur}}</h1><img src="{{image}}"/> <p><dt>{{abstract}}(<a href={{db
 }
 # De eerste 3 resulataten. Wegens performance met een dubbele service clause vragen we niet teveel op.
 GROUP BY ?auteur ?abstract ?dbpedia_identifier
-Limit 3
+Limit 1
