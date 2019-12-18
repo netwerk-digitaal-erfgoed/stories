@@ -17,8 +17,6 @@ podTemplate(label: 'jenkins-slave', containers: [
         def configuration = [vaultUrl: 'http://vault-helm.default.svc.cluster.local:8200',
                             vaultCredentialId: 'c64b32ee-4891-44ca-b151-42caea9856bc', engineVersion: 1]
 
-        git url: 'https://github.com/samleeflang/stories', branch: 'master'
-
         stage('Clone repository') {
             container('git') {
                 sh 'git clone -b master  https://github.com/samleeflang/stories'
@@ -29,9 +27,9 @@ podTemplate(label: 'jenkins-slave', containers: [
             container('docker') {
                 dir('stories/') {
                     withVault([configuration: configuration, vaultSecrets: secrets]) {
-                        sh 'docker login harbor.51-105-200-91.nip.io/sam_test -u $DOCKER_USR -p $DOCKER_PSW'
-                        sh 'docker build . -t harbor.51-105-200-91.nip.io/sam_test/nde-stories'
-                        sh 'docker push harbor.51-105-200-91.nip.io/sam_test/nde-stories'
+                        sh 'docker login harbor.51-105-200-91.nip.io/nde -u $DOCKER_USR -p $DOCKER_PSW'
+                        sh 'docker build . -t harbor.51-105-200-91.nip.io/nde/nde-stories'
+                        sh 'docker push harbor.51-105-200-91.nip.io/nde/nde-stories'
                     }
                 }
             }
