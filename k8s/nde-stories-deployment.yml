@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
         - name: nde-stories
-          image: clariahacr.azurecr.io/nde-stories:latest
+          image: harbor.51-105-200-91.nip.io/sam_test/nde-stories:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
       imagePullSecrets:
-        - name: dockercreds
+        - name: harbor-cred
 
 ---
 apiVersion: v1
