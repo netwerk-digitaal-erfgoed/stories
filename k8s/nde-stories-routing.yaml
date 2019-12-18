@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nde-stories-route
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`nde.51-105-200-91.nip.io`) && PathPrefix(`/stories`)
+      kind: Rule
+      services:
+        - name: nde-stories-service
+          port: 80
+  tls:
+    certResolver: default
+    options: {}

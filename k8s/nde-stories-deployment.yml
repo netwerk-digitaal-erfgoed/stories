@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nde-stories-deployment
+  namespace: default
+  labels:
+    app: nde-stories
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nde-stories
+  template:
+    metadata:
+      labels:
+        app: nde-stories
+    spec:
+      containers:
+        - name: nde-stories
+          image: harbor.51-105-200-91.nip.io/sam_test/nde-stories:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: harbor-cred
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nde-stories-service
+spec:
+  selector:
+    app: nde-stories
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
