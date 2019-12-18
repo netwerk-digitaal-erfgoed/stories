@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Data Stories - Bruikbaar - Register">
+    <meta name="author" content="Lieke Verhelst">
+    <link href="/stories/assets/imgs/nde_logo_simplified.png" rel="icon" type="image/png">
+    <title>NDE Data Stories - Bruikbaar - Organisaties en Datasets</title>
+    <!--
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/yasgui.min.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
+    <link href="https://stories.triply.cc/shared/css/yasgui/stories.min.css" rel="stylesheet" type="text/css">
+    -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+          crossorigin="anonymous">
+    <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="withNavbar">
+    <nav class="navbar fixed-top ">
+      <div class="navbar-content">
+        <div class="navbar-icon">
+          <a class="navbar-brand" href="/stories/register/">
+            <img alt="Data Stories - Bruikbaar" src="/stories/assets/imgs/nde_logo.png">
+          </a>
+        </div>
+        <div class="navbar-title">
+          <a class="navbar-brand" href="/stories/hackalod2019/">Data Stories / HackaLOD 2019</a>
+        </div>
+      </div>
+    </nav> 
+    <div class="container">
+      <h2>Resultaat onderzoek project NDE-Bruikbaar "Organisaties en Datasets"</h2>
+		<p>
+			<br>
+          Welke erfgoedinstellingen hebben gegevens over hun collectie in digitale vorm beschikbaar? Hoe kunnen gebruikers deze gegevens benaderen? Is de collectie zelf ook digitaal benaderen of alleen de metadata? Welke middelen zijn daarvoor nodig? Is er overlap tussen de collecties? Is er een eenduidige manier te vinden waarop we de gegevens over collecties kunnen beschrijven?
+      <div class="story">
+        <h2>Het onderzoek</h2>
+        <br>
+      		In 2019 vond er een inventarisatie plaats waarin een antwoord op deze vragen werd gezocht. In het netwerk van erfgoedinstellingen is de oproep gedaan om aan te geven welke datasets de organisaties beschikbaar stellen. Vervolgens is er een script gebouwd waarmee automatisch deze informatie kan worden verzameld. Er is nu een overzicht van organisaties en de datasets. Hiermee hebben we ook andere informatie gekregen, zoals: in welke formaten worden de gegevens aangeboden, volgens welke protocollen, wat zijn de onderwerpen van de datasets. 
+        </p>
+       
+        <p>
+          De data is afkomstig uit de <a href="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/Register">Bruikbaar Register DataSpace</a>
+        </p>
+		<div class="story">
+		<h3>Organisaties en datasets</h3>	
+        <p>
+          Het volgende overzicht laat zien hoeveel datasets er op een of andere manier (eigenaar, uitgever, beheerder) bij een organisatie horen: 
+        </p>
+        <query data-config="https://api.nightly.triply.cc/s/-fdJRadj"></query>
+
+        <p>
+          Datasets komen vaak voor in een zogenaamd register. Een register kan de vorm aannnemen van een catalogus, een portaal of gewoon een website. Sommige registers bevatten erg veel datasets. : 
+        </p>
+        <query data-config="https://api.nightly.triply.cc/s/0AOB24Bn"></query>
+        <p>
+        	Datasets kunnen gegevens via verschillende kanalen distribueren. Onderstaand overzicht geeft weer wat de verhouding is tussen organisaties, registers, datasets en distibuties.
+        	<query data-config="https://api.nightly.triply.cc/s/-CE_Lm4s"></query>
+        </p>	
+
+		<p>
+        Er zijn veel verschillende data formaten:  
+        </p>
+        <query data-config="https://api.nightly.triply.cc/s/H2wjHf0q"></query>
+         
+         <p>
+          ...en het deel Linked Data van al die datasets is:
+          </p>
+          <query data-config="https://api.nightly.triply.cc/s/0xhO2jqZ"></query>
+      </div>
+
+      <div class="story">
+      	<h3>Meer werk nodig</h3>
+      	<p>
+      		De formaten waarin de datasets worden aangeboden verschillen nogal. Deze lijst moet duidelijk genormaliseerd worden via meer navraag bij de bron..: 
+      	</p>	
+        <query data-config="https://api.nightly.triply.cc/s/X1QacxHH"></query>
+        <p>
+          Hoe zit het met dubbelingen? Deze datasets komen meerdere keren voor (dit komt door de wijze van harvesten):
+        </p>
+        <query data-config="https://api.nightly.triply.cc/s/TeBTbp4v"></query>
+      <p>Er zijn ook meer organisatie URIs die dezelfde naam hebben (dit komt door de wijze van harvesten):
+      	<query data-config="https://api.nightly.triply.cc/s/OsVOcEct"></query>
+      </p>
+      
+	<p>
+	De organisatienamen en in welke graph ze voorkomen:
+	<query data-config="https://api.nightly.triply.cc/s/OV_FoO6r"></query>
+	</p>
+	<p>
+  In het bestand van het project Aggregatoren zitten meer organisaties dan we hebben onderzocht in het project Organisaties en Datasets. Deze onderstaande organisaties komen niet voor in het register:
+  </p>
+  <query data-config="https://api.nightly.triply.cc/s/P7M7B-FC"></query>
+  </div>
+
+      
+
+      <!--
+          work in progress: https://api.nightly.triply.cc/s/qlfgWIS1
+      -->
+      
+    </div>
+    <!--<script src="https://stories.triply.cc/shared/js/stories.min.js"></script>-->
+    <script src="/stories/assets/js/stories.min.js"></script>
+    <script>window.onload = function() {window.stories()};</script>
+  </body>
+</html>
