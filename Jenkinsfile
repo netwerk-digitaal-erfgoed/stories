@@ -17,9 +17,11 @@ podTemplate(label: 'jenkins-slave', containers: [
         def configuration = [vaultUrl: 'http://vault-helm.default.svc.cluster.local:8200',
                             vaultCredentialId: 'c64b32ee-4891-44ca-b151-42caea9856bc', engineVersion: 1]
 
+        git url: 'https://github.com/netwerk-digitaal-erfgoed/stories.git', branch: 'master'
+
         stage('Clone repository') {
             container('git') {
-                sh 'git clone -b master  https://github.com/samleeflang/stories'
+                sh 'git clone -b master  https://github.com/netwerk-digitaal-erfgoed/stories'
             }
         }
 
@@ -39,6 +41,7 @@ podTemplate(label: 'jenkins-slave', containers: [
             container('kubectl') {
                 dir('stories/') {
                     sh 'kubectl apply -f k8s'
+                    sh 'kubectl delete pod -l app=nde-stories'
                 }
             }
         }
