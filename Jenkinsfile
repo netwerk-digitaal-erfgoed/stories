@@ -29,9 +29,9 @@ podTemplate(label: 'jenkins-slave', containers: [
             container('docker') {
                 dir('stories/') {
                     withVault([configuration: configuration, vaultSecrets: secrets]) {
-                        sh 'docker login harbor.51-105-200-91.nip.io/nde -u $DOCKER_USR -p $DOCKER_PSW'
-                        sh 'docker build . -t harbor.51-105-200-91.nip.io/nde/nde-stories'
-                        sh 'docker push harbor.51-105-200-91.nip.io/nde/nde-stories'
+                        sh 'docker login harbor.13-93-84-166.nip.io/nde -u $DOCKER_USR -p $DOCKER_PSW'
+                        sh 'docker build . -t harbor.13-93-84-166.nip.io/nde/nde-stories'
+                        sh 'docker push harbor.13-93-84-166.nip.io/nde/nde-stories'
                     }
                 }
             }
