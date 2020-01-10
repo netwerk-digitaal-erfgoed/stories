@@ -15,7 +15,7 @@ podTemplate(label: 'jenkins-slave', containers: [
                 [envVar: 'DOCKER_USR', vaultKey: 'DOCKER_USR']]]
         ]
         def configuration = [vaultUrl: 'http://vault-helm.default.svc.cluster.local:8200',
-                            vaultCredentialId: 'c64b32ee-4891-44ca-b151-42caea9856bc', engineVersion: 1]
+                            vaultCredentialId: 'vault', engineVersion: 1]
 
         git url: 'https://github.com/netwerk-digitaal-erfgoed/stories.git', branch: 'master'
 
