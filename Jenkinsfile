@@ -17,11 +17,11 @@ podTemplate(label: 'jenkins-slave', containers: [
         def configuration = [vaultUrl: 'http://vault-helm.default.svc.cluster.local:8200',
                             vaultCredentialId: 'vault', engineVersion: 1]
 
-        git url: 'https://github.com/netwerk-digitaal-erfgoed/stories.git', branch: 'master'
+        git url: 'https://github.com/samleeflang/stories.git', branch: 'master'
 
         stage('Clone repository') {
             container('git') {
-                sh 'git clone -b master  https://github.com/netwerk-digitaal-erfgoed/stories'
+                sh 'git clone -b master  https://github.com/samleeflang/stories'
             }
         }
 
