@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: nde-stories
-          image: harbor.51-105-200-91.nip.io/sam_test/nde-stories:latest
+          image: harbor.51-144-137-64.nip.io/nde/nde-stories:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
