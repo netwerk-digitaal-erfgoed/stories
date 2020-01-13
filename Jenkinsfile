@@ -14,7 +14,7 @@ podTemplate(label: 'jenkins-slave', containers: [
                 [envVar: 'DOCKER_PSW', vaultKey: 'DOCKER_PSW'],
                 [envVar: 'DOCKER_USR', vaultKey: 'DOCKER_USR']]]
         ]
-        def configuration = [vaultUrl: 'vault-helm.default.svc.cluster.local:8200',
+        def configuration = [vaultUrl: 'http://vault-helm.default.svc.cluster.local:8200',
                             vaultCredentialId: 'vault', engineVersion: 1]
 
         git url: 'https://github.com/samleeflang/stories.git', branch: 'master'
@@ -29,9 +29,9 @@ podTemplate(label: 'jenkins-slave', containers: [
             container('docker') {
                 dir('stories/') {
                     withVault([configuration: configuration, vaultSecrets: secrets]) {
-                        sh 'docker login harbor.harbor.svc.cluster.local/nde -u $DOCKER_USR -p $DOCKER_PSW'
-                        sh 'docker build . -t harbor.harbor.svc.cluster.local/nde/nde-stories'
-                        sh 'docker push harbor.harbor.svc.cluster.local/nde/nde-stories'
+                        sh 'docker login http://harbor.harbor.svc.cluster.local/nde -u $DOCKER_USR -p $DOCKER_PSW'
+                        sh 'docker build . -t http://harbor.harbor.svc.cluster.local/nde/nde-stories'
+                        sh 'docker push http://harbor.harbor.svc.cluster.local/nde/nde-stories'
                     }
                 }
             }
