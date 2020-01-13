@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`nde.51-105-200-91.nip.io`) && PathPrefix(`/stories`)
+    - match: Host(`nde.51-144-137-64.nip.io`) && PathPrefix(`/stories`)
       kind: Rule
       services:
         - name: nde-stories-service
