@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Tutorial for HacakaLOD 2019, part 2">
+    <meta name="author" content="Enno Meijers, modified by Jurriaan Duyne">
+    <link href="/stories/assets/imgs/nde_logo_simplified.png" rel="icon" type="image/png">
+    <title>NDE Data Stories - KB Voorbeeld Query's</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+          crossorigin="anonymous">
+    <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="withNavbar">
+    <nav class="navbar fixed-top ">
+      <div class="navbar-content">
+        <div class="navbar-icon">
+          <a class="navbar-brand" href="/stories/tutorial/index.html">
+            <img alt="Data Stories" src="/stories/assets/imgs/nde_logo.png">
+          </a>
+        </div>
+        <div class="navbar-title">
+          <a class="navbar-brand" href="/stories/tutorial/index.html">Data Stories - KB Voorbeeld Query's</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container story"><h3>Voorbeeldvragen en SPARQL-oplossingen (deel 1)</h3>
+      Dit tweede deel van de handleiding illustreert hoe via SPARQL de linked data van data.bibliotheken.nl 
+      bevraagd kan worden. Uit praktische overwegingen worden de queries waar zinvol standaard van de beperking 
+      LIMIT 100 voorzien. Pas op bij het weglaten van deze beperking dat vooral queries die veel resultaten 
+      opleveren een zeer zware belasting voor server, client en dataverbinding kunnen opleveren. 
+      De interface voor het uitvoeren van SPARQL op data.bibliotheken.nl is te vinden onder 
+      <a href="http://data.bibliotheken.nl/sparql">http://data.bibliotheken.nl/sparql</a>.
+      Voorafgaande aan specifieke queries voor de data in data.bibliotheken.nl volgen een paar generieke voorbeelden voor het 
+      verkennen van linked data door middel van SPARQL.
+      <p></p>
+    </div>
+
+    <div class = "container story">
+    <h4> 0. Generieke queries voor het verkennen van linked data met SPARQL</h4>
+      <p>Via de homepage van data.bibliotheken.nl kan de data al bladerend verkend worden. Dit kan een aardige eerste indruk 
+      geven van wat er beschikbaar is maar voor beter inzicht in wat de data biedt is het zinvol om via SPARQL wat kenmerken 
+      van de data in beeld te krijgen. Hier volgende enige handige startpunten. Gezien de generieke aard van de queries wordt er  
+      hooguit beperkte uitleg gegeven ten aanzien van de syntax of de werking van de query. 
+      Zie hiervoor een goede basishandleiding voor linked data en SPARQL.</p>
+      <b><i>Vraag: welke typen entiteiten zijn er aanwezig?</i></b>
+
+      <query data-config="https://api.triplydb.com/s/BEzu547Y" data-show-query></query>
+      In dit voorbeeld worden alleen de expliciet gedefinieerde entiteiten teruggeven, 
+      niet de entiteitstypen die indirect afgeleid zouden kunnen worden (via inferencing).
+      <p></p>
+      <p>
+      <b><i>Vraag: wat zijn de meest voorkomende typen entiteiten, gesorteerd naar voorkomen, die voorzien zijn van URI?</i></b>
+      </p>
+      Sommige entiteiten zijn enkel een blank_node en hebben dus geen URI. Die filteren we hier weg. We sorteren naar frequentie van voorkomen.
+      <query data-config="https://api.triplydb.com/s/tFihif15" data-show-query></query>
+      <b><i>Vraag: welke predicaten worden voor een specifiek type entiteit toegepast?</i></b>
+      In dit voorbeeld worden als type entiteit schema:Book gebruikt:
+      <query data-config="https://api.triplydb.com/s/AsH463SH" data-show-query></query>
+      <b><i>Vraag: Welke mogelijke waarden komen voor bij een specifiek predicaat?</i></b> 
+      In dit voorbeeld wordt als predicaat schema:genre gebruikt:
+      <query data-config="https://api.triplydb.com/s/pcIVUk4I" data-show-query></query>
+      <b><i>Vraag: Welke entiteiten hebben een eigenschap die lijkt op een nader in te vullen patroon?</i></b> 
+      We gaan hier ter illustratie met een FILTER en een reguliere expressie op zoek naar entiteiten die ‘Wolkers’ in schema:name bevatten. 
+      De <code>i</code> bij de regex-aanroep betekent <code>case insensitive</code>:
+      <query data-config="https://api.triplydb.com/s/fNEpANDL" data-show-query></query>   
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/thednp/bootstrap.native@2.0.24/dist/bootstrap-native-v4.min.js" crossorigin="anonymous"></script>
+    <script src="/stories/assets/js/stories.min.js"></script>
+    <script>
+      window.onload = function () {
+        window.stories()
+      };
+    </script>
+  </body>
+</html>
