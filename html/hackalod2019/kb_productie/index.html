@@ -1,36 +1,68 @@
 <!DOCTYPE html>
 <html lang="nl">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="NDE Data Stories - HackaLOD 2019 - Data Stories over datasets in het KB LOD Platform">
-    <meta name="author" content="Enno Meijers">
-    <link href="/stories/assets/imgs/nde_logo_simplified.png" rel="icon" type="image/png">
-    <title>NDE Data Stories - HackaLOD 2019 - Data Stories over datasets in het RCE LOD Platform</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="NDE Data Stories - HackaLOD 2019 - Data Stories over datasets in het KB LOD Platform"
+    />
+    <meta name="author" content="Enno Meijers" />
+    <link
+      href="/stories/assets/imgs/nde_logo_simplified.png"
+      rel="icon"
+      type="image/png"
+    />
+    <title>
+      NDE Data Stories - HackaLOD 2019 - Data Stories over datasets in het RCE
+      LOD Platform
+    </title>
     <!--
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
     -->
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-          crossorigin="anonymous">
-    <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+      integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+      crossorigin="anonymous"
+    />
+    <link
+      href="/stories/assets/css/main.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/stories/assets/css/stories.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/stories/assets/css/yasgui.bootstrap.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body class="withNavbar">
     <nav class="navbar fixed-top ">
       <div class="navbar-content">
         <div class="navbar-icon">
           <a class="navbar-brand" href="/stories/hackalod2019/">
-            <img alt="NDE Data Stories - HackaLOD 2019" src="/stories/assets/imgs/nde_logo.png">
+            <img
+              alt="NDE Data Stories - HackaLOD 2019"
+              src="/stories/assets/imgs/nde_logo.png"
+            />
           </a>
         </div>
         <div class="navbar-title">
-          <a class="navbar-brand" href="/stories/hackalod2019/">NDE Data Stories / HackaLOD 2019</a>
+          <a class="navbar-brand" href="/stories/hackalod2019/"
+            >NDE Data Stories / HackaLOD 2019</a
+          >
         </div>
       </div>
     </nav>
@@ -40,64 +72,114 @@
       <div class="story">
         <h2>Dataset: Nederlandse Thesaurus van Auteursnamen</h2>
         <p>
-          In de Nederlandse Thesaurus van Auteursnamen (NTA), ook wel de Persoonsnamenthesaurus genoemd,
-          worden naams- en andere persoonsgegevens van auteurs opgeslagen, zodat onderscheid gemaakt
-          kan worden tussen auteurs met dezelfde naam.
+          In de Nederlandse Thesaurus van Auteursnamen (NTA), ook wel de
+          Persoonsnamenthesaurus genoemd, worden naams- en andere
+          persoonsgegevens van auteurs opgeslagen, zodat onderscheid gemaakt kan
+          worden tussen auteurs met dezelfde naam.
         </p>
         <p>
-          <strong>Bron voor de Linked Data</strong>: <a href="http://data.bibliotheken.nl" target="_blank">KB LOD Platform</a><br>
-          <strong>Ingang voor deze de dataset</strong>: <a href="http://data.bibliotheken.nl/id/dataset/persons" target="_blank">Datasetbeschrijving</a><br>
-          <strong>Te bevragen via</strong>: het <a href="http://data.bibliotheken.nl/sparql" target="_blank">SPARQL endpoint</a>
+          <strong>Bron voor de Linked Data</strong>:
+          <a href="http://data.bibliotheken.nl" target="_blank"
+            >KB LOD Platform</a
+          ><br />
+          <strong>Ingang voor deze de dataset</strong>:
+          <a
+            href="http://data.bibliotheken.nl/id/dataset/persons"
+            target="_blank"
+            >Datasetbeschrijving</a
+          ><br />
+          <strong>Te bevragen via</strong>: het
+          <a href="http://data.bibliotheken.nl/sparql" target="_blank"
+            >SPARQL endpoint</a
+          >
         </p>
         <p>
-          Ook in de Digitale Bibliotheek Nederlandse Letteren (DBNL) is auteurinformatie vastgelegd.
-          De volgende query bouwt een eenvoudig auteursportret op van informatie uit beide bronnen aanwezig
-          in het KB LOD Platform. In dezelfde query wordt ook de link gelegd met de beschikbare informatie
-          in Wikidata en DBpedia.
+          Ook in de Digitale Bibliotheek Nederlandse Letteren (DBNL) is
+          auteurinformatie vastgelegd. De volgende query bouwt een eenvoudig
+          auteursportret op van informatie uit beide bronnen aanwezig in het KB
+          LOD Platform. In dezelfde query wordt ook de link gelegd met de
+          beschikbare informatie in Wikidata en DBpedia.
         </p>
         <query data-config="https://api.nightly.triply.cc/s/iCCHrGtYa"></query>
       </div>
 
-
       <div class="story">
         <h2>Dataset: Nederlandse Bibliografie</h2>
         <p>
-          De Koninklijke Bibliotheek (KB) verzamelt en bewaart in het 'Depot van Nederlandse publicaties'
-          alle door erkende uitgevers uitgebrachte Nederlandse publicaties en daarnaast nog een groot deel
-          van de Nederlandse publicaties die buiten de erkende kanalen verschijnen, de zogenaamde grijze literatuur.
-          Op basis van dat materiaal produceert de Koninklijke Bibliotheek de Nederlandse Bibliografie.
+          De Koninklijke Bibliotheek (KB) verzamelt en bewaart in het 'Depot van
+          Nederlandse publicaties' alle door erkende uitgevers uitgebrachte
+          Nederlandse publicaties en daarnaast nog een groot deel van de
+          Nederlandse publicaties die buiten de erkende kanalen verschijnen, de
+          zogenaamde grijze literatuur. Op basis van dat materiaal produceert de
+          Koninklijke Bibliotheek de Nederlandse Bibliografie.
         </p>
         <p>
-          <strong>Bron voor de Linked Data</strong>: <a href="http://data.bibliotheken.nl" target="_blank">KB LOD Platform</a><br>
-          <strong>Ingang voor deze de dataset</strong>: <a href="http://data.bibliotheken.nl/doc/dataset/nbt" target="_blank">Datasetbeschrijving</a><br>
-          <strong>Te bevragen via</strong>: het <a href="http://data.bibliotheken.nl/sparql" target="_blank">SPARQL endpoint</a> in de named graph <code>http://data.bibliotheken.nl/nbt-schema/</code>
+          <strong>Bron voor de Linked Data</strong>:
+          <a href="http://data.bibliotheken.nl" target="_blank"
+            >KB LOD Platform</a
+          ><br />
+          <strong>Ingang voor deze de dataset</strong>:
+          <a href="http://data.bibliotheken.nl/doc/dataset/nbt" target="_blank"
+            >Datasetbeschrijving</a
+          ><br />
+          <strong>Te bevragen via</strong>: het
+          <a href="http://data.bibliotheken.nl/sparql" target="_blank"
+            >SPARQL endpoint</a
+          >
+          in de named graph <code>http://data.bibliotheken.nl/nbt-schema/</code>
         </p>
         <p>
-          Deze datset geeft inzicht in wat er in Nederland gepubliceerd is.
-          Ter illustratie geven we met de volgende query antwoord op de vraag:
-          <b><i>"Welke boeken zijn er in de jaren 60 over dieren gepubliceerd?</i></b>"
-          Zie een aparte <a href="http://demo.netwerkdigitaalerfgoed.nl/stories/kb_onderzoek/verrijkenenverbinden1/index.html">Data Story</a>
+          Deze datset geeft inzicht in wat er in Nederland gepubliceerd is. Ter
+          illustratie geven we met de volgende query antwoord op de vraag:
+          <b
+            ><i
+              >"Welke boeken zijn er in de jaren 60 over dieren gepubliceerd?</i
+            ></b
+          >" Zie een aparte
+          <a
+            href="http://demo.netwerkdigitaalerfgoed.nl/stories/kb_onderzoek/verrijkenenverbinden1/index.html"
+            >Data Story</a
+          >
           voor een stapsgewijze aanpak voor het beantwoorden van zo'n vraag.
-          Hieronder de eerste 5 antwoorden op datum gesorteerd.</p>
+          Hieronder de eerste 5 antwoorden op datum gesorteerd.
+        </p>
         <query data-config="https://api.nightly.triply.cc/s/8r2AlyXge"></query>
       </div>
 
       <div class="story">
         <h2>Dataset: Brinkman trefwoorden</h2>
         <p>
-          De Depot-trefwoorden of Brinkmantrefwoorden worden door de KB sinds 1974 in de catalogus aangebracht.
-          In 1974 werd het Depot voor Nederlandse Publicaties ingesteld: het principe dat van elk boek of
+          De Depot-trefwoorden of Brinkmantrefwoorden worden door de KB sinds
+          1974 in de catalogus aangebracht. In 1974 werd het Depot voor
+          Nederlandse Publicaties ingesteld: het principe dat van elk boek of
           tijdschrift uit Nederland één exemplaar door de KB wordt bewaard.
           Sindsdien gebruikt de KB deze trefwoorden voor haar depot-collectie.
         </p>
         <p>
-          Lees meer over de Brinkman trefwoorden <a href="https://www.kb.nl/bronnen-zoekwijzers/zoekwijzers/meer-informatie-over-zoeken/trefwoorden-in-de-kb-catalogus#toc-2" target="_blank">
-          website van de KB</a>.
+          Lees meer over de Brinkman trefwoorden
+          <a
+            href="https://www.kb.nl/bronnen-zoekwijzers/zoekwijzers/meer-informatie-over-zoeken/trefwoorden-in-de-kb-catalogus#toc-2"
+            target="_blank"
+          >
+            website van de KB</a
+          >.
         </p>
         <p>
-          <strong>Bron voor de Linked Data</strong>: <a href="http://data.bibliotheken.nl" target="_blank">KB LOD Platform</a><br>
-          <strong>Ingang voor deze de dataset</strong>: <a href="http://data.bibliotheken.nl/doc/dataset/brinkman" target="_blank">Datasetbeschrijving</a><br>
-          <strong>Te bevragen via</strong>: het <a href="http://data.bibliotheken.nl/sparql" target="_blank">SPARQL endpoint</a> in de named graph <code>http://data.bibliotheken.nl/thes/</code>
+          <strong>Bron voor de Linked Data</strong>:
+          <a href="http://data.bibliotheken.nl" target="_blank"
+            >KB LOD Platform</a
+          ><br />
+          <strong>Ingang voor deze de dataset</strong>:
+          <a
+            href="http://data.bibliotheken.nl/doc/dataset/brinkman"
+            target="_blank"
+            >Datasetbeschrijving</a
+          ><br />
+          <strong>Te bevragen via</strong>: het
+          <a href="http://data.bibliotheken.nl/sparql" target="_blank"
+            >SPARQL endpoint</a
+          >
+          in de named graph <code>http://data.bibliotheken.nl/thes/</code>
         </p>
         <p>
           Een voorbeeld van 'nauwere' termen van de term 'programmeertalen':
@@ -108,18 +190,35 @@
       <div class="story">
         <h2>Dataset: GTT trefwoorden</h2>
         <p>
-          Gemeenschappelijke Trefwoordenthesaurus (GTT), ook wel Gemeenschappelijk Onderwerpsontsluiting (GOO) genoemd,
-          is ontwikkeld om de onderwerpsontsluiting door wetenschappelijke bibliotheken gezamenlijk uit te voeren als
-          onderdeel van het Gemeenschappelijk Geautomatiseerd Catalogiseersysteem (GGC).
+          Gemeenschappelijke Trefwoordenthesaurus (GTT), ook wel
+          Gemeenschappelijk Onderwerpsontsluiting (GOO) genoemd, is ontwikkeld
+          om de onderwerpsontsluiting door wetenschappelijke bibliotheken
+          gezamenlijk uit te voeren als onderdeel van het Gemeenschappelijk
+          Geautomatiseerd Catalogiseersysteem (GGC).
         </p>
         <p>
-          Lees meer over de GTT trefwoorden <a href="https://www.kb.nl/bronnen-zoekwijzers/zoekwijzers/meer-informatie-over-zoeken/trefwoorden-in-de-kb-catalogus#toc-3" target="_blank">
-          website van de KB</a>.
+          Lees meer over de GTT trefwoorden
+          <a
+            href="https://www.kb.nl/bronnen-zoekwijzers/zoekwijzers/meer-informatie-over-zoeken/trefwoorden-in-de-kb-catalogus#toc-3"
+            target="_blank"
+          >
+            website van de KB</a
+          >.
         </p>
         <p>
-          <strong>Bron voor de Linked Data</strong>: <a href="http://data.bibliotheken.nl" target="_blank">KB LOD Platform</a><br>
-          <strong>Ingang voor deze de dataset</strong>: <a href="http://data.bibliotheken.nl/doc/dataset/gtt" target="_blank">Datasetbeschrijving</a><br>
-          <strong>Te bevragen via</strong>: het <a href="http://data.bibliotheken.nl/sparql" target="_blank">SPARQL endpoint</a> in de named graph <code>http://data.bibliotheken.nl/thes/</code>
+          <strong>Bron voor de Linked Data</strong>:
+          <a href="http://data.bibliotheken.nl" target="_blank"
+            >KB LOD Platform</a
+          ><br />
+          <strong>Ingang voor deze de dataset</strong>:
+          <a href="http://data.bibliotheken.nl/doc/dataset/gtt" target="_blank"
+            >Datasetbeschrijving</a
+          ><br />
+          <strong>Te bevragen via</strong>: het
+          <a href="http://data.bibliotheken.nl/sparql" target="_blank"
+            >SPARQL endpoint</a
+          >
+          in de named graph <code>http://data.bibliotheken.nl/thes/</code>
         </p>
         <p>
           Een voorbeeld van 'nauwere' termen van de term 'Onderwijs':
@@ -130,23 +229,43 @@
       <div class="story">
         <h2>Dataset: Centsprenten</h2>
         <p>
-          Centsprenten zijn een goedkope vorm van massadrukwerk uit de achttiende en negentiende eeuw.
-          De afgebeelde onderwerpen lopen uiteen van Hollandse helden tot bijbelverhalen en kinderspel.
-          Centsprenten waren bestemd voor de onderste lagen van de samenleving en voor kinderen.
-          Ze werden in de achttiende en negentiende eeuw in grote aantallen geproduceerd op goedkoop papier.
-          Om kosten te besparen werden prenten vaak ongekleurd of met een grove vlekkenkleuring verkocht.
-          Duurdere prenten werden met behulp van sjablonen van kleur voorzien.
-          Winkeliers of (mars)kramers verkochten de prenten per stuk en onderwijzers gaven soms een prent
-          als beloning aan leerlingen.
+          Centsprenten zijn een goedkope vorm van massadrukwerk uit de
+          achttiende en negentiende eeuw. De afgebeelde onderwerpen lopen uiteen
+          van Hollandse helden tot bijbelverhalen en kinderspel. Centsprenten
+          waren bestemd voor de onderste lagen van de samenleving en voor
+          kinderen. Ze werden in de achttiende en negentiende eeuw in grote
+          aantallen geproduceerd op goedkoop papier. Om kosten te besparen
+          werden prenten vaak ongekleurd of met een grove vlekkenkleuring
+          verkocht. Duurdere prenten werden met behulp van sjablonen van kleur
+          voorzien. Winkeliers of (mars)kramers verkochten de prenten per stuk
+          en onderwijzers gaven soms een prent als beloning aan leerlingen.
         </p>
         <p>
-          Lees meer over deze prenten op de <a href="https://www.kb.nl/themas/kinderboeken-en-strips/centsprenten-in-de-kb" target="_blank">
-          website van de KB</a>.
+          Lees meer over deze prenten op de
+          <a
+            href="https://www.kb.nl/themas/kinderboeken-en-strips/centsprenten-in-de-kb"
+            target="_blank"
+          >
+            website van de KB</a
+          >.
         </p>
         <p>
-          <strong>Bron voor de Linked Data</strong>: <a href="http://data.bibliotheken.nl" target="_blank">KB LOD Platform</a><br>
-          <strong>Ingang voor deze de dataset</strong>: <a href="http://data.bibliotheken.nl/doc/dataset/rise-centsprenten" target="_blank">Datasetbeschrijving</a><br>
-          <strong>Te bevragen via</strong>: het <a href="http://data.bibliotheken.nl/sparql" target="_blank">SPARQL endpoint</a> in de named graph <code>http://data.bibliotheken.nl/centsprenten/</code>
+          <strong>Bron voor de Linked Data</strong>:
+          <a href="http://data.bibliotheken.nl" target="_blank"
+            >KB LOD Platform</a
+          ><br />
+          <strong>Ingang voor deze de dataset</strong>:
+          <a
+            href="http://data.bibliotheken.nl/doc/dataset/rise-centsprenten"
+            target="_blank"
+            >Datasetbeschrijving</a
+          ><br />
+          <strong>Te bevragen via</strong>: het
+          <a href="http://data.bibliotheken.nl/sparql" target="_blank"
+            >SPARQL endpoint</a
+          >
+          in de named graph
+          <code>http://data.bibliotheken.nl/centsprenten/</code>
         </p>
         <p>
           Een paar voorbeelden uit deze collectie:
@@ -157,30 +276,53 @@
       <div class="story">
         <h2>Dataset: Alba amicorum</h2>
         <p>
-          Een album amicorum is een boekje waarin de eigenaar bijdragen verzamelde van vrienden, kennissen,
-          dan wel beroemde tijdgenoten, waarmee hij of zij in contact stond. Het album is nauw verbonden
-          met het universitaire milieu en is ontstaan in de periode dat een gedeelte van de studenten
-          zich niet tot één bepaalde universiteit beperkte, maar een zogenaamde academische rondreis maakte
-          die hen door grote delen van Europa voerde. Het album was daarbij een trouw metgezel en vulde zich
-          met bijdragen van de hoogleraren bij wie ze college liepen en natuurlijk van medestudenten.
+          Een album amicorum is een boekje waarin de eigenaar bijdragen
+          verzamelde van vrienden, kennissen, dan wel beroemde tijdgenoten,
+          waarmee hij of zij in contact stond. Het album is nauw verbonden met
+          het universitaire milieu en is ontstaan in de periode dat een gedeelte
+          van de studenten zich niet tot één bepaalde universiteit beperkte,
+          maar een zogenaamde academische rondreis maakte die hen door grote
+          delen van Europa voerde. Het album was daarbij een trouw metgezel en
+          vulde zich met bijdragen van de hoogleraren bij wie ze college liepen
+          en natuurlijk van medestudenten.
         </p>
         <p>
-          Lees meer over deze collectie op <a href="https://www.kb.nl/bronnen-zoekwijzers/kb-collecties/moderne-handschriften-vanaf-ca-1550/alba-amicorum" target="_blank">
-          website van de KB</a>.
+          Lees meer over deze collectie op
+          <a
+            href="https://www.kb.nl/bronnen-zoekwijzers/kb-collecties/moderne-handschriften-vanaf-ca-1550/alba-amicorum"
+            target="_blank"
+          >
+            website van de KB</a
+          >.
         </p>
         <p>
-          <strong>Bron voor de Linked Data</strong>: <a href="http://data.bibliotheken.nl" target="_blank">KB LOD Platform</a><br>
-          <strong>Ingang voor deze de dataset</strong>: <a href="http://data.bibliotheken.nl/doc/dataset/rise-alba" target="_blank">Datasetbeschrijving</a><br>
-          <strong>Te bevragen via</strong>: het <a href="http://data.bibliotheken.nl/sparql" target="_blank">SPARQL endpoint</a> in de named graph <code>http://data.bibliotheken.nl/alba/</code>
+          <strong>Bron voor de Linked Data</strong>:
+          <a href="http://data.bibliotheken.nl" target="_blank"
+            >KB LOD Platform</a
+          ><br />
+          <strong>Ingang voor deze de dataset</strong>:
+          <a
+            href="http://data.bibliotheken.nl/doc/dataset/rise-alba"
+            target="_blank"
+            >Datasetbeschrijving</a
+          ><br />
+          <strong>Te bevragen via</strong>: het
+          <a href="http://data.bibliotheken.nl/sparql" target="_blank"
+            >SPARQL endpoint</a
+          >
+          in de named graph <code>http://data.bibliotheken.nl/alba/</code>
         </p>
         <p>
           Een paar voorbeelden uit deze collectie:
         </p>
         <query data-config="https://api.nightly.triply.cc/s/lC9blbHuf"></query>
       </div>
-
     </div>
     <script src="/stories/assets/js/stories.min.js"></script>
-    <script>window.onload = function() {window.stories()};</script>
+    <script>
+      window.onload = function() {
+        window.stories();
+      };
+    </script>
   </body>
 </html>

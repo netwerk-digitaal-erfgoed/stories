@@ -1,55 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="NDE Data Stories - Verrijken en Verbinden">
-    <meta name="author" content="Enno Meijers">
-    <link href="/stories/assets/imgs/nde_logo.png" rel="icon" type="image/png">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="NDE Data Stories - Verrijken en Verbinden"
+    />
+    <meta name="author" content="Enno Meijers" />
+    <link
+      href="/stories/assets/imgs/nde_logo.png"
+      rel="icon"
+      type="image/png"
+    />
     <title>NDE Data Stories - Verrijken en Verbinden</title>
-    <link rel="stylesheet" 
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" 
-          crossorigin="anonymous">
-    <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/yasgui.min.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+      integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+      crossorigin="anonymous"
+    />
+    <link
+      href="/stories/assets/css/main.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/stories/assets/css/yasgui.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/stories/assets/css/yasgui.bootstrap.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/stories/assets/css/stories.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body class="withNavbar">
     <nav class="navbar fixed-top ">
       <div class="navbar-content">
         <div class="navbar-icon">
           <a class="navbar-brand" href="/stories/kb_onderzoek/">
-            <img alt="NDE Data Stories home" src="/stories/assets/imgs/nde_logo.png">
+            <img
+              alt="NDE Data Stories home"
+              src="/stories/assets/imgs/nde_logo.png"
+            />
           </a>
         </div>
         <div class="navbar-title">
-          <a class="navbar-brand" href="/stories/kb_onderzoek/">NDE Data Stories / KB Onderzoek</a>
+          <a class="navbar-brand" href="/stories/kb_onderzoek/"
+            >NDE Data Stories / KB Onderzoek</a
+          >
         </div>
       </div>
     </nav>
-    <div class="container story"><h3>Voorbeeld queries voor de KB Onderzoeksgroep Verrijken en Verbinden</h3>
-      Deze voorbeelden laten de mogelijkheden van opgeslagen query's in het Triply platform zien waarbij de opmaak vooraf geconfigueerd is.
+    <div class="container story">
+      <h3>
+        Voorbeeld queries voor de KB Onderzoeksgroep Verrijken en Verbinden
+      </h3>
+      Deze voorbeelden laten de mogelijkheden van opgeslagen query's in het
+      Triply platform zien waarbij de opmaak vooraf geconfigueerd is.
       <p></p>
     </div>
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/enno/verrijken-en-verbinden/services/verrijken-en-verbinden/sparql">
-      <p>Top 20 van aantal vertaalde werken in de <i>Short Title Catalogue Netherlands (STCN)</i> (met dank aan Inger Leeman - VU).</p>
-      <query data-config-ref="https://data.netwerkdigitaalerfgoed.nl/enno/verrijken-en-verbinden/queries/STCN-voorbeeld"></query>
-    </div> 
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/enno/verrijken-en-verbinden/services/verrijken-en-verbinden/sparql">
+    <div
+      class="container story"
+      data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/enno/verrijken-en-verbinden/services/verrijken-en-verbinden/sparql"
+    >
+      <p>
+        Top 20 van aantal vertaalde werken in de
+        <i>Short Title Catalogue Netherlands (STCN)</i> (met dank aan Inger
+        Leeman - VU).
+      </p>
+      <query
+        data-config-ref="https://data.netwerkdigitaalerfgoed.nl/enno/-/queries/STCN-voorbeeld"
+      ></query>
+    </div>
+    <div
+      class="container story"
+      data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/enno/verrijken-en-verbinden/services/verrijken-en-verbinden/sparql"
+    >
       <p>Over welke dieren schreven vrouwelijke auteurs in de jaren 80?</p>
-      <query data-config-ref="https://data.netwerkdigitaalerfgoed.nl/enno/verrijken-en-verbinden/queries/Dieren-en-vrouwen"></query>
+      <query
+        data-config-ref="https://data.netwerkdigitaalerfgoed.nl/enno/-/queries/Dieren-en-vrouwen"
+      ></query>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/gh/thednp/bootstrap.native@2.0.24/dist/bootstrap-native-v4.min.js" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/thednp/bootstrap.native@2.0.24/dist/bootstrap-native-v4.min.js"
+      crossorigin="anonymous"
+    ></script>
     <!--<script src="//nightly.yasgui.triply.cc/yasgui.polyfill.min.js"></script>
     <script src='/stories/assets/js/yasgui.min.js'></script>
     -->
     <script src="/stories/assets/js/stories.min.js"></script>
     <script>
-      window.onload = function () {
-        window.stories()
+      window.onload = function() {
+        window.stories();
       };
     </script>
   </body>

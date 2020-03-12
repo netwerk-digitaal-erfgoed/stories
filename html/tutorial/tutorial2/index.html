@@ -1,107 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Tutorial for HacakaLOD 2019, part 2">
-    <meta name="author" content="Enno Meijers, modified by Jurriaan Duyne">
-    <link href="/stories/assets/imgs/nde_logo_simplified.png" rel="icon" type="image/png">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Tutorial for HacakaLOD 2019, part 2" />
+    <meta name="author" content="Enno Meijers, modified by Jurriaan Duyne" />
+    <link
+      href="/stories/assets/imgs/nde_logo_simplified.png"
+      rel="icon"
+      type="image/png"
+    />
     <title>NDE Data Stories - Verrijken en Verbinden</title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-          crossorigin="anonymous">
-    <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+      integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+      crossorigin="anonymous"
+    />
+    <link
+      href="/stories/assets/css/main.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/stories/assets/css/yasgui.bootstrap.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/stories/assets/css/stories.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body class="withNavbar">
     <nav class="navbar fixed-top ">
       <div class="navbar-content">
         <div class="navbar-icon">
           <a class="navbar-brand" href="/stories/tutorial/index.html">
-            <img alt="Data Stories" src="/stories/assets/imgs/nde_logo.png">
+            <img alt="Data Stories" src="/stories/assets/imgs/nde_logo.png" />
           </a>
         </div>
         <div class="navbar-title">
-          <a class="navbar-brand" href="/stories/tutorial/index.html">Data Stories - Tutorial 2</a>
+          <a class="navbar-brand" href="/stories/tutorial/index.html"
+            >Data Stories - Tutorial 2</a
+          >
         </div>
       </div>
     </nav>
-    <div class="container story"><h3>Vervolg tutorial: wat kun je nog meer met SPARQL en hoe visualiseer je resultaten?</h3>
-      In <i>Tutorial 1</i> hebben we kennis gemaakt met het schrijven van queries vanaf de opbouw tot en met het bevragen van meerdere databases. In deze vervolgtutorial
-      kijken we eerst kort naar hoe we ook data kunnen maken met een SPARQL <code>construct</code> query. Vervolgens kijken we naar verschillende manieren om linked data
-      met SPARQL te manipuleren en visualiseren. Een aantal opgeslagen queries staat op het Triply platform, waarbij een deel van de opmaak vooraf geconfigueerd is.
+    <div class="container story">
+      <h3>
+        Vervolg tutorial: wat kun je nog meer met SPARQL en hoe visualiseer je
+        resultaten?
+      </h3>
+      In <i>Tutorial 1</i> hebben we kennis gemaakt met het schrijven van
+      queries vanaf de opbouw tot en met het bevragen van meerdere databases. In
+      deze vervolgtutorial kijken we eerst kort naar hoe we ook data kunnen
+      maken met een SPARQL <code>construct</code> query. Vervolgens kijken we
+      naar verschillende manieren om linked data met SPARQL te manipuleren en
+      visualiseren. Een aantal opgeslagen queries staat op het Triply platform,
+      waarbij een deel van de opmaak vooraf geconfigueerd is.
       <p></p>
     </div>
 
-    <div class = "container story">
-    <h4> Data uitbreiden met een SPARQL construct query </h4>
-      Met SPARQL is het mogelijk om naast de <code>select</code>, waarin we een graaf patroon terug vragen, ook een <code>construct</code> query te schrijven om uit een
-      stukje graaf matching ook nieuwe triples te genereren. We maken hier een simpel voorbeeld. We hadden al in de vorige tutorial gezien dat we door een federated query
-      plaatjes konden ophalen uit wikidata van auteurs uit een KB database. Dit doen we nu weer, maar we genereren nu triples die direct vanuit de KB auteur identifier
-      verwijzen naar het plaatje. Als we deze triples toevoegen aan de KB database hoeven we in de toekomst dus niet meer een federated query te doen om de plaatjes te vinden!
-      <query data-config="https://api.nightly.triply.cc/s/4hK-X95n" data-show-query></query>
-      Merk op dat we nu de <code>response</code> laten zien van de query, dit is de ruwe data die wordt teruggestuurd. Bij een <code>construct</code> query wordt een <code>turtle</code>
-      file teruggegeven, oftewel een .ttl file. Deze kun je downloaden door op de download knop (pijl naar beneden) te drukken onder de query aan de rechterkant.
+    <div class="container story">
+      <h4>Data uitbreiden met een SPARQL construct query</h4>
+      Met SPARQL is het mogelijk om naast de <code>select</code>, waarin we een
+      graaf patroon terug vragen, ook een <code>construct</code> query te
+      schrijven om uit een stukje graaf matching ook nieuwe triples te
+      genereren. We maken hier een simpel voorbeeld. We hadden al in de vorige
+      tutorial gezien dat we door een federated query plaatjes konden ophalen
+      uit wikidata van auteurs uit een KB database. Dit doen we nu weer, maar we
+      genereren nu triples die direct vanuit de KB auteur identifier verwijzen
+      naar het plaatje. Als we deze triples toevoegen aan de KB database hoeven
+      we in de toekomst dus niet meer een federated query te doen om de plaatjes
+      te vinden!
+      <query
+        data-config="https://api.nightly.triply.cc/s/4hK-X95n"
+        data-show-query
+      ></query>
+      Merk op dat we nu de <code>response</code> laten zien van de query, dit is
+      de ruwe data die wordt teruggestuurd. Bij een <code>construct</code> query
+      wordt een <code>turtle</code>
+      file teruggegeven, oftewel een .ttl file. Deze kun je downloaden door op
+      de download knop (pijl naar beneden) te drukken onder de query aan de
+      rechterkant.
     </div>
 
     <div class="container story">
       <h4>Visualisatie: charts</h4>
-      <p>In de vorige tutorial hebben we gezien welke vrouwelijke auteurs schreven over dieren in de jaren 80. Dit kwam neer op een tabel met namen, maar het zou natuurlijk ook
-        leuk zijn om statistieken te laten zien waar ze over schreven. Of nog, beter een visualisatie van die statistieken! Laten we de vragen beantwoorden over welke dieren
-        vrouwelijke auteurs in de jaren 80 schreven. We gebruiken hier de zogenaamde bar chart voor, een staaf diagram dat de aantallen met lengte van de staven aanduidt.</p>
-      <query data-config-ref="https://data.netwerkdigitaalerfgoed.nl/enno/verrijken-en-verbinden/queries/Dieren-en-vrouwen" data-show-query></query>
+      <p>
+        In de vorige tutorial hebben we gezien welke vrouwelijke auteurs
+        schreven over dieren in de jaren 80. Dit kwam neer op een tabel met
+        namen, maar het zou natuurlijk ook leuk zijn om statistieken te laten
+        zien waar ze over schreven. Of nog, beter een visualisatie van die
+        statistieken! Laten we de vragen beantwoorden over welke dieren
+        vrouwelijke auteurs in de jaren 80 schreven. We gebruiken hier de
+        zogenaamde bar chart voor, een staaf diagram dat de aantallen met lengte
+        van de staven aanduidt.
+      </p>
+      <query
+        data-config-ref="https://data.netwerkdigitaalerfgoed.nl/enno/verrijken-en-verbinden/queries/Dieren-en-vrouwen"
+        data-show-query
+      ></query>
     </div>
 
     <div class="container story">
-      <p>Een andere visualisatie die we met de charts functie van YASGUI kunnen doen is de pie chart, het taartdiagram. We geven hier een kort voorbeeld met de top 20 van
-        aantal vertaalde werken in de <i>Short Title Catalogue Netherlands (STCN)</i> (met dank aan Inger Leeman - VU)</p>
-      <query data-config-ref="https://data.netwerkdigitaalerfgoed.nl/enno/verrijken-en-verbinden/queries/STCN-voorbeeld" data-show-query></query>
+      <p>
+        Een andere visualisatie die we met de charts functie van YASGUI kunnen
+        doen is de pie chart, het taartdiagram. We geven hier een kort voorbeeld
+        met de top 20 van aantal vertaalde werken in de
+        <i>Short Title Catalogue Netherlands (STCN)</i> (met dank aan Inger
+        Leeman - VU)
+      </p>
+      <query
+        data-config-ref="https://data.netwerkdigitaalerfgoed.nl/enno/verrijken-en-verbinden/queries/STCN-voorbeeld"
+        data-show-query
+      ></query>
     </div>
 
     <div class="container story">
-      <p>Tenslotte kijken we nog naar een lijndiagram waarvoor we ook weer de chart functie gebruiken. Verken ook de customize knop, rechtsboven om de grafieken aan te passen
-         We gebruiken hier een voorbeed uit de datastory over <a href = "https://stories.triply.cc/castato/">Rijkdommen in Florence</a>. We zien de relatie tussen de grootte
-         van een gezin (x-as) en hun rijkdommen (y-as). </p>
-      <query data-config="https://api.nightly.triply.cc/s/Z_Gj0RRY" data-show-query></query>
+      <p>
+        Tenslotte kijken we nog naar een lijndiagram waarvoor we ook weer de
+        chart functie gebruiken. Verken ook de customize knop, rechtsboven om de
+        grafieken aan te passen We gebruiken hier een voorbeed uit de datastory
+        over
+        <a href="https://stories.triply.cc/castato/">Rijkdommen in Florence</a>.
+        We zien de relatie tussen de grootte van een gezin (x-as) en hun
+        rijkdommen (y-as).
+      </p>
+      <query
+        data-config="https://api.nightly.triply.cc/s/Z_Gj0RRY"
+        data-show-query
+      ></query>
     </div>
 
     <div class="container story">
       <h4>Visualisatie: verdere mogelijkheden</h4>
-      <p>Maar wat als we nou een stukje analyse van getallen willen laten zien? In de YASGUI interface zien we onderaan (de query) ook een knop Pivot table. Met deze functie kunnen
-      draaitabellen maken en die ook visualiseren. We gebruiken hier een voorbeed uit de demo datastory over <a href = "https://stories.triply.cc/netwerk-maritieme-bronnen/">maritieme bronnen</a>.
-     We vragen de items op die worden verscheept en tellen hoeveel er van locaties naar elkaar worden verscheept. </p>
-      <query data-config="https://api.nightly.triply.cc/s/GBoRrGTS" data-show-query></query>
+      <p>
+        Maar wat als we nou een stukje analyse van getallen willen laten zien?
+        In de YASGUI interface zien we onderaan (de query) ook een knop Pivot
+        table. Met deze functie kunnen draaitabellen maken en die ook
+        visualiseren. We gebruiken hier een voorbeed uit de demo datastory over
+        <a href="https://stories.triply.cc/netwerk-maritieme-bronnen/"
+          >maritieme bronnen</a
+        >. We vragen de items op die worden verscheept en tellen hoeveel er van
+        locaties naar elkaar worden verscheept.
+      </p>
+      <query
+        data-config="https://api.nightly.triply.cc/s/GBoRrGTS"
+        data-show-query
+      ></query>
     </div>
 
     <div class="container story">
-      <p>Het is ook mogelijk om geodata, zoals locaties, die we ophalen met SPARQL direct te plotten op een kaartje.  We maken nogmaals gebruik van de datastory <a href = "https://stories.triply.cc/netwerk-maritieme-bronnen/">maritieme bronnen</a>.
-     We kijken naar bemanningsleden en hun beroepen volgens de HISCO dataset. </p>
-      <query data-config="https://api.nightly.triply.cc/s/ePboyTQz" data-show-query></query>
+      <p>
+        Het is ook mogelijk om geodata, zoals locaties, die we ophalen met
+        SPARQL direct te plotten op een kaartje. We maken nogmaals gebruik van
+        de datastory
+        <a href="https://stories.triply.cc/netwerk-maritieme-bronnen/"
+          >maritieme bronnen</a
+        >. We kijken naar bemanningsleden en hun beroepen volgens de HISCO
+        dataset.
+      </p>
+      <query
+        data-config="https://api.nightly.triply.cc/s/ePboyTQz"
+        data-show-query
+      ></query>
     </div>
 
     <div class="container story">
-      <p>Yasgui van Triply heeft sindskort ook een nieuwe functie genaamd timeline. Hiermee kunnen we bijvoorbeeld verschillende plaatjes op een tijdlijn tonen. We geven een simpel voorbeeld
-        op basis van plaatjes uit de dataset van geheugen van Nederland (GVN)
-       </p>
-      <query data-config-ref="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/GVN/queries/timeline-voorbeeld/5" data-show-query></query>
+      <p>
+        Yasgui van Triply heeft sindskort ook een nieuwe functie genaamd
+        timeline. Hiermee kunnen we bijvoorbeeld verschillende plaatjes op een
+        tijdlijn tonen. We geven een simpel voorbeeld op basis van plaatjes uit
+        de dataset van geheugen van Nederland (GVN)
+      </p>
+      <query
+        data-config-ref="https://data.netwerkdigitaalerfgoed.nl/HackaLOD/-/queries/timeline-voorbeeld/5"
+        data-show-query
+      ></query>
     </div>
 
-<div class="container story">
-  <h4>Tot slot</h4>
-  <p>
-    We hopen dat jullie nu de mogelijkheid voor toevoegen van links aan je eigen data met de construct query kunnen toepassen en de basisvaardigheden voor visualiseren en presenteren van
-    data onder de knie hebben. Er staan nog veel datastories online die dieper gaan dan deze tutorial, probeer vooral veel te leren van deze voorbeelden. Veel plezier tijdens HackaLOD! </p>
+    <div class="container story">
+      <h4>Tot slot</h4>
+      <p>
+        We hopen dat jullie nu de mogelijkheid voor toevoegen van links aan je
+        eigen data met de construct query kunnen toepassen en de
+        basisvaardigheden voor visualiseren en presenteren van data onder de
+        knie hebben. Er staan nog veel datastories online die dieper gaan dan
+        deze tutorial, probeer vooral veel te leren van deze voorbeelden. Veel
+        plezier tijdens HackaLOD!
+      </p>
     </div>
 
-
-
-    <script src="https://cdn.jsdelivr.net/gh/thednp/bootstrap.native@2.0.24/dist/bootstrap-native-v4.min.js" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/thednp/bootstrap.native@2.0.24/dist/bootstrap-native-v4.min.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="/stories/assets/js/stories.min.js"></script>
     <script>
-      window.onload = function () {
-        window.stories()
+      window.onload = function() {
+        window.stories();
       };
     </script>
   </body>
