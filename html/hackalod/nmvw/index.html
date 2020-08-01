@@ -32,22 +32,22 @@
     <p><img src="logos.png"></p>
     <p>Het Nationaal Museum van Wereldculturen heeft op zijn website zijn collectie beschikbaar gesteld in LOD-formaat. De dataset bevat de metadata over de objecten in de collectie en de termen in de NMvW-thesaurus. De data is gedownload en opgenomen in <a href="https://data.netwerkdigitaalerfgoed.nl/ivo/nmvw">de data-omgeving van NDE</a> zodat de data kan worden bevraagd via een SPARQL-endpoint. Daar is ook in detail uitgelegd wat de dataset is en waar deze te verkrijgen is. In deze datastory leggen we uit wat je in de dataset kunt verwachten en wat voor vragen je zou kunnen stellen. Om de onderliggende SPARQL-query te zien en desgewenst aan te passen, kun je klikken op dit symbool: <img src="/stories/assets/imgs/query_pijl.png" width=50px></p>
     </div>
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql">
+    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/NMVW/collectie/services/collectie/sparql">
       <h3>Wat voor dingen zitten er in het endpoint?</h3>
       <p>Het endpoint bevat verschillende "dingen". De belangrijkste zijn de objecten in de collectie (ruim 700.000) en de concepten in de thesaurus (ruim 20.000).</p>
       <query data-query-ref="getClasses.rq"></query>
     </div>
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql">
+    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/NMVW/collectie/services/collectie/sparql">
       <h3>Wat voor data is beschikbaar over de objecten in de collectie?</h3>
       <p>Over een object in de collectie weten we vaak veel. Zo heeft een object vaak een titel, een type (bijvoorbeeld "Hoed"), een datum van creatie, een onderwerp en ... de verwijzing naar een afbeelding. De onderstaande query geeft een overzicht van de verschillende soorten predikaten waarmee informatie over een object in de collectie kan worden opgevraagd. De vijf belangrijkste zijn hierna uitgewerkt.</p>
       <query data-query-ref="getPredicatesPhysRes.rq"></query>
     </div>
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql">
+    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/NMVW/collectie/services/collectie/sparql">
       <h4>De titel van het object: dc:title</h4>
       <p>Bijna alle objecten hebben een titel. Deze kan in het Engels en/of in Nederlands zijn. Het object in de collectie en de titel zijn met elkaar verbonden door middel van het predikaat dc:title. Je kunt filteren op Nederland (ned) of Engelse (eng) titels.</p>
       <query data-query-ref="getTitles.rq"></query>
     </div>
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql">
+    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/NMVW/collectie/services/collectie/sparql">
       <h4>Het type van het object: dc:type en edm:object</h4>
       <p>Bijna alle objecten hebben een type, bijvoorbeeld "foto" of "hoed". Het object in de collectie en het objecttype zijn met elkaar verbonden door middel van het predikaat dc:type.</p>
       <query data-query-ref="getDCTypes.rq"></query>
@@ -58,18 +58,18 @@
       <p>Daarna kun je op zoek gaan naar alle foto's op basis van de thesaurus.</p>
       <query data-query-ref="getPhotos2.rq"></query>        
     </div>
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql">
+    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/NMVW/collectie/services/collectie/sparql">
       <h4>Het plaats van het object: dct:spatial</h4>
       <p>Behalve de thesaurus-termen waarmee de types zijn verbonden met de objecten in de collectie, zijn ook de plaatsen via de thesaurus verbonden. Hiervoor is het predicaat "dct:spatial" gebruikt. Alle foto's uit Indonesie zijn bijvoorbeeld te vinden met deze query.</p>
       <query data-query-ref="getAllPhotosIndonesia.rq"></query>
     </div>
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql">
+    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/NMVW/collectie/services/collectie/sparql">
       <h4>Het onderwerp van het object: dc:subject en edm:isRelatedTo</h4>
       <p>Behalve de thesaurus-termen waarmee de types zijn verbonden met de objecten in de collectie, zijn ook de onderwerpen via de thesaurus verbonden. Hiervoor zijn de predicaten "dc:subject" en "edm:isRelatedTo" gebruikt. </p>
       <query data-query-ref="getDCSubjects.rq"></query>
       <query data-query-ref="getEDMisRelatedTo.rq"></query>
     </div>
-    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql">
+    <div class="container story" data-endpoint="https://api.data.netwerkdigitaalerfgoed.nl/datasets/NMVW/collectie/services/collectie/sparql">
       <h4>Een plaatje: edm:isShownBy</h4>
       <p>Aan het object in de collectie is een foto gekoppeld met het predikaat "edm:isShownBy". Het bevat een pad dat verwijst naar het plaatje op de server van het NMvW.</p>
     </div>
