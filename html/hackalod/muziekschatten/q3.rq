@@ -1,0 +1,38 @@
+prefix lcn: <http://id.loc.gov/vocabulary/countries/>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix schema: <http://schema.org/>
+prefix som: <http://data.muziekschatten.nl/som/>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+
+select distinct ?eventDate (strdt(concat('<a href="',?mc,'" target="_blank">',?titel,'</a>'),rdf:HTML) as ?eventLabel) ?eventDescription {
+
+    # selecteer composities
+  	?mc a schema:MusicComposition .
+
+    # gebruik titel veld als label
+    ?mc schema:name ?titel .
+
+    # selecteer pianomuziek
+    ?mc schema:about som:d7862 .
+
+    # haal publicatiedatum op
+    ?mc schema:datePublished ?date .
+
+    # maak er een net jaar veld van
+
+    bind( replace(str(?date),"[ c o p . -- ? \\[ \\] ]","") as ?eventDate)
+    # haal de resource voor de componist op
+    ?mc schema:composer ?comp .
+
+    # selecteer vrouwelijk componisten
+    ?comp som:VR "1" .
+
+    ?comp schema:name ?eventDescription .
+
+    # filter op de Nederlandse nationaliteit
+    ?comp schema:nationality  lcn:ne .
+
+    # neem aan dat waarden met minder dan 4 cijfers ongeldige datums zijn
+    filter( xsd:integer(?eventDate) > 1000 )
+
+} order by ?eventDate ?eventLabel ?eventDescription

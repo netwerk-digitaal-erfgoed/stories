@@ -1,0 +1,29 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+PREFIX som: <http://data.muziekschatten.nl/som/>
+
+select * {
+
+    # selecteer composities
+  	?mc a schema:MusicComposition .
+
+    # gebruik titel veld als label
+    ?mc schema:name ?titel .
+
+    # haal de resource voor de componist op
+    ?mc schema:composer ?comp .
+
+    # overleden in 2019
+    ?comp schema:deathDate "2010"^^xsd:gYear .
+
+    ?mc schema:isAccessibleForFree ?access .
+
+    ?mc som:CDRID ?cdr
+} limit 20
+#Maak een overzicht van in 2019 overleden componisten en presenteer hun gedigitaliseerde composities en/of een afluisterbaar fragment uit de Muziekweb-collectie
+#Entiteit Person, waarde 2019 in property schema-org:deathDate
+#Entiteit MusicComposition, waarde Ja uit property schema-org:isAccessibleForFree
+#en/of
+#Entiteit MusicComposition, een waarde in property som:CDRID

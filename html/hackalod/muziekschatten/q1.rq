@@ -1,0 +1,22 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <http://schema.org/>
+PREFIX som: <http://data.muziekschatten.nl/som/>
+
+select distinct ?toelichting (count(?subject) as ?aantal){
+
+    # simpele mapping table voor de som:ONLINE waarden
+    VALUES (?beschikbaar ?toelichting) {
+     	( "Nee"  "Bladmuziek niet online beschikbaar" )
+    	( "Ja (voor leden)" "Bladmuziek te downloaden voor leden" )
+    	( "Ja" "Bladmuziek rechtstreeks te downloaden")
+  	}
+
+    # selecteer composities
+  	?subject a schema:MusicComposition .
+
+    # laat alle properties per object zien
+    ?subject som:ONLINE ?beschikbaar .
+
+} order by desc(?aantal) limit 10
