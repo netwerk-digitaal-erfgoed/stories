@@ -3,18 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Data Stories - HackaLOD - Muziekschatten">
+    <meta name="description" content="Data Stories ― HackaLOD ― Muziekschatten">
     <meta name="author" content="Enno Meijers">
     <link href="/stories/assets/imgs/nde_logo_simplified.png" rel="icon" type="image/png">
     <title>NDE Data Stories - HackaLOD - Geheugen van Nederland</title>
-    <!--<link rel="stylesheet" 
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+    <!--<link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous">
     <link href="/stories/assets/css/yasgui.min.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
     <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
-    <link href="https://stories.triply.cc/shared/css/yasgui/stories.min.css" rel="stylesheet" type="text/css">
     -->
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
@@ -40,63 +39,69 @@
     <div class="container">
       <h1>Muziekschatten Data Stories</h1>
 
-      <div class="story">
-        <h2>Algemene structuur van de datset</h2>
-        <p>
-          Alle bladmuziektitels zijn gecategoriseerd als entiteit MusicComposition, 
-          bij de ontsluiting ervan gebruiken we diverse geauthoriseerde hulptabellen.
-          
-          De entiteit Dewey specificeert waarden in de property schema-org:about bij 
-          Klassieke muziek (bezetting, vorm, onderwerp). De entiteit Person bevat extra gegevens over 
-          de properties met gestandaardiseerde namen (bij componisten: geboorte- en sterfjaren, nationaliteit, geslacht, pseudoniemen, link met Wikipedia).
-        </p>
-        <p>
-          In de entiteit MusicGroup is extra informatie over de talloze ensembles te vinden
- 
-          Alle gedigitaliseerde bladmuziek is te vinden via de waarden Ja en Ja (voor leden) in de property
-          som:ONLINE. Wanneer daarin alleen Ja is die voor iedereen te downloaden
+      <div class="story" data-endpoint="http://data.muziekschatten.nl/sparql">
+        <div>
+          <h2>Algemene structuur van de datset</h2>
+          <p>
+            Alle bladmuziektitels zijn gecategoriseerd als entiteit MusicComposition,
+            bij de ontsluiting ervan gebruiken we diverse geauthoriseerde hulptabellen.
 
-          Via de property som:SXTHEM is de bladmuziek op onderwerp ontsloten (helaas verre van uitputtend toegekend).
-          Voorbeelden: sport, bevrijding, oorlog, songfestival, vervoer, Titanic (repertoire dat op de Titanic werd gespeeld)
+            De entiteit Dewey specificeert waarden in de property schema-org:about bij
+            Klassieke muziek (bezetting, vorm, onderwerp). De entiteit Person bevat extra gegevens over
+            de properties met gestandaardiseerde namen (bij componisten: geboorte- en sterfjaren, nationaliteit, geslacht, pseudoniemen, link met Wikipedia).
+          </p>
+          <p>
+            In de entiteit MusicGroup is extra informatie over de talloze ensembles te vinden
 
-          Via de property schema-org:dateIssued is het radiorepertoire op opname- of uitzenddatum te selecteren
- 
-          Onder de property schema-org:performer zijn de instrumentale en zangsolisten en de omroepensembles te vinden
- 
-          In de property som:CDRID is de koppeling met de klinkende pendant bij Muziekweb gelegd (bij klassieke muziek)
-          De waarde WOII in de property som:CV verwijst naar muziek van in en rondom de jaren 1940-1945.
+            Alle gedigitaliseerde bladmuziek is te vinden via de waarden Ja en Ja (voor leden) in de property
+            som:ONLINE. Wanneer daarin alleen Ja is die voor iedereen te downloaden
 
-        </p>
-        <p>
-          De data is afkomstig uit de <a href="http://data.muziekschatten.nl">Muziekschatten DataSpace</a>
-        </p>
+            Via de property som:SXTHEM is de bladmuziek op onderwerp ontsloten (helaas verre van uitputtend toegekend).
+            Voorbeelden: sport, bevrijding, oorlog, songfestival, vervoer, Titanic (repertoire dat op de Titanic werd gespeeld)
 
-        <p>
-          De volgende query laat zien hoeveel composities al online beschikbaar zijn: 
-        </p>
-        <query data-config="https://api.nightly.triply.cc/s/tJyDBObe"></query>
-      </div>
+            Via de property schema-org:dateIssued is het radiorepertoire op opname- of uitzenddatum te selecteren
 
-      <div class="story">
-        <query data-config="https://api.nightly.triply.cc/s/1oUwShE5"></query>
-        <h3>
-          Tijdlijn van Nederlandse songfestival liedjes (voorronde en finale).
-        </h3>
-      </div>
+            Onder de property schema-org:performer zijn de instrumentale en zangsolisten en de omroepensembles te vinden
 
-      <div class="story">
-        <query data-config="https://api.nightly.triply.cc/s/8ix92Dpc"></query>
-        <h3>
-          Tijdlijn van piano composities van Nederlandse vrouwelijke componisten
-        </h3>
-      </div>
-
-      <!--
-          work in progress: https://api.nightly.triply.cc/s/qlfgWIS1
+            In de property som:CDRID is de koppeling met de klinkende pendant bij Muziekweb gelegd (bij klassieke muziek)
+            De waarde WOII in de property som:CV verwijst naar muziek van in en rondom de jaren 1940-1945.
+          </p>
+          <p>
+            De data is afkomstig uit de <a href="http://data.muziekschatten.nl">Muziekschatten DataSpace</a>.
+          </p>
+          <p>
+            De volgende query laat zien hoeveel composities al online beschikbaar zijn:
+          </p>
+          <query data-query-ref="q1.rq">
+          </query>
+        </div>
+        <div>
+          <figure>
+            <query data-query-ref="q2.rq" data-output="timeline">
+            </query>
+            <figcaption>
+              Tijdlijn van Nederlandse songfestival liedjes (voorronde en finale).
+            </figcaption>
+          </figure>
+        </div>
+        <div>
+          <figure>
+            <query data-query-ref="q3.rq" data-output="timeline">
+            </query>
+            <figcaption>
+              Tijdlijn van piano composities van Nederlandse vrouwelijke componisten.
+            </figcaption>
+          </figure>
+        </div>
+      <!-- work in progress
+        <div>
+          <figure>
+            <query data-query-ref="q4.rq">
+            </query>
+          </figure>
+        </div>
       -->
-      
     </div>
-    <!--<script src="https://stories.triply.cc/shared/js/stories.min.js"></script>-->
     <script src="/stories/assets/js/stories.min.js"></script>
     <script>window.onload = function() {window.stories()};</script>
   </body>
