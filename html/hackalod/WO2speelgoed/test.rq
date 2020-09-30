@@ -1,0 +1,4 @@
+SELECT ?widget ?test WHERE {
+  BIND('https://lh3.ggpht.com/s0ERYFIthmLOy-mNmgzV0pyMv-1unSVnAI64aGFartZesTk9w2syKysbD4SE_8jAMF2P0MqCPpq4AdhXz71suG4rVQ=s0' as ?test)
+  BIND('<p><a href="{{test}}">test</a></p>' as ?widget)
+}

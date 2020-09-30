@@ -1,0 +1,20 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+
+SELECT ?widget ?uri ?image ?titel ?type ?collection ?onderwerp WHERE {
+  # zoek op de voorwerpen die gekoppeld zijn aan de term 'Speelgoed' 
+    ?uri dc:subject ?subject ;
+       dcmitype:Collection ?collection ;
+       dc:title ?titel ;
+       dc:type ?type ;
+       dc:subject ?onderwerp ;
+       schema:thumbnail ?image_raw .
+  FILTER(CONTAINS(LCASE(?titel),"schaakstuk"))
+  # dirty to get the images loading
+  BIND(replace(?image_raw,"http:","https:") as ?image)
+  BIND("<a href={{uri}}><img src={{image}} width=100px><br>Titel: {{titel}}</a><br>Type:{{type}}</br><br>Onderwerp(en): {{onderwerp}}<br>Bron: <b>{{collection}}</b>" as ?widget)
+}

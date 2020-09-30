@@ -1,0 +1,13 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?uri ?label FROM <https://data.netwerkdigitaalerfgoed.nl/NDE/WO2Speelgoed/WO2Thesaurus> WHERE {
+  
+  # selecteer alle skos:prefLabel velden
+  ?uri skos:prefLabel ?label 
+
+  # filter de resultaten waar de zoekterm 'speelgoed' in voorkomt
+  # vertaal alle labels naar lowercase om problemen met hoofdletter te voorkomen
+  FILTER(CONTAINS(lcase(str(?label)),"speelgoed"))
+}

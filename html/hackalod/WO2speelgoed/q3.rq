@@ -1,0 +1,19 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+
+SELECT ?widget ?uri ?image ?titel ?omschrijving ?collection WHERE {
+  # zoek op de voorwerpen die gekoppeld zijn aan de term 'Speelgoed' 
+    ?uri dc:subject <https://data.niod.nl/WO2_Thesaurus/2888> ;
+       dcmitype:Collection ?collection ;
+       dc:title ?titel ;
+       schema:thumbnail ?image_raw ;
+       dc:type "voorwerp" ;
+       dc:description ?omschrijving .
+  # dirty to get the images loading
+  BIND(replace(?image_raw,"http:","https:") as ?image)
+  BIND("<a href={{uri}}><img src={{image}} width=100px><br>Titel: {{titel}}</a><br>{{omschrijving}}<br>Bron: <b>{{collection}}</b>" as ?widget)
+} LIMIT 3

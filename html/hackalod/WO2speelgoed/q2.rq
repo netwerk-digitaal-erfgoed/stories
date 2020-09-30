@@ -1,0 +1,6 @@
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+
+SELECT distinct ?collectie {
+  # haal de namen van de collecties in de WO2speelgoed dataset
+  ?uri dcmitype:Collection ?collectie .
+}
