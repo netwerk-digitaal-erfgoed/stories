@@ -1,0 +1,22 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+
+SELECT distinct ?widget (sample(?naam) as ?naam_enkel) ?titel ?date ?omschrijving ?cho ?image WHERE {
+  ?agg edm:aggregatedCHO ?cho . 
+  ?cho dc:creator/skos:prefLabel ?naam . 
+  ?agg edm:object ?image .
+  ?cho dc:type <http://vocab.getty.edu/aat/300177435> .
+  ?cho dc:description ?omschrijving .
+  ?cho dc:title ?titel .
+  ?cho dct:created ?date .
+  filter(contains(?naam,"Bueckelaer"))
+  FILTER(langMatches(lang(?titel), "nl"))
+  FILTER(langMatches(lang(?date), "nl"))
+  FILTER(langMatches(lang(?omschrijving), "nl"))
+  BIND('<a href={{image}}><img src="{{image}}"></a>{{naam_enkel}}<br>{{titel}}<br>{{date}}<br>{{omschrijving}}<br><a href={{cho}}>{{cho}}</a></dl>' as ?widget)
+
+} LIMIT 10
