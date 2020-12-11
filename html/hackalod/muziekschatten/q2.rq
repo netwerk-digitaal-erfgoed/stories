@@ -4,15 +4,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX schema: <http://schema.org/>
 PREFIX som: <http://data.muziekschatten.nl/som/>
 
-select distinct ?eventStart  ?eventLabel ?eventMedia ?eventMediaCaption
-(concat(GROUP_CONCAT(distinct ?omschrijving; separator="; " ),
+select distinct ?eventStart  ?eventLabel (concat(GROUP_CONCAT(distinct ?omschrijving; separator="; " ),
         "; <br> Bron: <a href=", ?url, ">Muziekschatten</a>") as ?eventDescription)
 {
   # selecteer composities
   ?s a schema:MusicComposition .
 
   # zet de titel in het label van op de tijdlijn
-  ?s schema:name ?eventLabel .
+  ?s schema:name ?titel .
 
   # haal het them veld op hierop gaan we straks filteren
   ?s som:SXTHEM ?thema .
@@ -35,40 +34,21 @@ select distinct ?eventStart  ?eventLabel ?eventMedia ?eventMediaCaption
 
   # probeer nu aan de hand van het performer veld een afbeelding
   # op te halen uit de nl.dbpedia data
-  OPTIONAL {
+  
+  # de performer is een zelfstandig resource met eigenschappen
+  ?s schema:performer ?performer .
 
-    # de performer is een zelfstandig resource met eigenschappen
-    ?s schema:performer ?performer .
-
-    # sla de naam van de artiest op
-    ?performer schema:name ?naam .
-
-    # haal de externe links op naar dezelfde definitie in andere datasets
-    ?performer owl:sameAs ?external_link .
-
-    # gebruik alleen de nl.dbpedia link
-    filter(contains(lcase(str(?external_link)),"nl.dbpedia.org"))
-
-    # roep nu de nl.dbpedia service aan
-    service <http://nl.dbpedia.org/sparql>
-    {
-      # en probeer een link naar een afbeelding te vinden
-      # we gebruiken hier de DBpedia link voor en niet de Wikidata omdat
-      # die meerdere plaatjes kan hebben en daarmee worden de resultaten verdubbeld
-      ?external_link dbo:thumbnail ?image
-    }
-    # als een afbeelding gevonden is zet die in op de tijdlijn
-    BIND(if(bound(?image),?image,'') as ?eventMedia )
-
-    # en zet eventueel de naam onder de afbeelding
-    BIND(if(bound(?eventMedia),?naam,'') as ?eventMediaCaption)
-  }
+  # sla de naam van de artiest op
+  ?performer schema:name ?naam .
+  
+  BIND(CONCAT(?titel," | ",?naam) as ?eventLabel)
+  
   # zet de geschoonde datum in de lijst voor de tijd
   BIND(?datestr as ?eventStart)
 
   # groepeer de resultaten zodat de distinct boven goed werkt.
 }
-group by ?eventStart ?eventLabel ?eventMedia ?eventMediaCaption ?url
+group by ?eventStart ?eventLabel ?url
 
 # en zet dit in de volgorde van tijd
 order by ?eventStart
