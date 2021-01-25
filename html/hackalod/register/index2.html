@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Data Stories - Bruikbaar - Register">
+    <meta name="author" content="Bob Coret">
+    <link href="/stories/assets/imgs/nde_logo_simplified.png" rel="icon" type="image/png">
+    <title>NDE Data Stories - Bruikbaar - Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
+    <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="withNavbar">
+    <nav class="navbar fixed-top ">
+      <div class="navbar-content">
+        <div class="navbar-icon">
+          <a class="navbar-brand" href="/stories/register/">
+            <img alt="Data Stories - Bruikbaar" src="/stories/assets/imgs/nde_logo.png">
+          </a>
+        </div>
+        <div class="navbar-title">
+          <a class="navbar-brand" href="/stories/hackalod/">Data Stories / HackaLOD</a>
+        </div>
+      </div>
+    </nav> 
+    <div class="container">
+      <h2>Register - inzicht in erfgoeddatasets</h2>
+	  <br>
+		<p>Het Register bevat informatie over datasets bij erfgoedinstellingen. Deze informatie wordt geregeld <i>geharvest</i> vanuit de (erfgoed)bron en opgeslagen in een <a href="https://triplestore.netwerkdigitaalerfgoed.nl/">triplestore</a>. Vanuit het Register kunnen we inzicht krijgen in erfgoeddatasets.</p>
+		<p>Welke erfgoedinstellingen hebben gegevens over hun collectie in digitale vorm beschikbaar? Hoe kunnen (her)gebruikers deze gegevens benaderen? Is de collectie zelf ook digitaal benaderen of alleen de metadata? Welke middelen zijn daarvoor nodig? Is er overlap tussen de collecties? Kunnen collecties gekoppeld worden?</p>
+		  
+        
+		<div class="story">
+			<p><br></p>
+			<h3>Dataset-makende-erfgoedinstellingen</h3>	
+			<p><strong>Staat jouw erfgoedinstelling al in deze lijst?</strong></p>
+			<p>Het volgende overzicht laat zien welke organisaties datasets beschikbaar stellen:</p>
+			<query data-config="https://register-demo.coret.org/datastory.php#query=PREFIX%20schema%3A%20%3Chttp%3A%2F%2Fschema.org%2F%3E%0ASELECT%20DISTINCT%20%3FErfgoedinstelling%20(count(distinct%20%3Fdataset)%20as%20%3FAantal)%20WHERE%20%7B%0A%20%20%3Fdataset%20schema%3Acreator%20%3Forganisatie%20.%0A%20%20%3Forganisatie%20schema%3Aname%20%3FErfgoedinstelling%0A%7D%20GROUP%20BY%20%3FErfgoedinstelling%20ORDER%20BY%20DESC(%3FAantal)%20&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fregistry&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=table" old-data-config="https://api.triplydb.com/s/u0WYRhYnk"></query>
+			
+			<p><br></p>
+			<h3>Licentiegebruik bij datasets</h3>	
+			<p>Voor hergebruik van data zijn open licentievormen van belang, maar ook "gesloten" datasets (vanwege auteursrecht of privacy) kunnen opgenomen worden in het Register:</p>
+			<query data-config="https://register-demo.coret.org/datastory.php#query=PREFIX%20schema%3A%20%3Chttp%3A%2F%2Fschema.org%2F%3E%0ASELECT%20%3Furl%20(count(distinct%20%3Fdataset)%20as%20%3Fcount)%20WHERE%20%7B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20SELECT%20(IRI(%3Fname)%20AS%20%3Furl)%20%3Fdataset%20WHERE%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Fdataset%20a%20schema%3ADataset%20.%0A%09%09%09%3Fdataset%20schema%3Alicense%20%3Fname%0A%09%09%09FILTER(isLiteral(%3Fname))%0A%09%09%7D%0A%20%20%20%20%7D%20UNION%20%7B%0A%20%20%20%20%20%20%20%20SELECT%20%3Furl%20%3Fdataset%20WHERE%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Fdataset%20a%20schema%3ADataset%20.%0A%20%20%09%09%09%3Fdataset%20schema%3Alicense%20%3Flicense%20.%0A%20%20%09%09%09%3Flicense%20schema%3Aurl%20%3Furl%0A%20%20%20%20%20%20%20%20%20%20%20%20FILTER(isURI(%3Flicense))%0A%09%09%7D%20%0A%20%20%20%20%7D%0A%7D%20GROUP%20BY%20%3Furl&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fregistry&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=gchart&outputSettings=%7B%22chartConfig%22%3A%7B%22options%22%3A%7B%22hAxis%22%3A%7B%22useFormatFromData%22%3Atrue%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%7D%2C%22legacyScatterChartLabels%22%3Atrue%2C%22tooltip%22%3A%7B%22isHtml%22%3Atrue%7D%2C%22vAxes%22%3A%5B%7B%22useFormatFromData%22%3Atrue%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%7D%5D%2C%22is3D%22%3Afalse%2C%22pieHole%22%3A0.5%2C%22booleanRole%22%3A%22certainty%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22legend%22%3A%22left%22%7D%2C%22state%22%3A%7B%7D%2C%22view%22%3A%7B%22columns%22%3Anull%2C%22rows%22%3Anull%7D%2C%22isDefaultVisualization%22%3Afalse%2C%22chartType%22%3A%22PieChart%22%7D%7D" old-data-config="https://api.triplydb.com/s/UHziRRTHy"></query>
+			<p><br></p>
+			<h3>Distributievormen</h3>
+			<p><b>Hoe staat het met het aanbod van linked data?</b></p>
+			<p>Het volgende overzicht laat zien in welke vormen de datasets beschikbaar worden gemaakt:</p>
+			<query data-config="https://yasgui.triply.cc/#query=PREFIX%20schema%3A%20%3Chttp%3A%2F%2Fschema.org%2F%3E%0A%0ASELECT%20DISTINCT%20%3FEncodeerFormaat%20(count(distinct%20%3Fdistribution)%20as%20%3FAantal)%20WHERE%20%7B%0A%20%20%3Fdistribution%20schema%3AencodingFormat%20%3FEncodeerFormaat%0A%7D%20GROUP%20BY%20%3FEncodeerFormaat%20ORDER%20BY%20DESC(%3FAantal)%0ALIMIT%20200&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fregistry&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=gchart&outputSettings=%7B%22chartConfig%22%3A%7B%22options%22%3A%7B%22legacyScatterChartLabels%22%3Atrue%2C%22tooltip%22%3A%7B%22isHtml%22%3Atrue%7D%2C%22isStacked%22%3Afalse%2C%22booleanRole%22%3A%22certainty%22%2C%22vAxes%22%3A%5B%7B%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22viewWindow%22%3Anull%2C%22viewWindowMode%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22useFormatFromData%22%3Atrue%7D%5D%2C%22hAxis%22%3A%7B%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%22legend%22%3A%22right%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%7D%2C%22state%22%3A%7B%7D%2C%22view%22%3A%7B%22columns%22%3Anull%2C%22rows%22%3Anull%7D%2C%22isDefaultVisualization%22%3Afalse%2C%22chartType%22%3A%22BarChart%22%7D%7D" old-data-config="https://api.triplydb.com/s/vX8SAI8C3"></query>
+			
+		</div>
+
+    </div>
+    <!--<script src="https://stories.triply.cc/shared/js/stories.min.js"></script>-->
+    <script src="/stories/assets/js/stories.min.js"></script>
+    <script>window.onload = function() {window.stories()};</script>
+  </body>
+</html>
