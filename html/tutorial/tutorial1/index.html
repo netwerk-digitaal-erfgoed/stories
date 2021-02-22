@@ -49,7 +49,7 @@
 
 
     </div>
-    <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+    <div class="container story" data-endpoint="https://data.bibliotheken.nl/sparql">
       <p>Laten we beginnen door het <code>subject</code> <code>predicaat</code> <code>object</code> patroon af te vuren op het endpoint, waarbij we alle drie als variabele meegeven. We leggen dus nog geen patroon
       beperkingen op.</p>
       <query data-query-ref="query0.rq" data-show-query></query>
@@ -58,7 +58,7 @@
     </div>
   </div>
 
-  <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+  <div class="container story" data-endpoint="https://data.bibliotheken.nl/sparql">
     <p>Als we nu graag willen welke unieke relaties, <i>predicaten</i> voorkomen in de data, dan kunnen we een <code>distinct</code> keyword meegeven. Laten we gelijk wat meer over de projectie leren. In de projectie
     kunnen we variabele namen binden aan andere namen. Dit is bijvoorbeeld handig als je de query leesbaar wilt maken voor iemand die de dataset goed kent, maar het resultaat leesbaar wilt maken voor iemand die
   alleen de selectie te zien krijgt. Tenslotte doen we ook al een intuïtieve berekening in het projectie stukje: we tellen hoe veel ?subjects het unieke predicaat hebben, en dit noemen we het aantal. </p>
@@ -67,7 +67,7 @@
 
 
 </div>
-<div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+<div class="container story" data-endpoint="https://data.bibliotheken.nl/sparql">
   <p> We hebben net gezien dat alle IRIs een beetje onoverzichtelijk kunnen worden. Zeker als we al kennis hebben over een data set en restricties op het patroon gaan opleggen willen we niet steeds een hele IRI hoeven opschrijven.
      Daarom wordt er vaak aan het begin van een SPARQL query een aantal prefixes. Deze zijn letterlijk een stuk hyperlink die op de plek dat we deze later in de query gebruiken wordt toegevoegd om een complete IRI te vormen.
    We zagen in bij de vorige query dat het <code>rdf:type</code> (volledig http://www.w3.org/1999/02/22-rdf-syntax-ns#type) de meest gebruikte relatie. We definieren een prefix in de volgende query en kijken welke typen er voorkomen in de data. </p>
@@ -75,7 +75,7 @@
 </div>
 
 </div>
-<div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+<div class="container story" data-endpoint="https://data.bibliotheken.nl/sparql">
   <p> We zagen in de vorige query bij resultaat 9. dat http://schema.org/Book een type is dat voorkomt in de data, uiteraard is dat niet heel onverwacht voor een dataset van de KB! We kunen nu een paar boek objecten weergeven.
   We gebruiken <code>rdf:type</code> zo vaak dat we deze zelfs de shorthand <code>a</code> hebben gegeven. Dit gebruiken we hier. </p>
   <query data-query-ref="query1.rq" data-show-query></query>
@@ -85,13 +85,13 @@
 </div>
 
 </div>
-<div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+<div class="container story" data-endpoint="https://data.bibliotheken.nl/sparql">
   <h4> Het matchen van graafpatronen </h4>
   <p> We zagen zojuist vijf boekobjecten, maar dat is natuurlijk nog niet een heel mooie weergave, laten we wat extra informatie informatie ophalen. We maken nu een uitgebreider patroon om te matchen. </p>
   <query data-query-ref="query1a.rq" data-show-query></query>
 
 
-    <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+    <div class="container story" data-endpoint="https://data.bibliotheken.nl/sparql">
       <p>
         Stel je wilt zoeken op een specifiek onderwerp, bijvoorbeeld <i>dieren</i>.<br>
         Laten we eens kijken of dit onderwerp voorkomt in de beschikbare thesauri in de LOD omgeving.
@@ -100,7 +100,7 @@
       <p>Inspectie van het resultaat door de links te volgen brengt ons tot de conclusie dat <i>dieren</i> uit de Brinkman het handigste trefwoord is.</p>
     </div>
 
-    <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+    <div class="container story" data-endpoint="https://data.bibliotheken.nl/sparql">
       <p>
         Even een extra controle, welke onderwerp hebben deze Brinkman term als bovenliggende term (ergens in de hierarchie)
       </p>
@@ -111,7 +111,7 @@
       </p>
 
     </div>
-    <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+    <div class="container story" data-endpoint="https://data.bibliotheken.nl/sparql">
       <p>
         Dus nu boeken zoeken die over <i>dieren</i> gaan. We maken hierbij gebruik van een <code>union</code> die een stuk graaf teruggeeft dat aan een van twee voorwaarden moet voldoen.
       </p>
@@ -119,7 +119,7 @@
       <p>Opmerking: In deze lijst zien we titels beginnend met '#10#'' of '#20#'. Dit is het gevolg van een incorrecte conversie vanuit de bron naar Linked Data.</p>
 
     </div>
-    <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+    <div class="container story" data-endpoint="https://data.bibliotheken.nl/sparql">
       <p>
         Nu selecteren we op boeken die in de jaren 60 gepubliceerd zijn gepubliceerd, dit levert de volgende boeken op:
       </p>
@@ -128,7 +128,7 @@
 
 
   </div>
-  <div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+  <div class="container story" data-endpoint="https://data.bibliotheken.nl/sparql">
     <p>
       Maar misschien willen we liever weten hoeveel boeken er in de jaren 60 zijn gepubliceerd, dit doen we met bijna dezelfde query maar door alleen de projectie aan te passen (hier zit wel een impliciete agregatie in).
     </p>
@@ -136,7 +136,7 @@
   </div>
 
 </div>
-<div class="container story" data-endpoint="http://data.bibliotheken.nl/sparql">
+<div class="container story" data-endpoint="https://data.bibliotheken.nl/sparql">
   <h4> Queries over meer dan één database </h4>
   <p>
     De KB heeft heel mooi alles bijgehouden over boeken en auteurs, maar we kunnen er helaas geen afbeeldingen vinden van auteurs. Gelukkig kunnen we dankzij de kracht van Linked (Open) Data er wel afbeeldingen bij zoeken!
