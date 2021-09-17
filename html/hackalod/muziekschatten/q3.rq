@@ -2,6 +2,7 @@ prefix lcn: <http://id.loc.gov/vocabulary/countries/>
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix schema: <http://schema.org/>
 prefix som: <http://data.muziekschatten.nl/som/>
+prefix soms: <https://data.muziekschatten.nl/som/>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 
 select distinct ?eventDate (strdt(concat('<a href="',?mc,'" target="_blank">',?titel,'</a>'),rdf:HTML) as ?eventLabel) ?eventDescription {
@@ -13,7 +14,7 @@ select distinct ?eventDate (strdt(concat('<a href="',?mc,'" target="_blank">',?t
     ?mc schema:name ?titel .
 
     # selecteer pianomuziek
-    ?mc schema:about som:d7862 .
+    ?mc schema:about soms:d7862 .
 
     # haal publicatiedatum op
     ?mc schema:datePublished ?date .
