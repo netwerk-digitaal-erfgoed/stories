@@ -1,0 +1,33 @@
+{
+	"@context": "http://schema.org/",
+	"@type": "Dataset",
+	"@id": "https://linkeddata.cultureelerfgoed.nl/",
+	"identifier": "https://linkeddata.cultureelerfgoed.nl/",
+	"name": "RCE LOD Platform",
+	"license": "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+	"publisher": {
+		"@id": "http://standaarden.overheid.nl/owms/terms/Rijksdienst_voor_het_Cultureel_Erfgoed",
+		"@type": "Organization",
+		"name": "Rijksdienst voor het Cultureel Erfgoed"
+	},
+	"description": "Dit platform biedt linked open data van het Archeologisch Informatiesysteem (Archis) en het Rijksmonumentenregister. Beide databases worden onderhouden door de RCE. Archis bevat gegevens over archeologische vindplaatsen en terreinen (sites) in Nederland. Het Rijksmonumentenregister bevat gegevens van alle monumenten in Nederland die door het Rijk zijn aangewezen als beschermd monument. Dit zijn historische gebouwen, archeologische vindplaatsen of groene, aangelegde bouwwerken",
+	"mainEntityOfPage": [
+		"https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/rce/index.html"
+	],
+	"keywords": [
+		"archeologie",
+		"rijksmonumenten"
+	],
+	"spatialCoverage": "Nederland",
+	"distribution": [
+		{
+			"@type": "DataDownload",
+			"contentUrl": "https://linkeddata.cultureelerfgoed.nl/sparql",
+			"encodingFormat": [
+				"https://www.iana.org/assignments/media-types/application/ld+json"
+			],
+			"name": "SPARQL-endpoint",
+			"description": "Viewer op endpoint via https://linkeddata.cultureelerfgoed.nl/viewsparql"
+		}
+	]
+}
