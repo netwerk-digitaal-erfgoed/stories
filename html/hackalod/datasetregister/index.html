@@ -45,8 +45,8 @@
 		<p><br></p>
 		
 			<p><strong>Welke erfgoedinstellingen bieden hoeveel datasets?</strong></p>
-			<p>Het volgende overzicht laat zien welke organisaties datasets (API/datadumps) beschikbaar stellen:</p>
-			<query data-config="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/datasetregister/#query=PREFIX%20dct%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0APREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0ASELECT%20DISTINCT%20%3Fname%20(count(distinct%20%3Fs)%20as%20%3Fcount)%20WHERE%20%7B%0A%20%20%3Fs%20dct%3Acreator%20%3Fo%20.%0A%20%20%3Fo%20foaf%3Aname%20%3Fname%0A%7D%20GROUP%20BY%20%3Fname%20ORDER%20BY%20DESC(%3Fcount)&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fregistry&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=table"></query>
+			<p>Het volgende overzicht laat zien welke organisaties datasets (API/datadumps) beschikbaar stellen (in de rol van publisher):</p>
+			<query data-config="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/datasetregister/#query=PREFIX%20dct%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0APREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0ASELECT%20DISTINCT%20%3Fname%20(count(distinct%20%3Fs)%20as%20%3Fcount)%20WHERE%20%7B%0A%20%20%3Fs%20dct%3Apublisher%20%3Fo%20.%0A%20%20%3Fo%20foaf%3Aname%20%3Fname%0A%7D%20GROUP%20BY%20%3Fname%20ORDER%20BY%20DESC(%3Fcount)&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fregistry&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=table"></query>
 			
 			<p><br></p>
 			
