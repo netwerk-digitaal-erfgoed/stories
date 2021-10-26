@@ -1,0 +1,20 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX schema: <http://schema.org/>
+
+# select LOD dataset and list the timestamp for the last succesful download of the dataset description
+select ?dataset ?description_short ?publisher (MAX(?dateRead) as ?last_succesful) where { 
+	?dataset dct:description ?description ;
+             schema:dateRead ?dateRead ; # collect the recorded date for a succesful read 
+             dcat:distribution ?dist .
+    OPTIONAL {
+        ?dataset dct:publisher ?publisher
+    }
+    # select all Linked Data formats described in the distributions (including SPARQL endpoints)    
+    ?dist dct:format ?format
+    VALUES ?format {"text/turtle" "application/rdf+xml" "application/n-triples" "application/ld+json" "application/vnd.hdt application/sparql-query"}
+    
+    # cut off long descriptions
+    BIND(IF(STRLEN(?description)>200,CONCAT(SUBSTR(?description,0,200),"..."),?description) as ?description_short)
+} 
+GROUP BY ?dataset ?description_short ?publisher ORDER BY DESC(?last_succesful)

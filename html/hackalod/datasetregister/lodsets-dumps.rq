@@ -1,0 +1,18 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX schema: <http://schema.org/>
+
+# select LOD datasets with dumps (group formats and url together for better readability)
+SELECT ?dataset ?description_short (GROUP_CONCAT(?format; SEPARATOR="; ") as ?download_formats) (GROUP_CONCAT(?url; SEPARATOR="; ") as ?urls) {
+    ?dataset dct:description ?description ;
+             dcat:distribution ?dist .
+    
+    # cut off long descriptions
+    BIND(IF(STRLEN(?description)>200,CONCAT(SUBSTR(?description,0,200),"..."),?description) as ?description_short)
+    
+    # select only LOD download formats (exlcuding SPARQL endpoints)
+    ?dist dct:format ?format ;
+          dcat:accessURL ?url .
+    VALUES ?format {"text/turtle" "application/rdf+xml" "application/n-triples" "application/ld+json" "application/vnd.hdt"} 
+} 
+GROUP BY ?dataset ?description_short ORDER BY ?dataset 

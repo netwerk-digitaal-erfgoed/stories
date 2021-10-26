@@ -1,0 +1,17 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX schema: <http://schema.org/>
+
+# select LOD datasets offering SPARQL endpoint access 
+SELECT ?dataset ?description_short ?url {
+    ?dataset dct:description ?description ;
+             dcat:distribution ?dist .
+    
+    # cut off long descriptions
+    BIND(IF(STRLEN(?description)>200,CONCAT(SUBSTR(?description,0,200),"..."),?description) as ?description_short)
+    
+    # select dataset with only SPARQL endpoints
+    ?dist dct:format "application/sparql-query" ;
+          dcat:accessURL ?url .
+} 
+ORDER BY ?dataset 
