@@ -14,4 +14,4 @@ SELECT ?dataset ?description_short ?url {
     ?dist dct:format "application/sparql-query" ;
           dcat:accessURL ?url .
 } 
-ORDER BY ?dataset 
+ORDER BY ?dataset

@@ -15,4 +15,5 @@ SELECT ?dataset ?description_short (GROUP_CONCAT(?format; SEPARATOR="; ") as ?do
           dcat:accessURL ?url .
     VALUES ?format {"text/turtle" "application/rdf+xml" "application/n-triples" "application/ld+json" "application/vnd.hdt"} 
 } 
-GROUP BY ?dataset ?description_short ORDER BY ?dataset 
+GROUP BY ?dataset ?description_short ORDER BY ?dataset
+ 
