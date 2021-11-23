@@ -75,6 +75,10 @@
 			<p>Het volgende overzicht laat zien welke organisaties datasets (API/datadumps) beschikbaar stellen (in de rol van publisher):</p>
 			<query data-config="https://demo.netwerkdigitaalerfgoed.nl/stories/hackalod/datasetregister/#query=PREFIX%20dct%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0APREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0ASELECT%20DISTINCT%20%3Fname%20(count(distinct%20%3Fs)%20as%20%3Fcount)%20WHERE%20%7B%0A%20%20%3Fs%20dct%3Apublisher%20%3Fo%20.%0A%20%20%3Fo%20foaf%3Aname%20%3Fname%0A%7D%20GROUP%20BY%20%3Fname%20ORDER%20BY%20DESC(%3Fcount)&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fregistry&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=table&outputSettings=%7B%22pageSize%22%3A10%7D"></query>
 			
+			<p id="opdekaart"><strong>Waar zijn de erfgoedinstellingen gevestigd?</strong></p>
+			<p>De onderstaande kaart toont de vestigingsplaatsen van de erfgoedinstellingen(in de rol van creator of publisher):</p>
+			<query data-config="https://api.triplydb.com/s/PU2B2RNU6"></query>
+
 			<p><br></p>
 			
 			<p><strong>Welke datasets worden er geboden?</strong></p>

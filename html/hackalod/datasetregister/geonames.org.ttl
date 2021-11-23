@@ -1,0 +1,767 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix geonames: <http://www.geonames.org/ontology#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix xml: <https://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+
+<https://sws.geonames.org/2755420/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2755420/about.rdf> ;
+  geonames:name "Gouda" ;
+  geonames:alternateName "하우다"@ko, "Gaudanum"@la, "Gouda"@ca, "Gouda"@de, "Gouda"@en, "Gouda"@eo, "Gouda"@es, "Gouda"@fi, "Gouda"@fr, "Gouda"@id, "Gouda"@it, "Gouda"@li, "Gouda"@nl, "Gouda"@nn, "Gouda"@pl, "Gouda"@pt, "Gouda"@ro, "Gouda"@sv, "Guda", "Quda"@az, "Χάουντα"@el, "Гауда"@be, "Гауда"@bg, "Гауда"@kk, "Гауда"@ru, "Гауда"@sr, "Гауда"@uk, "გაუდა"@ka, "Գաուդա"@hy, "خاودا"@ar, "خاودا"@fa, "غودا"@ar, "गउडा"@ne, "గౌడ"@te, "เกาดา"@th, "ゴーダ"@ja, "豪达"@zh ;
+  geonames:officialName "غودة"@ar ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "71952" ;
+  geonames:postalCode "2801", "2802", "2803", "2804", "2805", "2806", "2807", "2808", "2809" ;
+  geo:lat "52.01667" ;
+  geo:long "4.70833" ;
+  geonames:parentFeature <https://sws.geonames.org/2755419/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2743698/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2755419/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2755420/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2755420/gouda.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Gouda%2C_South_Holland>, <https://ru.wikipedia.org/wiki/%D0%93%D0%B0%D1%83%D0%B4%D0%B0> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Gouda%2C_South_Holland> .
+
+<https://sws.geonames.org/2755420/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2755420/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2020-03-12"^^xml:date .
+  
+<https://sws.geonames.org/2759794/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2759794/about.rdf> ;
+  geonames:name "Amsterdam" ;
+  geonames:alternateName "암스테르담"@ko, "Aemstelredamme"@nl, "Aemsterdam"@nl, "Amestelledamme"@la, "Amesterdã"@pt, "Âmesterdâm"@fa, "Amesterdão"@pt, "Amistardam"@so, "Amseutereudam"@ko, "Amstardam"@ga, "Amstardām"@ar, "Amstèdam"@ht, "Amsteladamum"@la, "Amstelodamum"@la, "Amstelodhámon"@grc, "Amsterdã"@pt, "Amsterdam"@ca, "Amsterdam"@en, "Amsterdam"@fi, "Amsterdam"@fr, "Amsterdam"@hr, "Amsterdam"@ia, "Amsterdam"@id, "Amsterdam"@io, "Amsterdam"@is, "Amsterdam"@lb, "Amsterdam"@li, "Amsterdam"@ms, "Amsterdam"@nds, "Amsterdam"@nn, "Amsterdam"@no, "Amsterdam"@oc, "Amsterdam"@ro, "Amsterdam"@tr, "Amsterdam"@vi, "Amstérdam"@ug, "Ámsterdam"@ast, "Ámsterdam"@el, "Ámsterdam"@ext, "Ámsterdam"@gl, "Àmsterdam"@pms, "Amsterdama"@ltg, "Amsterdama"@lv, "Amsterdamas"@lt, "Amstèrdame"@frp, "Amsterdami"@sq, "Amsterdamo"@eo, "Amsterdamo"@it, "Amsterdams"@sgs, "Amsterdamu"@olo, "Ámsterdan"@gl, "Amsterodam"@cs, "Amstɛrɩdam"@kbp, "Amstyerdam"@be, "Amsŭt'erŭdam"@ko, "Amszterdam"@hu, "Āmǔsītèdān"@zh, "Amusuterudamu"@ja, "Damsko"@srn, "I-Amsterdami"@zu, "Mokum"@nl, "Mokum"@yi, "Mokum Aleph"@yi, "Άμστερνταμ"@el, "Амстердам"@ba, "Амстердам"@bg, "Амстердам"@ce, "Амстердам"@cv, "Амстердам"@kk, "Амстердам"@koi, "Амстердам"@krc, "Амстердам"@kv, "Амстердам"@ky, "Амстердам"@lez, "Амстердам"@mdf, "Амстердам"@mk, "Амстердам"@mn, "Амстердам"@mrj, "Амстердам"@os, "Амстердам"@ru, "Амстердам"@rue, "Амстердам"@sah, "Амстердам"@sr, "Амстердам"@tg, "Амстердам"@tt, "Амстердам"@udm, "Амстердам"@uk, "Амстэрдам"@be, "ამსტერდამი"@ka, "Ամստերդամ"@hy, "אמסטערדאם"@yi, "אמסטרדם"@he, "آمستردام"@fa, "أمستردام"@ar, "ئامستېردام"@ug, "ئەمستەردام"@ckb, "امستردام"@arz, "امسټرډام"@ps, "ایمسٹرڈیم"@pnb, "ایمسٹرڈیم"@ur, "ܐܡܣܛܪܕܐܡ"@arc, "አምስተርዳም"@am, "अ‍ॅम्स्टरडॅम"@mr, "आम्स्टर्डम"@ne, "एम्स्तरद्याम"@new, "ऐम्स्टर्डैम"@hi, "আমস্টারডাম"@bn, "ਅਮਸਤਰਦਮ"@pa, "ଆମଷ୍ଟରଡ଼୍ୟାମ"@or, "ஆம்ஸ்டர்டம்"@ta, "ಆಂಸ್ಟರ್ಡ್ಯಾಮ್"@kn, "ആംസ്റ്റർഡാം"@ml, "ඈම්ස්ටර්ඩෑම්"@si, "อัมสเตอร์ดัม"@th, "ཨེམ་སི་ཊར་ཌམ།"@bo, "အမ်စတာဒမ်မြို့"@my, "アムステルダム"@ja, "阿姆斯特丹"@lzh, "阿姆斯特丹"@yue, "阿姆斯特丹"@zh ;
+  geonames:officialName "Amsterdam"@nl, "Ámsterdam"@es ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPLC> ;
+  geonames:countryCode "NL" ;
+  geonames:population "741636" ;
+  geonames:postalCode "1011", "1012", "1013", "1014", "1015", "1016", "1017", "1018", "1019", "1021", "1022", "1023", "1024", "1025", "1026", "1027", "1028", "1031", "1032", "1033", "1034", "1035", "1036", "1037", "1041", "1042", "1043", "1044", "1045", "1046", "1047", "1051", "1052", "1053", "1054", "1055", "1056", "1057", "1058", "1059", "1060", "1061", "1062", "1063", "1064", "1065", "1066", "1067", "1068", "1069", "1071", "1072", "1073", "1074", "1075", "1076", "1077", "1078", "1079", "1081", "1082", "1083", "1086", "1087", "1091", "1092", "1093", "1094", "1095", "1096", "1097", "1098", "1101", "1102", "1103", "1104", "1105", "1106", "1107", "1108", "1109" ;
+  geo:lat "52.37403" ;
+  geo:long "4.88969" ;
+  geonames:parentFeature <https://sws.geonames.org/2759793/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2749879/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2759793/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2759794/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2759794/amsterdam.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Amsterdam>, <https://en.wikipedia.org/wiki/Government_of_Amsterdam>, <https://ru.wikipedia.org/wiki/%D0%90%D0%BC%D1%81%D1%82%D0%B5%D1%80%D0%B4%D0%B0%D0%BC> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Amsterdam>, <https://dbpedia.org/resource/Government_of_Amsterdam> .
+
+<https://sws.geonames.org/2759794/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2759794/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2021-03-05"^^xml:date .
+
+<https://sws.geonames.org/2747373/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2747373/about.rdf> ;
+  geonames:name "The Hague" ;
+  geonames:alternateName "헤이그"@ko, "A Haia"@gl, "A Haia"@pt, "An Háig"@ga, "De Haach"@fy, "Den Haag"@af, "Den Haag"@bs, "Den Haag"@cy, "Den Haag"@de, "Den Haag"@id, "Den Haag"@vi, "D'n Haog"@li, "Haag"@bs, "Haag"@cs, "Haag"@da, "Haag"@et, "Haag"@fi, "Haag"@hr, "Haag"@is, "Haag"@no, "Haag"@sk, "Haag"@sl, "Haag"@sv, "Haag", "Hag"@hbs, "Haga"@la, "Haga"@lt, "Haga"@pl, "Haga"@ro, "Haga"@sq, "Hága"@hu, "Hāga"@lv, "Hago"@eo, "Hague"@en, "La Haia"@ca, "La Haya"@es, "La Haye"@fr, "Lahey"@tr, "L'Aia"@it, "L'Aia"@scn, "'s-Gravenhage"@nl, "Χάγη"@el, "Гаага"@ru, "Хаг"@sr, "Хага"@bg, "ჰააგა"@ka, "האג"@he, "لاهاي"@ar, "لاهه"@fa, "デン・ハーグ"@ja, "海牙"@zh ;
+  geonames:officialName "Den Haag"@nl, "The Hague"@en ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPLG> ;
+  geonames:countryCode "NL" ;
+  geonames:population "474292" ;
+  geonames:postalCode "2491", "2492", "2493", "2495", "2496", "2497", "2498", "2511", "2512", "2513", "2514", "2515", "2516", "2517", "2518", "2521", "2522", "2523", "2524", "2525", "2526", "2531", "2532", "2533", "2541", "2542", "2543", "2544", "2545", "2546", "2547", "2548", "2551", "2552", "2553", "2554", "2555", "2561", "2562", "2563", "2564", "2565", "2566", "2571", "2572", "2573", "2574", "2581", "2582", "2583", "2584", "2585", "2586", "2587", "2591", "2592", "2593", "2594", "2595", "2596", "2597" ;
+  geo:lat "52.07667" ;
+  geo:long "4.29861" ;
+  geonames:parentFeature <https://sws.geonames.org/2747372/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2743698/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2747372/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2747373/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2747373/the-hague.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/The_Hague>, <https://ru.wikipedia.org/wiki/%D0%93%D0%B0%D0%B0%D0%B3%D0%B0> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/The_Hague> .
+
+<https://sws.geonames.org/2747373/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2747373/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2017-10-24"^^xml:date .
+  
+<https://sws.geonames.org/2751773/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2751773/about.rdf> ;
+  geonames:name "Leiden" ;
+  geonames:alternateName "레이던"@ko, "Leida"@it, "Leida"@pt, "Lèida"@oc, "Leiden"@af, "Leiden"@ca, "Leiden"@cy, "Leiden"@da, "Leiden"@de, "Leiden"@en, "Leiden"@eo, "Leiden"@es, "Leiden"@fi, "Leiden"@id, "Leiden"@nl, "Leiden"@no, "Leiden"@ro, "Leiden"@sl, "Leiden"@sv, "Leidenas"@lt, "Leidene"@lv, "Leie"@li, "Leien"@fy, "Lejda"@pl, "Lejdeni"@sq, "Leyde"@fr, "Leyden", "Lugdunum"@la, "Lugdunum Batavorum"@la, "Λέιντεν"@el, "Лайден"@bg, "Лајден"@sr, "Лейден"@ce, "Лейден"@ru, "Лейден"@uk, "Лейдэн"@be, "ლეიდენი"@ka, "Լեյդեն"@hy, "ליידן"@he, "ליידן"@yi, "لائڈن"@ur, "لايدن"@ar, "لايدين"@arz, "لیدن"@fa, "لیدن"@pnb, "লাইডেন"@bn, "லைடன்"@ta, "ไลเดิน"@th, "ライデン"@ja, "莱顿"@zh ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "119713" ;
+  geonames:postalCode "2311", "2312", "2313", "2314", "2315", "2316", "2317", "2318", "2321", "2322", "2323", "2324", "2331", "2332", "2333", "2334" ;
+  geo:lat "52.15833" ;
+  geo:long "4.49306" ;
+  geonames:parentFeature <https://sws.geonames.org/2751772/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2743698/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2751772/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2751773/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2751773/leiden.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Leiden>, <https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%B9%D0%B4%D0%B5%D0%BD> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Leiden> .
+
+<https://sws.geonames.org/2751773/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2751773/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2019-09-05"^^xml:date .
+  
+<https://sws.geonames.org/2751283/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2751283/about.rdf> ;
+  geonames:name "Maastricht" ;
+  geonames:alternateName "마스트리흐트"@ko, "Maestricht"@nl, "Maestricht"@zea, "Mastrichtas"@lt, "Māstrihta"@lv, "Mastrique"@es, "Mastrique"@pt, "Mestreech"@li, "Traiectum Mosae"@la, "Μάαστριχτ"@el, "Маастрихт"@bg, "Маастрихт"@os, "Маастрихт"@ru, "Маастрихт"@uk, "Маастрыхт"@be, "Мастрихт"@sr, "მაასტრიხტი"@ka, "Մաստրիխտ"@hy, "מאסטריכט"@he, "ماسترخت"@ar, "ماسترشت"@pnb, "ماستریخت"@fa, "मास्ट्रिख्ट"@mr, "மாஸ்ட்ரிக்ட்"@ta, "มาสทริชท์"@th, "マーストリヒト"@ja, "马斯特里赫特"@zh ;
+  geonames:officialName "Maastricht"@de, "Maastricht"@en, "Maastricht"@es, "Maastricht"@fr, "Maastricht"@nl ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPLA> ;
+  geonames:countryCode "NL" ;
+  geonames:population "122378" ;
+  geonames:postalCode "6211", "6212", "6213", "6214", "6215", "6216", "6217", "6218", "6219", "6221", "6222", "6223", "6224", "6225", "6226", "6227", "6228", "6229" ;
+  geo:lat "50.84833" ;
+  geo:long "5.68889" ;
+  geonames:parentFeature <https://sws.geonames.org/2751282/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2751596/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2751282/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2751283/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2751283/maastricht.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Maastricht>, <https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%B0%D1%81%D1%82%D1%80%D0%B8%D1%85%D1%82> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Maastricht> .
+
+<https://sws.geonames.org/2751283/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2751283/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2019-09-05"^^xml:date .
+  
+<https://sws.geonames.org/2754064/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2754064/about.rdf> ;
+  geonames:name "Hilversum" ;
+  geonames:alternateName "Hilfertsom"@fy, "Hilversum"@de, "Hilversum"@en, "Hilversum"@eo, "Hilversum"@fi, "Hilversum"@fr, "Hilversum"@id, "Hilversum"@it, "Hilversum"@li, "Hilversum"@nl, "Hilversum"@pl, "Hilversum"@ro, "Hilversum"@sv, "Hilvertsheim", "Хилверсум"@sr, "Хилверсюм"@ru, "Հիլվերսում"@hy, "هيلفرسوم"@ar, "هیلفرسوم"@fa, "希爾弗瑟姆"@zh ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "83640" ;
+  geonames:postalCode "1211", "1212", "1213", "1214", "1215", "1216", "1217", "1218", "1221", "1222", "1223" ;
+  geo:lat "52.22333" ;
+  geo:long "5.17639" ;
+  geonames:parentFeature <https://sws.geonames.org/2754063/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2749879/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2754063/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2754064/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2754064/hilversum.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Hilversum>, <https://ru.wikipedia.org/wiki/%D0%A5%D0%B8%D0%BB%D0%B2%D0%B5%D1%80%D1%81%D1%8E%D0%BC> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Hilversum> .
+
+<https://sws.geonames.org/2754064/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2754064/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2017-10-17"^^xml:date .
+  
+<https://sws.geonames.org/2759821/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2759821/about.rdf> ;
+  geonames:name "Amersfoort" ;
+  geonames:alternateName "Amersfoort"@de, "Amersfoort"@en, "Amersfoort"@fi, "Amersfoort"@fr, "Amersfoort"@gl, "Amersfoort"@id, "Amersfoort"@io, "Amersfoort"@it, "Amersfoort"@li, "Amersfoort"@nl, "Amersfoort"@oc, "Amersfoort"@pl, "Amersfoort"@pt, "Amersfoort"@ro, "Amersfoort"@sv, "Amersforto"@eo, "Амерсфорт"@ru ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "139914" ;
+  geonames:postalCode "3811", "3812", "3813", "3814", "3815", "3816", "3817", "3818", "3819", "3821", "3822", "3823", "3824", "3825", "3826" ;
+  geo:lat "52.155" ;
+  geo:long "5.3875" ;
+  geonames:parentFeature <https://sws.geonames.org/2759820/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2745909/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2759820/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2759821/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2759821/amersfoort.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Amersfoort>, <https://ru.wikipedia.org/wiki/%D0%90%D0%BC%D0%B5%D1%80%D1%81%D1%84%D0%BE%D1%80%D1%82> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Amersfoort> .
+
+<https://sws.geonames.org/2759821/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2759821/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2019-01-14"^^xml:date .
+  
+<https://sws.geonames.org/2751808/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2751808/about.rdf> ;
+  geonames:name "Leerdam" ;
+  geonames:alternateName "Leerdam"@de, "Leerdam"@en, "Leerdam"@eo, "Leerdam"@fr, "Leerdam"@id, "Leerdam"@it, "Leerdam"@li, "Leerdam"@nl, "Leerdam"@sv, "Лердам"@ru, "Լեյրդամ"@hy, "ليردام"@ar, "莱尔丹"@zh ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "20758" ;
+  geonames:postalCode "4141", "4142", "4143" ;
+  geo:lat "51.89333" ;
+  geo:long "5.09167" ;
+  geonames:parentFeature <https://sws.geonames.org/2745538/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2745909/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2745538/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2751808/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2751808/leerdam.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Leerdam> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Leerdam> .
+
+<https://sws.geonames.org/2751808/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2751808/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2019-01-20"^^xml:date .
+  
+<https://sws.geonames.org/2753638/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2753638/about.rdf> ;
+  geonames:name "Hoorn" ;
+  geonames:alternateName "호른"@ko, "Hoarn"@fy, "Hoorn"@ca, "Hoorn"@de, "Hoorn"@en, "Hoorn"@es, "Hoorn"@et, "Hoorn"@fr, "Hoorn"@id, "Hoorn"@it, "Hoorn"@li, "Hoorn"@nl, "Hoorn"@pt, "Hoorn"@ro, "Hoorn"@sv, "Hoorn NH"@nl, "Горн"@uk, "Хорн"@bg, "Хорн"@kv, "Хорн"@ru, "Հորն"@hy, "هورن"@ar, "هورن"@fa, "โฮร์น"@th, "ホールン"@ja, "荷恩"@zh ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "68852" ;
+  geonames:postalCode "1621", "1622", "1623", "1624", "1625", "1627", "1628" ;
+  geo:lat "52.6425" ;
+  geo:long "5.05972" ;
+  geonames:parentFeature <https://sws.geonames.org/2753635/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2749879/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2753635/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2753638/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2753638/hoorn.html> ;
+  geonames:wikipediaArticle <https://ru.wikipedia.org/wiki/%D0%A5%D0%BE%D0%BE%D1%80%D0%BD> .
+
+<https://sws.geonames.org/2753638/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2753638/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2017-10-17"^^xml:date .
+
+<https://sws.geonames.org/2745912/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2745912/about.rdf> ;
+  geonames:name "Utrecht" ;
+  geonames:alternateName "위트레흐트"@ko, "Gemeente Utrecht"@jv, "Magaalada Utrecht"@so, "Traiectum ad Rhenum"@la, "Utert"@fy, "Utrech"@li, "Utrecht"@af, "Utrecht"@ca, "Utrecht"@cs, "Utrecht"@da, "Utrecht"@de, "Utrecht"@en, "Utrecht"@es, "Utrecht"@et, "Utrecht"@fi, "Utrecht"@fr, "Utrecht"@id, "Utrecht"@it, "Utrecht"@nl, "Utrecht"@pl, "Utrecht"@ro, "Utrecht"@sv, "Utrechtas"@lt, "Utreht"@vep, "Utrehta"@lv, "Utreĥto"@eo, "Utrei"@li, "Utreque"@pt, "Utrext"@az, "Utrext"@uz, "Ουτρέχτη"@el, "Утрехт"@bg, "Утрехт"@ru, "Утрехт"@sr, "Утрехт"@uk, "Утрехт хот"@mn, "Утрэхт"@be, "უტრეხტი"@ka, "Ուտրեխտ"@hy, "אוטרכט"@he, "أوترخت"@ar, "اوترخت"@fa, "یوترخت"@pnb, "یوتریخت"@ur, "ܐܘܛܪܝܟܛ"@arc, "उट्रेख्त"@mr, "ยูเทรกต์"@th, "ယူးထရက်မြို့"@my, "ユトレヒト"@ja, "乌得勒支"@zh, "烏德勒支"@yue ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPLA> ;
+  geonames:countryCode "NL" ;
+  geonames:population "290529" ;
+  geonames:postalCode "3454", "3511", "3512", "3513", "3514", "3515", "3521", "3522", "3523", "3524", "3525", "3526", "3527", "3528", "3531", "3532", "3533", "3534", "3541", "3542", "3543", "3544", "3545", "3546", "3551", "3552", "3553", "3554", "3555", "3561", "3562", "3563", "3564", "3565", "3566", "3571", "3572", "3573", "3581", "3582", "3583", "3584", "3585" ;
+  geo:lat "52.09083" ;
+  geo:long "5.12222" ;
+  geonames:parentFeature <https://sws.geonames.org/2745911/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2745909/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2745911/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2745912/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2745912/utrecht.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Utrecht>, <https://ru.wikipedia.org/wiki/%D0%A3%D1%82%D1%80%D0%B5%D1%85%D1%82> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Utrecht> .
+
+<https://sws.geonames.org/2745912/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2745912/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2021-08-08"^^xml:date .
+
+<https://sws.geonames.org/2803448/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2803448/about.rdf> ;
+  geonames:name "Aalst" ;
+  geonames:alternateName "Aals"@li, "Alósti"@el, "Alostum"@la, "Alst"@mk, "Alst"@sr, "Ālsta"@lv, "Alstas"@lt, "Àosītè"@cmn, "Halosta"@la, "Oalst"@vls ;
+  geonames:shortName "Alost"@fr ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "BE" ;
+  geonames:population "77534" ;
+  geonames:postalCode "9300" ;
+  geo:lat "50.93604" ;
+  geo:long "4.0355" ;
+  geonames:parentFeature <https://sws.geonames.org/2803451/> ;
+  geonames:parentCountry <https://sws.geonames.org/2802361/> ;
+  geonames:parentADM1 <https://sws.geonames.org/3337388/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2789733/> ;
+  geonames:parentADM3 <https://sws.geonames.org/2803447/> ;
+  geonames:parentADM4 <https://sws.geonames.org/2803451/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2803448/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2803448/aalst.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Aalst,_Belgium> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Aalst%2C_Belgium> .
+
+<https://sws.geonames.org/2803448/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2803448/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2020-06-01"^^xml:date .
+
+<https://sws.geonames.org/2759706/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2759706/about.rdf> ;
+  geonames:name "Apeldoorn" ;
+  geonames:alternateName "아펠도른"@ko, "Apeldoarn"@fy, "Apeldoorn"@de, "Apeldoorn"@en, "Apeldoorn"@fi, "Apeldoorn"@fr, "Apeldoorn"@id, "Apeldoorn"@it, "Apeldoorn"@li, "Apeldoorn"@no, "Apeldoorn"@pl, "Apeldoorn"@ro, "Apeldoorn"@sv, "Apeldoorne"@nds, "Apeldornas"@lt, "Апелдорн"@be, "Апелдорн"@bg, "Апелдорн"@ru, "Апелдорн"@sr, "Апелдорн"@uk, "აპელდორნი"@ka, "Ապելդորն"@hy, "آبلدورن"@ar, "آپلدورن"@fa, "ایپلڈوم"@pnb, "एपेलडॉर्न"@hi, "อาเพลโดร์น"@th, "アペルドールン"@ja, "阿珀尔多伦"@zh ;
+  geonames:officialName "Apeldoorn"@nl ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "136670" ;
+  geonames:postalCode "7311", "7312", "7313", "7314", "7315", "7316", "7317", "7321", "7322", "7323", "7324", "7325", "7326", "7327", "7328", "7329", "7331", "7332", "7333", "7334", "7335", "7336" ;
+  geo:lat "52.21" ;
+  geo:long "5.96944" ;
+  geo:alt "12" ;
+  geonames:parentFeature <https://sws.geonames.org/2759705/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2755634/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2759705/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2759706/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2759706/apeldoorn.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Apeldoorn>, <https://ru.wikipedia.org/wiki/%D0%90%D0%BF%D0%B5%D0%BB%D0%B4%D0%BE%D1%80%D0%BD> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Apeldoorn> .
+
+<https://sws.geonames.org/2759706/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2759706/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2019-09-05"^^xml:date .
+  
+<https://sws.geonames.org/2746342/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2746342/about.rdf> ;
+  geonames:name "Thorn" ;
+  geonames:alternateName "Thorn"@de, "Thorn"@en, "Thorn"@fr, "Thorn"@id, "Thorn"@it, "Thorn"@nl, "Thorn"@sv, "Toear"@li, "Torn", "托爾恩"@zh ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "2295" ;
+  geonames:postalCode "6017" ;
+  geo:lat "51.16167" ;
+  geo:long "5.84167" ;
+  geonames:parentFeature <https://sws.geonames.org/6544244/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2751596/> ;
+  geonames:parentADM2 <https://sws.geonames.org/6544244/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2746342/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2746342/thorn.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Thorn%2C_Netherlands> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Thorn%2C_Netherlands> .
+
+<https://sws.geonames.org/2746342/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2746342/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2017-10-17"^^xml:date .
+
+<https://sws.geonames.org/2743608/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2743608/about.rdf> ;
+  geonames:name "Zutphen" ;
+  geonames:alternateName "Zutfen"@li, "Zutfen", "Zutphen"@de, "Zutphen"@en, "Zutphen"@eo, "Zutphen"@es, "Zutphen"@fr, "Zutphen"@it, "Zutphen"@nl, "Zutphen"@ro, "Zutphen"@sv, "Зютфен"@ru ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "36188" ;
+  geonames:postalCode "7201", "7202", "7203", "7204", "7205", "7206", "7207" ;
+  geo:lat "52.13833" ;
+  geo:long "6.20139" ;
+  geonames:parentFeature <https://sws.geonames.org/2743607/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2755634/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2743607/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2743608/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2743608/zutphen.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Zutphen> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Zutphen> .
+
+<https://sws.geonames.org/2743608/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2743608/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2019-01-14"^^xml:date .
+
+<https://sws.geonames.org/2758401/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2758401/about.rdf> ;
+  geonames:name "Breda" ;
+  geonames:alternateName "브레다"@ko, "Breda"@ca, "Breda"@de, "Breda"@en, "Breda"@eo, "Breda"@es, "Breda"@fr, "Breda"@id, "Breda"@it, "Breda"@li, "Breda"@nl, "Breda"@pl, "Breda"@pt, "Breda"@ro, "Breda"@sv, "Brigita"@sl, "Μπρέντα"@el, "Бреда"@bg, "Бреда"@ce, "Бреда"@kk, "Бреда"@ru, "Бреда"@sr, "Бреда"@uk, "Бреда хот"@mn, "Брэда"@be, "ბრედა"@ka, "Բրեդա"@hy, "ברדה"@he, "بردا"@fa, "بريدا"@ar, "بریڈا"@pnb, "เบรดา"@th, "ブレダ"@ja, "布雷达"@wuu, "布雷达"@zh ;
+  geonames:officialName "Bréda"@fr ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "167673" ;
+  geonames:postalCode "4811", "4812", "4813", "4814", "4815", "4816", "4817", "4818", "4819", "4822", "4823", "4824", "4825", "4826", "4827", "4834", "4835", "4836", "4837", "4838", "4839" ;
+  geo:lat "51.58656" ;
+  geo:long "4.77596" ;
+  geonames:parentFeature <https://sws.geonames.org/2758400/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2749990/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2758400/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2758401/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2758401/breda.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Breda>, <https://fr.wikipedia.org/wiki/Br%C3%A9da>, <https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B5%D0%B4%D0%B0> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Breda> .
+
+<https://sws.geonames.org/2758401/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2758401/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2019-09-05"^^xml:date .
+
+<https://sws.geonames.org/2751792/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2751792/about.rdf> ;
+  geonames:name "Leeuwarden" ;
+  geonames:alternateName "레이우아르던"@ko, "Leeuwarden"@af, "Leeuwarden"@da, "Leeuwarden"@de, "Leeuwarden"@en, "Leeuwarden"@eo, "Leeuwarden"@es, "Leeuwarden"@et, "Leeuwarden"@fi, "Leeuwarden"@fr, "Leeuwarden"@id, "Leeuwarden"@it, "Leeuwarden"@jv, "Leeuwarden"@li, "Leeuwarden"@nl, "Leeuwarden"@pl, "Leeuwarden"@pt, "Leeuwarden"@ro, "Leeuwarden"@sv, "Leeuwarden", "Leewarden"@li, "Leewarden", "Leuvardena"@lv, "Leuvardenas"@lt, "Leyvarden"@az, "Lieuwarden", "Liewarde"@li, "Liwwadden"@nds, "Ljouwert"@an, "Ljouwert"@ca, "Ljouwert"@frr, "Ljouwert"@fy, "Ljouwert"@gv, "Ljouwert"@stq, "Леуварден"@bg, "Леуварден"@os, "Леуварден"@ru, "Леуварден"@sr, "Леўвардэн"@be, "Льовет"@uk, "ليوواردن"@ar, "لیوواردن"@fa, "लीयुवार्डेन"@mr, "เลวาร์เดิน"@th, "レーワルデン"@ja, "吕伐登"@zh ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPLA> ;
+  geonames:countryCode "NL" ;
+  geonames:population "91424" ;
+  geonames:postalCode "8911", "8912", "8913", "8914", "8915", "8916", "8917", "8918", "8919", "8921", "8922", "8923", "8924", "8925", "8926", "8927", "8931", "8932", "8933", "8934", "8935", "8936", "8937", "8938", "8939", "8941" ;
+  geo:lat "53.20139" ;
+  geo:long "5.80859" ;
+  geonames:parentFeature <https://sws.geonames.org/2751791/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2755812/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2751791/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2751792/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2751792/leeuwarden.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Leeuwarden>, <https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D1%83%D0%B2%D0%B0%D1%80%D0%B4%D0%B5%D0%BD> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Leeuwarden> .
+
+<https://sws.geonames.org/2751792/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2751792/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2019-09-05"^^xml:date .
+
+<https://sws.geonames.org/2750053/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2750053/about.rdf> ;
+  geonames:name "Nijmegen" ;
+  geonames:alternateName "네이메헌"@ko, "Gemeen Nimwaege"@nds, "Neimegena"@lv, "Neimegenas"@lt, "Nijmegen"@cs, "Nijmegen"@da, "Nijmegen"@en, "Nijmegen"@eo, "Nijmegen"@id, "Nijmegen"@lb, "Nijmegen"@nl, "Nijmegen"@no, "Nijmegen"@pl, "Nijmegen"@ro, "Nijmegen"@sco, "Nijmegen"@sv, "Nĳmegen"@fi, "Nijmeyen", "Nimega"@ca, "Nimega"@es, "Nimega"@eu, "Nimega"@gl, "Nimega"@it, "Nimega"@sq, "Nimegue"@pt, "Nimègue"@fr, "Nimègue", "Nîmegue"@wa, "Nimwege"@li, "Nimwegen"@de, "Nimwegen", "Nymegen", "Nymwegen"@fy, "Ulpia Noviomagus Batavorum"@la, "Ναϊμέχεν"@el, "Наймеген"@be, "Најмеген"@sr, "Неймеген"@bg, "Неймеген"@ru, "Неймеген"@uk, "ნეიმეგენი"@ka, "Նեյմեյխեն"@hy, "ניימכן"@he, "نايميخن"@ar, "نجمیگان"@pnb, "نیمیخن"@fa, "ኔመሕን"@am, "เนเมเกน"@th, "ナイメーヘン"@ja, "奈梅亨"@zh ;
+  geonames:officialName "Nijmegen"@de ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "158732" ;
+  geonames:postalCode "6511", "6512", "6515", "6521", "6522", "6523", "6524", "6525", "6531", "6532", "6533", "6534", "6535", "6536", "6537", "6538", "6541", "6542", "6543", "6544", "6545", "6546" ;
+  geo:lat "51.8425" ;
+  geo:long "5.85278" ;
+  geonames:parentFeature <https://sws.geonames.org/2750052/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2755634/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2750052/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2750053/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2750053/nijmegen.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Nijmegen>, <https://ru.wikipedia.org/wiki/%D0%9D%D0%B0%D0%B9%D0%BC%D0%B5%D0%B3%D0%B5%D0%BD> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Nijmegen> .
+
+<https://sws.geonames.org/2750053/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2750053/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2020-01-13"^^xml:date .
+
+<https://sws.geonames.org/2755251/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2755251/about.rdf> ;
+  geonames:name "Groningen" ;
+  geonames:alternateName "흐로닝언"@ko, "Greunienge"@zea, "Grins"@fy, "Groninga"@es, "Groninga"@gl, "Groninga"@it, "Groninga"@la, "Groninga"@lmo, "Groninga"@oc, "Groninga"@pt, "Gròninga"@scn, "Groninge"@li, "Groningen"@af, "Groningen"@br, "Groningen"@ca, "Groningen"@da, "Groningen"@de, "Groningen"@en, "Groningen"@eo, "Groningen"@fi, "Groningen"@ga, "Groningen"@hu, "Groningen"@id, "Groningen"@io, "Groningen"@nl, "Groningen"@no, "Groningen"@pl, "Groningen"@pt, "Groningen"@ro, "Groningen"@sv, "Groningena"@lv, "Groningenas"@lt, "Groningue"@fr, "Grunneng"@nds, "Qroningen"@az, "Χρόνινγκεν"@el, "Вилояти Гронинген"@tg, "Гронинген"@bg, "Гронинген"@os, "Гронинген"@ru, "Гронинген"@sr, "Гронінген"@be, "Гронінген"@uk, "გრონინგენი"@ka, "חרונינגן"@he, "خرونینگن"@fa, "گروننگن شہر"@pnb, "フローニンゲン"@ja, "フローニンゲン市"@ja, "格罗宁根"@zh ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPLA> ;
+  geonames:countryCode "NL" ;
+  geonames:population "181194" ;
+  geonames:postalCode "9711", "9712", "9713", "9714", "9715", "9716", "9717", "9718", "9721", "9722", "9723", "9724", "9725", "9726", "9727", "9728", "9731", "9732", "9733", "9734", "9735", "9736", "9737", "9738", "9741", "9742", "9743", "9744", "9745", "9746", "9747" ;
+  geo:lat "53.21917" ;
+  geo:long "6.56667" ;
+  geonames:parentFeature <https://sws.geonames.org/2755250/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2755249/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2755250/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2755251/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2755251/groningen.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Groningen>, <https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%BE%D0%BD%D0%B8%D0%BD%D0%B3%D0%B5%D0%BD_%28%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%29> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Groningen> .
+
+<https://sws.geonames.org/2755251/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2755251/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2019-09-05"^^xml:date .
+
+<https://sws.geonames.org/2747351/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2747351/about.rdf> ;
+  geonames:name "'s-Hertogenbosch" ;
+  geonames:alternateName "Bois-le-Duc"@fr, "Bolduque"@es, "Boscoducale"@it, "Hertogenbosch"@pl, "Hertogenbosch", "Herzogenbusch"@de, "Oeteldonk"@nl, "’s-Hertogenbosch"@no, "Silva Ducis"@la, "Хертогенбос"@ru ;
+  geonames:officialName "De Bosk"@fy, "'s-Hertogenbosch"@nl, "’s-Hertogenbosch"@de ;
+  geonames:shortName "Den Bosch"@nl ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPLA> ;
+  geonames:countryCode "NL" ;
+  geonames:population "134520" ;
+  geonames:postalCode "5211", "5212", "5213", "5215", "5216", "5221", "5222", "5223", "5224", "5231", "5232", "5233", "5234", "5235", "5236", "5237" ;
+  geo:lat "51.69917" ;
+  geo:long "5.30417" ;
+  geonames:parentFeature <https://sws.geonames.org/2747350/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2749990/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2747350/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2747351/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2747351/-s-hertogenbosch.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/%27s-Hertogenbosch>, <https://ru.wikipedia.org/wiki/%D0%A5%D0%B5%D1%80%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D0%B1%D0%BE%D1%81> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/%27s-Hertogenbosch> .
+
+<https://sws.geonames.org/2747351/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2747351/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2020-01-13"^^xml:date .
+
+<https://sws.geonames.org/2759145/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2759145/about.rdf> ;
+  geonames:name "Bergen op Zoom" ;
+  geonames:alternateName "Bergen op Zoom"@de, "Bergen op Zoom"@en, "Bergen op Zoom"@fr, "Bergen op Zoom"@id, "Bergen op Zoom"@it, "Bergen op Zoom"@li, "Bergen op Zoom"@nl, "Bergen op Zoom"@pl, "Bergen op Zoom"@ro, "Bergen op Zoom"@sv, "Берген-оп-Зом"@ru ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "66256" ;
+  geonames:postalCode "4611", "4612", "4613", "4614", "4615", "4616", "4617", "4621", "4622", "4623", "4624", "4625" ;
+  geo:lat "51.495" ;
+  geo:long "4.29167" ;
+  geonames:parentFeature <https://sws.geonames.org/2759144/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2749990/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2759144/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2759145/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2759145/bergen-op-zoom.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Bergen_op_Zoom> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Bergen_op_Zoom> .
+
+<https://sws.geonames.org/2759145/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2759145/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2017-10-17"^^xml:date .
+  
+<https://sws.geonames.org/2745634/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2745634/about.rdf> ;
+  geonames:name "Venray" ;
+  geonames:alternateName "Venraai", "Venraij" ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "39047" ;
+  geonames:postalCode "5801", "5802", "5803", "5804" ;
+  geo:lat "51.525" ;
+  geo:long "5.975" ;
+  geonames:parentFeature <https://sws.geonames.org/2745633/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2751596/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2745633/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2745634/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2745634/venray.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Venray> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Venray> .
+
+<https://sws.geonames.org/2745634/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2745634/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2017-10-17"^^xml:date .
+
+<https://sws.geonames.org/2746351/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2746351/about.rdf> ;
+  geonames:name "Tholen" ;
+  geonames:alternateName "Tholen"@de, "Tholen"@en, "Tholen"@id, "Tholen"@it, "Tholen"@li, "Tholen"@nl, "Tholen"@no, "Tholen"@pl, "Tholen"@sv, "Tole"@zea, "Tolen", "Толен"@ru ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "7475" ;
+  geonames:postalCode "4691" ;
+  geo:lat "51.53167" ;
+  geo:long "4.22083" ;
+  geonames:parentFeature <https://sws.geonames.org/2746352/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2744011/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2746350/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2746351/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2746351/tholen.html> .
+
+<https://sws.geonames.org/2746351/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2746351/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2017-10-17"^^xml:date .
+  
+<https://sws.geonames.org/2759633/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2759633/about.rdf> ;
+  geonames:name "Assen" ;
+  geonames:alternateName "아선"@ko, "Asenas"@lt, "Asningsėli"@osx, "Asse"@li, "Assen"@af, "Assen"@ca, "Assen"@de, "Assen"@en, "Assen"@eo, "Assen"@es, "Assen"@fr, "Assen"@fy, "Assen"@gl, "Assen"@id, "Assen"@it, "Assen"@nl, "Assen"@pl, "Assen"@ro, "Assen"@sv, "Άσσεν"@el, "Асен"@be, "Асен"@bg, "Асен"@sr, "Ассен"@ru, "Ассен"@uk, "Ասսեն"@hy, "آسن"@fa, "أسن"@ar, "อาสเซิน"@th, "アッセン"@ja, "阿森"@zh ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPLA> ;
+  geonames:countryCode "NL" ;
+  geonames:population "62237" ;
+  geonames:postalCode "9401", "9402", "9403", "9404", "9405", "9406", "9407", "9408" ;
+  geo:lat "52.99667" ;
+  geo:long "6.5625" ;
+  geonames:parentFeature <https://sws.geonames.org/2759632/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2756631/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2759632/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2759633/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2759633/assen.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Assen> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Assen> .
+
+<https://sws.geonames.org/2759633/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2759633/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2019-09-05"^^xml:date .
+
+<https://sws.geonames.org/2754135/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2754135/about.rdf> ;
+  geonames:name "Heusden" ;
+  geonames:alternateName "Housden", "Հեուսդեն"@hy, "هوسدن"@ar, "赫斯登"@zh ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "1300" ;
+  geonames:postalCode "5256" ;
+  geo:lat "51.73417" ;
+  geo:long "5.13889" ;
+  geonames:parentFeature <https://sws.geonames.org/2754134/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2749990/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2754134/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2754135/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2754135/heusden.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Heusden> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Heusden> .
+
+<https://sws.geonames.org/2754135/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2754135/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2017-10-17"^^xml:date .
+  
+<https://sws.geonames.org/2756077/>
+  a <http://www.geonames.org/ontology#Feature> ;
+  rdfs:isDefinedBy <https://sws.geonames.org/2756077/about.rdf> ;
+  geonames:name "Enkhuizen" ;
+  geonames:alternateName "Enkhuizen"@de, "Enkhuizen"@en, "Enkhuizen"@es, "Enkhuizen"@fr, "Enkhuizen"@id, "Enkhuizen"@it, "Enkhuizen"@li, "Enkhuizen"@nl, "Enkhuizen"@ro, "Enkhuizen"@sv, "Enkhuze"@li, "Inkhuzen"@fy ;
+  geonames:featureClass <https://www.geonames.org/ontology#P> ;
+  geonames:featureCode <https://www.geonames.org/ontology#P.PPL> ;
+  geonames:countryCode "NL" ;
+  geonames:population "17365" ;
+  geonames:postalCode "1601", "1602" ;
+  geo:lat "52.70333" ;
+  geo:long "5.29167" ;
+  geonames:parentFeature <https://sws.geonames.org/2756076/> ;
+  geonames:parentCountry <https://sws.geonames.org/2750405/> ;
+  geonames:parentADM1 <https://sws.geonames.org/2749879/> ;
+  geonames:parentADM2 <https://sws.geonames.org/2756076/> ;
+  geonames:nearbyFeatures <https://sws.geonames.org/2756077/nearby.rdf> ;
+  geonames:locationMap <https://www.geonames.org/2756077/enkhuizen.html> ;
+  geonames:wikipediaArticle <https://en.wikipedia.org/wiki/Enkhuizen> ;
+  rdfs:seeAlso <https://dbpedia.org/resource/Enkhuizen> .
+
+<https://sws.geonames.org/2756077/about.rdf>
+  a foaf:Document ;
+  foaf:primaryTopic <https://sws.geonames.org/2756077/> ;
+  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+  cc:attributionURL <https://www.geonames.org> ;
+  cc:attributionName "GeoNames"^^xml:string ;
+  dc:created "2006-01-15"^^xml:date ;
+  dc:modified "2017-10-17"^^xml:date .
