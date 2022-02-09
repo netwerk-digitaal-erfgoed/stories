@@ -1,4 +1,3 @@
-PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX schema: <http://schema.org/>
@@ -21,13 +20,13 @@ select distinct ?eventStart  ?eventLabel (concat(GROUP_CONCAT(distinct ?omschrij
 
   # bepaal de publicatie datum uit één van de twee datum velden
   ?s schema:dateIssued|schema:datePublished ?date .
-
+  # maak een schoon jaar uit de datum velden (negeer ongeldige datums)
+  BIND( str(year(?date)) as ?eventStart)
+  FILTER( datatype(?date) = xsd:date)
+  
   # in het keywords veld staat uitgebreiden informatie dit voegen samen
   # tot de beschrijving van het evenement via de group_concat in de select hierboven
   ?s schema:keywords ?omschrijving .
-
-  # maak een schoon jaar uit de datum velden
-  BIND( IF(datatype(?date)=xsd:date,(str(year(?date))),(replace(str(?date),"[ c o p . ? \\[ \\] ]",""))) as ?datestr)
 
   # filter de resultaten op het thema songfestival
   filter(contains(lcase(?thema),"songfestival"))
@@ -42,12 +41,8 @@ select distinct ?eventStart  ?eventLabel (concat(GROUP_CONCAT(distinct ?omschrij
   ?performer schema:name ?naam .
   
   BIND(CONCAT(?titel," | ",?naam) as ?eventLabel)
-  
-  # zet de geschoonde datum in de lijst voor de tijd
-  BIND(?datestr as ?eventStart)
-
-  # groepeer de resultaten zodat de distinct boven goed werkt.
 }
+# groepeer de resultaten zodat de distinct boven goed werkt.
 group by ?eventStart ?eventLabel ?url
 
 # en zet dit in de volgorde van tijd
