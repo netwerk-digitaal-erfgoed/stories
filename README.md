@@ -1,6 +1,6 @@
 # NDE Data Stories
 
-Some experiments with Data Stories applied on the NDE Linked Data platform. See them in action on <https://demo.netwerkdigitaalerfgoed.nl/stories>.
+Some experiments with Data Stories applied on the NDE Linked Data platform. See them in action on <https://datastories.demo.netwerkdigitaalerfgoed.nl>.
 
 These Data Stories can be run locally, by following these steps:
 

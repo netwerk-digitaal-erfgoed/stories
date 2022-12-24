@@ -5,32 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Data Stories - HackaLOD - Data Stories op basis van de collectie data van het Rijksmuseum">
     <meta name="author" content="Enno Meijers">
-    <link href="/stories/assets/imgs/nde_logo_simplified.png" rel="icon" type="image/png">
+    <link href="/assets/imgs/nde_logo_simplified.png" rel="icon" type="image/png">
     <title>NDE Data Stories - HackaLOD - RKDartists thesaurus</title>
     <!--
-    <link href="/stories/assets/css/yasgui.min.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/yasgui.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/stories.min.css" rel="stylesheet" type="text/css">
     <link href="https://stories.triply.cc/shared/css/yasgui/stories.min.css" rel="stylesheet" type="text/css">
     -->
     <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
         integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
         crossorigin="anonymous">
-    <link href="/stories/assets/css/main.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/stories.min.css" rel="stylesheet" type="text/css">
-    <link href="/stories/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/stories.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
   </head>
   <body class="withNavbar">
     <nav class="navbar fixed-top ">
       <div class="navbar-content">
         <div class="navbar-icon">
-          <a class="navbar-brand" href="/stories/hackalod/">
-            <img alt="Data Stories - HackaLOD" src="/stories/assets/imgs/nde_logo.png">
+          <a class="navbar-brand" href="/hackalod/">
+            <img alt="Data Stories - HackaLOD" src="/assets/imgs/nde_logo.png">
           </a>
         </div>
         <div class="navbar-title">
-          <a class="navbar-brand" href="/stories/hackalod/">Data Stories / HackaLOD</a>
+          <a class="navbar-brand" href="/hackalod/">Data Stories / HackaLOD</a>
         </div>
       </div>
     </nav>
@@ -40,19 +40,19 @@
       <div class="story">
         <h2>RKDartists& thesaurus</h2>
         <p>
-          RKDartists& is een database met biografische gegevens van Nederlandse en buitenlandse kunstenaars van de middeleeuwen tot heden. 
-          Het &-teken geeft aan dat daarnaast ook kunsthandelaren, kunstverzamelaars en kunsthistorici zijn opgenomen in deze database. 
-          De database RKDartists& vormt tevens een index op de omvangrijke kunsthistorische documentatie van het RKD. 
-          Die documentatie (beeldmateriaal, archieven, persdocumentatie en literatuur) kunt u vervolgens op het RKD raadplegen. 
+          RKDartists& is een database met biografische gegevens van Nederlandse en buitenlandse kunstenaars van de middeleeuwen tot heden.
+          Het &-teken geeft aan dat daarnaast ook kunsthandelaren, kunstverzamelaars en kunsthistorici zijn opgenomen in deze database.
+          De database RKDartists& vormt tevens een index op de omvangrijke kunsthistorische documentatie van het RKD.
+          Die documentatie (beeldmateriaal, archieven, persdocumentatie en literatuur) kunt u vervolgens op het RKD raadplegen.
           Daarnaast wordt RKDartists& door andere erfgoedinstellingen gebruikt als thesaurus bij het ontsluiten van hun eigen collecties.
         </p>
         <p>
-          De data is voorlopig beschikbaar gemaakt via het <a href="https://data.netwerkdigitaalerfgoed.nl/rkd/rkdartists/" target="_blank">NDE LOD Platform</a>. 
+          De data is voorlopig beschikbaar gemaakt via het <a href="https://data.netwerkdigitaalerfgoed.nl/rkd/rkdartists/" target="_blank">NDE LOD Platform</a>.
           Zie voor meer informatie over deze en andere databases <a href="https://rkd.nl/nl/explore/artists" target="_blank">de website van RKD</a>.
         </p>
         <p>
-          De volgende query laat zien hoe een gegevens via de naam van de kunstenaar (of andere gerelateerde personen) 
-          gezocht kunnen en een aantal gegevens worden opgehaald.   
+          De volgende query laat zien hoe een gegevens via de naam van de kunstenaar (of andere gerelateerde personen)
+          gezocht kunnen en een aantal gegevens worden opgehaald.
         </p>
         <query data-config="https://api.triplydb.com/s/fleppZF_"></query>
       </div>
@@ -60,20 +60,20 @@
       <div class="story">
         <h2>Plaatsen waar de schilder Jan Toorop gewerkt heeft</h2>
         <p>
-          In de RKDartists& thesaurus worden zoveel mogelijk feitelijke gegevens over het werk van een kunstenaar vastgelegd. 
-          Onder andere ook op welke plaats deze gewerkt heeft (op basis van gedocumenteerde bronnen).  
+          In de RKDartists& thesaurus worden zoveel mogelijk feitelijke gegevens over het werk van een kunstenaar vastgelegd.
+          Onder andere ook op welke plaats deze gewerkt heeft (op basis van gedocumenteerde bronnen).
         </p>
         <query data-config="https://api.triplydb.com/s/BfXiZtKD"></query>
       </div>
-      
+
     <div class="story">
         <h2>Plaatsen waar het werk van Jan Toorop te zien is</h2>
         <p>
           Wikidata heeft op veel plaatsen een verwijzingen gemaakt naar de RKDartists& database (via property P650). Door gebruik te maken van
-          deze verbinding is het mogelijk om op basis van de Wikidata gegevens na te gaan in welke musea de meeste werken van 
-          Jan Toorop te vinden zijn. De lijst is op gesorteerde op basis van de hoeveelheid werken die er te zien zijn. De aantallen zijn weggelaten 
-          omdat de gegevens in Wikidata niet volledig zijn en daardoor een vertekend beeld kan ontstaan, we gaan er hier voor het gemak van uit 
-          dat de orde van grootte wel klopt. 
+          deze verbinding is het mogelijk om op basis van de Wikidata gegevens na te gaan in welke musea de meeste werken van
+          Jan Toorop te vinden zijn. De lijst is op gesorteerde op basis van de hoeveelheid werken die er te zien zijn. De aantallen zijn weggelaten
+          omdat de gegevens in Wikidata niet volledig zijn en daardoor een vertekend beeld kan ontstaan, we gaan er hier voor het gemak van uit
+          dat de orde van grootte wel klopt.
         </p>
         <query data-config="https://api.triplydb.com/s/8jRUBl6L"></query>
       </div>
@@ -86,11 +86,11 @@
         </p>
         <query data-config="https://api.triplydb.com/s/wTNUlycFU"></query>
       </div>
-      
-      
+
+
     </div>
     <!--<script src="https://stories.triply.cc/shared/js/stories.min.js"></script>-->
-    <script src="/stories/assets/js/stories.min.js"></script>
+    <script src="/assets/js/stories.min.js"></script>
     <script>window.onload = function() {window.stories()};</script>
   </body>
 </html>
