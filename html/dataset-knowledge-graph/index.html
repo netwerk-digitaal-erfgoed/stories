@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="David de Boer">
+    <link href="/assets/imgs/nde_logo_simplified.png" rel="icon" type="image/png">
+    <title>Dataset Knowledge Graph</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="/assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/stories.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/yasgui.bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body class="withNavbar">
+<nav class="navbar fixed-top ">
+    <div class="navbar-content">
+        <div class="navbar-icon">
+            <a class="navbar-brand" href="/">
+                <img alt="Data Stories home" src="/assets/imgs/nde_logo.png">
+            </a>
+        </div>
+        <div class="navbar-title">
+            <a class="navbar-brand" href="/">Data Stories</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h2>Dataset Knowledge Graph</h2>
+    <p>The NDE Dataset Knowledge Graph helps researchers, software developers and others to find relevant datasets for their projects.
+        The Knowledge Graph provides statistical information about datasets.
+    </p>
+    <p>
+        For more information, please see the <a href="https://github.com/netwerk-digitaal-erfgoed/dataset-knowledge-graph">README</a>.
+    </p>
+
+    <div class="story" data-endpoint="https://triplestore.netwerkdigitaalerfgoed.nl/repositories/dataset-knowledge-graph">
+        <h3>Dataset analysis</h3>
+
+        <div style="display: flex; height: 450px">
+            <div>
+                <h5>Number of subjects analysed</h5>
+                <div style="width: 300px">
+                    <query data-config="#query=PREFIX%20prov%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fprov%23%3E%0APREFIX%20void%3A%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23%3E%0APREFIX%20schema%3A%20%3Chttps%3A%2F%2Fschema.org%2F%3E%0A%0Aselect%20(sum(%3Fsubjects)%20as%20%3Fcount)%20%7B%0A%20%20%3Fs%20a%20void%3ADataset%20%3B%0A%20%20%09void%3AdistinctSubjects%20%3Fsubjects%0A%7D%0A%0A%0A&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fdataset-knowledge-graph&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=gchart&outputSettings=%7B%22chartConfig%22%3A%7B%22options%22%3A%7B%22hAxis%22%3A%7B%22useFormatFromData%22%3Atrue%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%7D%2C%22legacyScatterChartLabels%22%3Atrue%2C%22vAxes%22%3A%5B%7B%22useFormatFromData%22%3Atrue%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%7D%5D%2C%22booleanRole%22%3A%22certainty%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%7D%2C%22state%22%3A%7B%7D%2C%22view%22%3A%7B%22columns%22%3Anull%2C%22rows%22%3Anull%7D%2C%22isDefaultVisualization%22%3Afalse%2C%22chartType%22%3A%22Gauge%22%7D%7D"></query>
+                </div>
+            </div>
+
+            <div>
+                <h5>Number of triples analysed</h5>
+                <div style="width: 300px">
+                    <query data-config="#query=PREFIX%20prov%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fprov%23%3E%0APREFIX%20void%3A%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23%3E%0APREFIX%20schema%3A%20%3Chttps%3A%2F%2Fschema.org%2F%3E%0A%0Aselect%20(sum(%3Ftriples)%20as%20%3Fcount)%20%7B%0A%20%20%3Fs%20a%20void%3ADataset%20%3B%0A%20%20void%3Atriples%20%3Ftriples%0A%7D%0A%0A%0A&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fdataset-knowledge-graph&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=gchart&outputSettings=%7B%22chartConfig%22%3A%7B%22options%22%3A%7B%22hAxis%22%3A%7B%22useFormatFromData%22%3Atrue%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%7D%2C%22legacyScatterChartLabels%22%3Atrue%2C%22vAxes%22%3A%5B%7B%22useFormatFromData%22%3Atrue%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%2C%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%7D%5D%2C%22booleanRole%22%3A%22certainty%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%7D%2C%22state%22%3A%7B%7D%2C%22view%22%3A%7B%22columns%22%3Anull%2C%22rows%22%3Anull%7D%2C%22isDefaultVisualization%22%3Afalse%2C%22chartType%22%3A%22Gauge%22%7D%7D"></query>
+                </div>
+            </div>
+        </div>
+
+        <query data-config="#query=PREFIX%20prov%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fprov%23%3E%0APREFIX%20void%3A%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23%3E%0APREFIX%20schema%3A%20%3Chttps%3A%2F%2Fschema.org%2F%3E%0A%0ASELECT%20%3Flabel%20(count(distinct%20%3Fdataset)%20as%20%3Fcount)%20%7B%0A%20%20%7B%0A%20%20%20%3Fdataset%20a%20void%3ADataset%20.%20%0A%20%20%20%20BIND(%22Datasets%20successfully%20analysed%22%20as%20%3Flabel)%20%20%20%20%0A%20%20%7D%20UNION%20%7B%0A%20%20%20%20%3Fdataset%20a%20prov%3AEntity%20.%0A%20%20%20%20FILTER%20NOT%20EXISTS%20%7B%20%3Fdataset%20a%20void%3ADataset%20%7D%0A%20%20%20%20BIND(%22Datasets%20failed%20to%20analyse%22%20as%20%3Flabel)%0A%20%20%7D%0A%7D%20GROUP%20BY%20%3Flabel&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fdataset-knowledge-graph&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=gchart&outputSettings=%7B%22chartConfig%22%3A%7B%22options%22%3A%7B%22legacyScatterChartLabels%22%3Atrue%2C%22tooltip%22%3A%7B%22isHtml%22%3Atrue%7D%2C%22is3D%22%3Afalse%2C%22pieHole%22%3A0%2C%22booleanRole%22%3A%22certainty%22%2C%22vAxes%22%3A%5B%7B%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%5D%2C%22hAxis%22%3A%7B%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22useFirstColumnAsDomain%22%3Afalse%7D%2C%22state%22%3A%7B%7D%2C%22view%22%3A%7B%22columns%22%3Anull%2C%22rows%22%3Anull%7D%2C%22isDefaultVisualization%22%3Afalse%2C%22chartType%22%3A%22PieChart%22%7D%7D"></query>
+
+        <h3>Distributions</h3>
+        <query data-config="#query=PREFIX%20void%3A%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23%3E%0APREFIX%20schema%3A%20%3Chttps%3A%2F%2Fschema.org%2F%3E%0A%0Aselect%20%3Flabel%20(count(%3Fs)%20as%20%3Fcount)%0A%7B%0A%20%20%20%20%7B%0A%09%09%3Fs%20a%20schema%3AAction%20%3B%0A%09%20%20%20%20%09schema%3Aerror%20%3Ferror%20%3B%0A%20%20%20%20%20%20BIND(%3Ferror%20as%20%3Flabel)%0A%09%7D%20%0A%20%20%20%20union%0A%20%20%20%20%7B%0A%09%09%3Fs%20a%20schema%3AAction%20.%0A%09%20%20%20%20FILTER%20NOT%20EXISTS%20%7B%20%3Fs%20schema%3Aerror%20%3Ferror%20%7D%0A%20%20%20%20BIND(%22Successful%22%20as%20%3Flabel)%0A%20%20%20%20%7D%0A%7D%20GROUP%20BY%20%3Flabel%0A&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fdataset-knowledge-graph&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=gchart&outputSettings=%7B%22chartConfig%22%3A%7B%22options%22%3A%7B%22legacyScatterChartLabels%22%3Atrue%2C%22tooltip%22%3A%7B%22isHtml%22%3Atrue%7D%2C%22is3D%22%3Afalse%2C%22pieHole%22%3A0%2C%22booleanRole%22%3A%22certainty%22%2C%22vAxes%22%3A%5B%7B%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%5D%2C%22hAxis%22%3A%7B%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22useFirstColumnAsDomain%22%3Afalse%7D%2C%22state%22%3A%7B%7D%2C%22view%22%3A%7B%22columns%22%3Anull%2C%22rows%22%3Anull%7D%2C%22isDefaultVisualization%22%3Afalse%2C%22chartType%22%3A%22PieChart%22%7D%7D"></query>
+
+        <h3>Vocabularies used in datasets</h3>
+        <query data-config="#query=select%20%3Flabel%20(count(%3Fdataset)%20as%20%3Fcount)%20%7B%0A%20%20%20%20%3Fdataset%20a%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23Dataset%3E%20%3B%0A%20%20%20%20%20%20%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23vocabulary%3E%20%3Flabel%0A%7D%20%0Agroup%20by%20%3Flabel%0Aorder%20by%20desc(%3Fcount)%0A&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fdataset-knowledge-graph&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=gchart&outputSettings=%7B%22chartConfig%22%3A%7B%22options%22%3A%7B%22legacyScatterChartLabels%22%3Atrue%2C%22legend%22%3A%22right%22%2C%22tooltip%22%3A%7B%22isHtml%22%3Atrue%7D%2C%22useFirstColumnAsDomain%22%3Afalse%2C%22isStacked%22%3Afalse%2C%22booleanRole%22%3A%22certainty%22%2C%22vAxes%22%3A%5B%7B%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22viewWindow%22%3Anull%2C%22viewWindowMode%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22useFormatFromData%22%3Atrue%7D%5D%2C%22hAxis%22%3A%7B%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%7D%2C%22state%22%3A%7B%7D%2C%22view%22%3A%7B%22columns%22%3Anull%2C%22rows%22%3Anull%7D%2C%22isDefaultVisualization%22%3Afalse%2C%22chartType%22%3A%22BarChart%22%7D%7D"></query>
+
+        <h3>Terminology sources</h3>
+        <h5>Used in datasets</h5>
+        <query data-config="#query=select%20(%3FterminologySource%20as%20%3Flabel)%20(count(%3Fdataset)%20as%20%3Fcount)%20%7B%0A%20%20%20%20%3Fs%20a%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23Linkset%3E%20%3B%0A%20%20%20%20%20%20%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23subjectsTarget%3E%20%3Fdataset%20%3B%0A%20%20%20%20%20%20%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23objectsTarget%3E%20%3FterminologySource%20%3B%0A%20%20%20%20%20%20%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23triples%3E%20%3FnumberOfTriples%20%3B%0A%7D%20group%20by%20%3FterminologySource%20order%20by%20desc(%3Fcount)&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fdataset-knowledge-graph&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=gchart&outputSettings=%7B%22chartConfig%22%3A%7B%22options%22%3A%7B%22legacyScatterChartLabels%22%3Atrue%2C%22legend%22%3A%22right%22%2C%22tooltip%22%3A%7B%22isHtml%22%3Atrue%7D%2C%22useFirstColumnAsDomain%22%3Afalse%2C%22isStacked%22%3Afalse%2C%22booleanRole%22%3A%22certainty%22%2C%22vAxes%22%3A%5B%7B%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22viewWindow%22%3Anull%2C%22viewWindowMode%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22useFormatFromData%22%3Atrue%7D%5D%2C%22hAxis%22%3A%7B%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%7D%2C%22state%22%3A%7B%7D%2C%22view%22%3A%7B%22columns%22%3Anull%2C%22rows%22%3Anull%7D%2C%22isDefaultVisualization%22%3Afalse%2C%22chartType%22%3A%22BarChart%22%7D%7D"></query>
+
+        <h5>Used in triples</h5>
+        <query data-config="#query=select%20%3FterminologySource%20(sum(%3FnumOfTriples)%20as%20%3Fcount)%20%7B%0A%20%20%20%20%3Fs%20a%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23Linkset%3E%20%3B%0A%20%20%20%20%20%20%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23objectsTarget%3E%20%3FterminologySource%20%3B%0A%20%20%20%20%20%20%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23triples%3E%20%3FnumOfTriples%20%3B%0A%7D%20group%20by%20%3FterminologySource%20order%20by%20desc(%3Fcount)&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fdataset-knowledge-graph&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=gchart&outputSettings=%7B%22chartConfig%22%3A%7B%22options%22%3A%7B%22legacyScatterChartLabels%22%3Atrue%2C%22legend%22%3A%22right%22%2C%22tooltip%22%3A%7B%22isHtml%22%3Atrue%7D%2C%22useFirstColumnAsDomain%22%3Afalse%2C%22isStacked%22%3Afalse%2C%22booleanRole%22%3A%22certainty%22%2C%22vAxes%22%3A%5B%7B%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22viewWindow%22%3Anull%2C%22viewWindowMode%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%7B%22useFormatFromData%22%3Atrue%7D%5D%2C%22hAxis%22%3A%7B%22viewWindow%22%3A%7B%22max%22%3Anull%2C%22min%22%3Anull%7D%2C%22minValue%22%3Anull%2C%22maxValue%22%3Anull%2C%22useFormatFromData%22%3Atrue%7D%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%7D%2C%22state%22%3A%7B%7D%2C%22view%22%3A%7B%22columns%22%3Anull%2C%22rows%22%3Anull%7D%2C%22isDefaultVisualization%22%3Afalse%2C%22chartType%22%3A%22BarChart%22%7D%7D"></query>
+
+        <h3>Top 10 types</h3>
+        <query data-config="#query=PREFIX%20void%3A%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23%3E%0Aselect%20%3Ftype%20(sum(%3Fentities)%20as%20%3Fcount)%20%7B%0A%20%20%3Fdataset%20void%3AclassPartition%20%5B%0A%20%20%20%09void%3Aclass%20%3Ftype%20%3B%0A%20%20%20%20void%3Aentities%20%3Fentities%20%3B%0A%20%20%5D%0A%7D%0Agroup%20by%20%3Ftype%0Aorder%20by%20desc(%3Fcount)&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fdataset-knowledge-graph&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=table&outputSettings=%7B%22pageSize%22%3A10%7D"></query>
+
+        <h3>Top 10 largest datasets</h3>
+        <query data-config="#query=PREFIX%20void%3A%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23%3E%0A%0Aselect%20%3Fdataset%20%3Ftriples%20%7B%0A%20%20%3Fdataset%20a%20void%3ADataset%20%3B%0A%09%20%20void%3Atriples%20%3Ftriples%20.%0A%7D%20order%20by%20desc(%3Ftriples)&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fdataset-knowledge-graph&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=table&outputSettings=%7B%22pageSize%22%3A10%7D"></query>
+
+        <h3>Top 10 best-linked datasets</h3>
+        <query data-config="#query=SELECT%20%3FDataset%20%3FLiterals%20%3FURIs%20(ROUND(%3FURIs%20%2F%20(%3FLiterals%20%2B%20%3FURIs)%20*%20100)%20as%20%3Fpercentage)%20%7B%0A%20%20%20%20%3FDataset%20a%20%3Chttp%3A%2F%2Frdfs.org%2Fns%2Fvoid%23Dataset%3E%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%3Chttps%3A%2F%2Fwww.netwerkdigitaalerfgoed.nl%2Fdef%23distinctObjectsLiteral%3E%20%3FLiterals%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%3Chttps%3A%2F%2Fwww.netwerkdigitaalerfgoed.nl%2Fdef%23distinctObjectsURI%3E%20%3FURIs%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20FILTER(%3FURIs%20%3E%201)%20%20%20%20%20%20%20%20%0A%7D%0Aorder%20by%20desc(%3Fpercentage)%0A&endpoint=https%3A%2F%2Ftriplestore.netwerkdigitaalerfgoed.nl%2Frepositories%2Fdataset-knowledge-graph&requestMethod=POST&tabTitle=Query%2019&headers=%7B%7D&contentTypeConstruct=text%2Fturtle%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=table&outputSettings=%7B%22pageSize%22%3A10%7D"></query>
+    </div>
+</div>
+
+<script src="/assets/js/stories.min.js"></script>
+<script>window.onload = function () {
+    window.stories()
+};</script>
+</body>
+</html>
