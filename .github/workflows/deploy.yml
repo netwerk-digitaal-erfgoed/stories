@@ -15,7 +15,7 @@ jobs:
       - name: Set variables
         id: vars
         run: |
-          echo "docker_image_php_fpm=ghcr.io/${{ github.repository }}" >> $GITHUB_OUTPUT
+          echo "docker_image=ghcr.io/${{ github.repository }}" >> $GITHUB_OUTPUT
           echo "build_tag=$(git show -s --format=%cd-%h --date=format:%Y%m%d%H%M%S)" >> $GITHUB_OUTPUT
 
       - name: Set up Docker Buildx
