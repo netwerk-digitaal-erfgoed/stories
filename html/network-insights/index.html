@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Network Insights</title>
+<meta name="description" content="The state of the Dutch heritage network, observed in the data itself by the NDE Dataset Knowledge Graph.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a wide hero with the headline figures, then two chapters – “what the network looks like” and
+   “where it goes wrong” – as a 12-column card grid that collapses to one column on phones.
+   Every card carries its own SPARQL query, shown in full and linked to the QLever UI. */
+:root {
+  --bg: #f4f7f8;
+  --surface: #ffffff;
+  --ink: #0f1f28;
+  --ink-2: #445662;
+  --muted: #5f6f79;
+  --line: #dde4e8;
+  --accent: #1b6880;
+  --accent-soft: #d3e7ee;
+  --accent-track: #e8f1f4;
+  --good: #12703a;
+  --bad: #b3312f;
+  --bad-soft: #f6dedd;
+  --code-bg: #f0f4f6;
+  --code-kw: #8a3b8f;
+  --code-var: #1b6880;
+  --code-iri: #6b5a12;
+  --code-str: #23703d;
+  --code-comment: #6c7a83;
+  --shadow: none;
+  --check-met: #16a34a;
+  --check-met-ink: #052e16;
+  --check-warning: #f59e0b;
+  --check-failed: #dc2626;
+  --check-unmet: #e5e7eb;
+  --check-unmet-border: #9ca3af;
+  --font-display: "Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1317;
+    --surface: #131c21;
+    --ink: #e6eef1;
+    --ink-2: #aebcc4;
+    --muted: #8d9ca5;
+    --line: #25323a;
+    --accent: #5db6d0;
+    --accent-soft: #1d3c48;
+    --accent-track: #18282f;
+    --good: #55c480;
+    --bad: #f07f7c;
+    --bad-soft: #3b1f20;
+    --code-bg: #0f171b;
+    --code-kw: #d99ade;
+    --code-var: #6fc3dc;
+    --code-iri: #d8c477;
+    --code-str: #7ccf95;
+    --code-comment: #7f8f98;
+    --shadow: none;
+    --check-met: #22c55e;
+    --check-met-ink: #052e16;
+    --check-warning: #fbbf24;
+    --check-failed: #dc2626;
+    --check-unmet: #374151;
+    --check-unmet-border: #6b7280;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1317;
+  --surface: #131c21;
+  --ink: #e6eef1;
+  --ink-2: #aebcc4;
+  --muted: #8d9ca5;
+  --line: #25323a;
+  --accent: #5db6d0;
+  --accent-soft: #1d3c48;
+  --accent-track: #18282f;
+  --good: #55c480;
+  --bad: #f07f7c;
+  --bad-soft: #3b1f20;
+  --code-bg: #0f171b;
+  --code-kw: #d99ade;
+  --code-var: #6fc3dc;
+  --code-iri: #d8c477;
+  --code-str: #7ccf95;
+  --code-comment: #7f8f98;
+  --shadow: none;
+  --check-met: #22c55e;
+  --check-met-ink: #052e16;
+  --check-warning: #fbbf24;
+  --check-failed: #dc2626;
+  --check-unmet: #374151;
+  --check-unmet-border: #6b7280;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 16px/1.55 var(--font-body);
+}
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, summary:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Hero */
+.hero { padding-block: 56px 32px; }
+.eyebrow {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.eyebrow a { color: inherit; }
+h1 {
+  font: 700 clamp(36px, 5vw, 56px)/1.05 var(--font-display);
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-wrap: balance;
+}
+.lede {
+  font-size: clamp(17px, 2vw, 20px);
+  color: var(--ink-2);
+  max-width: 60ch;
+  margin: 18px 0 0;
+}
+.status-line {
+  margin: 14px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 36px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.tile {
+  background: var(--surface);
+  padding: 20px 22px 18px;
+  min-width: 0;
+}
+.tile-label { font-size: 14px; color: var(--ink-2); font-weight: 500; }
+.tile-value {
+  font: 600 clamp(30px, 4vw, 44px)/1.1 var(--font-display);
+  letter-spacing: -0.02em;
+  margin-top: 6px;
+}
+.tile-value.hero-figure { color: var(--accent); }
+.tile-note { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+
+/* Chapters */
+.chapter { padding-block: 40px 8px; }
+.chapter-head { max-width: 70ch; margin-bottom: 20px; }
+h2 {
+  font: 700 clamp(26px, 3.4vw, 36px)/1.1 var(--font-display);
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+.chapter-head p { color: var(--ink-2); margin: 8px 0 0; }
+.caveat {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 16px;
+  padding: 2px 0 2px 14px;
+  border-left: 3px solid var(--line);
+  color: var(--ink-2);
+  font-size: 15px;
+  max-width: 82ch;
+}
+.caveat strong { color: var(--ink); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+}
+.card {
+  grid-column: span 6;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  padding: 22px 22px 14px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.card.wide { grid-column: span 12; }
+.card.third { grid-column: span 4; }
+.card.quarter { grid-column: span 3; }
+h3 {
+  font: 600 20px/1.25 var(--font-display);
+  margin: 0;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.card-desc { color: var(--ink-2); font-size: 15px; margin: 6px 0 0; max-width: 68ch; }
+.finding {
+  font-size: 17px;
+  margin: 14px 0 0;
+  color: var(--ink);
+  max-width: 68ch;
+}
+.finding b { font-weight: 600; }
+/* A finding: the one sentence per card that says what the chart shows. */
+.finding { padding-left: 12px; border-left: 3px solid var(--accent); }
+.chart { margin-top: 18px; flex: 1; min-height: 120px; }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; }
+.chart-title { font-size: 14px; font-weight: 600; color: var(--ink-2); margin: 0 0 10px; }
+
+/* Horizontal bars */
+.bars { display: grid; gap: 7px; }
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(0, 38%) minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  font-size: 14.5px;
+  border-radius: 6px;
+  padding: 2px 4px;
+  margin: 0 -4px;
+}
+.bar-row:hover, .bar-row:focus-visible { background: var(--accent-track); outline: none; }
+.bar-label { overflow-wrap: anywhere; color: var(--ink); line-height: 1.3; }
+.bar-label .sub { display: block; font-size: 12.5px; color: var(--muted); }
+.bar-cell { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.bar {
+  height: 14px;
+  background: var(--accent);
+  border-radius: 0 4px 4px 0;
+  min-width: 2px;
+}
+.bar.flag { background: var(--bad); }
+.bar-value { font-variant-numeric: tabular-nums; color: var(--ink-2); white-space: nowrap; font-size: 13.5px; }
+
+/* Columns (size classes) */
+.columns {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 8px;
+  align-items: end;
+  height: 200px;
+  border-bottom: 1px solid var(--line);
+}
+.column { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 0; }
+.column-value { font-size: 13.5px; color: var(--ink-2); font-variant-numeric: tabular-nums; margin-bottom: 4px; }
+.column-bar { width: min(100%, 44px); background: var(--accent); border-radius: 4px 4px 0 0; min-height: 2px; }
+.column-axis {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Share strip */
+.strip { display: flex; height: 28px; gap: 2px; border-radius: 6px; overflow: hidden; }
+.strip-part { min-width: 0; display: flex; align-items: center; padding-left: 6px; font-size: 12.5px; font-weight: 600; color: #ffffff; white-space: nowrap; overflow: hidden; }
+.strip-legend { display: grid; gap: 6px; margin-top: 14px; font-size: 14px; }
+.strip-legend div { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+.swatch { width: 12px; height: 12px; border-radius: 3px; }
+.strip-legend .num { font-variant-numeric: tabular-nums; color: var(--ink-2); }
+
+/* Scorecards */
+.score-note { font-size: 14.5px; color: var(--ink-2); margin: 12px 0 0; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin-top: 16px; }
+table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+th { text-align: left; font-size: 13px; color: var(--muted); font-weight: 600; padding: 0 8px 8px; border-bottom: 1px solid var(--line); }
+td { padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td .rank { color: var(--muted); font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+
+/* Query panel */
+.query-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  align-items: center;
+  margin-top: 18px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+.query-bar details { flex: 1 1 100%; order: 3; }
+.hero > .query-bar { border-top: 0; padding-top: 0; }
+.query-bar summary {
+  cursor: pointer;
+  color: var(--ink-2);
+  font-weight: 500;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.query-bar summary::-webkit-details-marker { display: none; }
+.query-bar summary::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.15s;
+}
+.query-bar details[open] summary::before { transform: rotate(45deg); }
+.query-links { display: inline-flex; gap: 14px; flex-wrap: wrap; }
+.query-links a { font-weight: 500; text-decoration: none; }
+.query-links a:hover { text-decoration: underline; }
+.query-heading { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+pre.sparql {
+  margin: 10px 0 4px;
+  padding: 14px 16px;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow-x: auto;
+  font: 13.5px/1.6 var(--font-mono);
+  color: var(--ink);
+  tab-size: 2;
+}
+.sparql .kw { color: var(--code-kw); font-weight: 500; }
+.sparql .var { color: var(--code-var); }
+.sparql .iri { color: var(--code-iri); }
+.sparql .str { color: var(--code-str); }
+.sparql .comment { color: var(--code-comment); font-style: italic; }
+.copy-button {
+  font: 500 13px var(--font-body);
+  color: var(--ink-2);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+.copy-button:hover { border-color: var(--accent); color: var(--accent); }
+
+/* States */
+.skeleton { display: grid; gap: 9px; }
+.skeleton span { display: block; height: 14px; border-radius: 4px; background: var(--accent-track); }
+.load-error { color: var(--bad); font-size: 14.5px; }
+.draw:empty::before { content: "–"; color: var(--muted); }
+
+/* Automated checks, in the Dataset Register’s colours (Tailwind green, amber, red and gray). */
+.check-rows { display: grid; gap: 16px; margin-top: 20px; }
+.check-row { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 16px; align-items: center; }
+.check-name { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; line-height: 1.3; }
+.check-name small { display: block; font-weight: 400; color: var(--muted); font-size: 14px; }
+.checkbox {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: 4px;
+  border: 1px solid var(--check-unmet-border);
+  background: var(--surface);
+}
+.checkbox svg { width: 13px; height: 13px; }
+.checkbox.met { background: var(--check-met); border-color: var(--check-met); color: var(--check-met-ink); }
+.checkbox.warning { background: var(--check-warning); border-color: var(--check-warning); color: #451a03; }
+.checkbox.failed { background: var(--check-failed); border-color: var(--check-failed); color: #ffffff; }
+.checkbox.small { width: 16px; height: 16px; margin-top: 0; }
+.checkbox.small svg { width: 11px; height: 11px; }
+.segments { display: flex; gap: 2px; height: 28px; }
+.segment {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 4px;
+  font: 600 14px var(--font-body);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.segment.met { background: var(--check-met); color: var(--check-met-ink); }
+.segment.warning { background: var(--check-warning); color: #451a03; }
+.segment.failed { background: var(--check-failed); color: #ffffff; }
+.segment.unmet { background: var(--check-unmet); color: var(--ink); }
+.segment:hover, .segment:focus-visible, .segment[aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: 1px; }
+.check-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; font-size: 14px; color: var(--ink-2); }
+.check-legend > span { display: inline-flex; align-items: center; gap: 6px; }
+.check-legend .checkbox { width: 14px; height: 14px; margin: 0; }
+
+/* Per organisation */
+.table-scroll { overflow-x: auto; margin-top: 16px; }
+.org-table td, .org-table th { white-space: nowrap; }
+.org-table td:first-child { white-space: normal; min-width: 14rem; }
+.org-table tbody tr { cursor: pointer; }
+.org-table tbody tr:hover, .org-table tbody tr:focus-visible, .org-table tbody tr[aria-selected="true"] { background: var(--accent-track); outline: none; }
+.org-count { display: inline-flex; align-items: center; gap: 6px; }
+.org-count.none { color: var(--muted); }
+
+/* Clickable bars and columns */
+.bar-row.selectable, .column.selectable { cursor: pointer; }
+.bar-row[aria-pressed="true"] { background: var(--accent-soft); }
+.column.selectable:hover .column-bar, .column.selectable:focus-visible .column-bar, .column[aria-pressed="true"] .column-bar { background: var(--ink); }
+.column.selectable:focus-visible { outline: none; }
+
+/* Dataset list under a card */
+.dataset-panel { margin-top: 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+.dataset-panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 14px 8px; }
+.dataset-panel-head h4 { margin: 0; font: 600 16px/1.3 var(--font-body); }
+.dataset-panel-head h4 small { font-weight: 400; color: var(--muted); }
+.dataset-list { list-style: none; margin: 0; padding: 0 14px 12px; max-height: 360px; overflow-y: auto; }
+.dataset-list li { display: flex; gap: 10px; align-items: baseline; justify-content: space-between; padding: 6px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.dataset-list li:first-child { border-top: 0; }
+.dataset-list .publisher { color: var(--muted); font-size: 14px; display: block; }
+.dataset-list .states { display: inline-flex; gap: 4px; flex: none; }
+.panel-button {
+  font: 500 14px var(--font-body);
+  color: var(--ink-2);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+.panel-button:hover { border-color: var(--accent); color: var(--accent); }
+.show-all { margin-top: 12px; align-self: flex-start; }
+
+button.column { background: none; border: 0; padding: 0; font: inherit; color: inherit; }
+.bar-row.is-selected, .org-table tbody tr.is-selected { background: var(--accent-soft); }
+.column.is-selected .column-bar { background: var(--ink); }
+.segment.is-selected { outline: 2px solid var(--ink); outline-offset: 1px; }
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 24px -8px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13.5px;
+  max-width: 280px;
+  line-height: 1.4;
+}
+.tooltip b { display: block; font-weight: 600; margin-bottom: 2px; overflow-wrap: anywhere; }
+.tooltip span { color: var(--ink-2); display: block; font-variant-numeric: tabular-nums; }
+
+footer { padding-block: 48px 64px; color: var(--muted); font-size: 14.5px; }
+footer p { max-width: 80ch; margin: 0 0 8px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .bar, .column-bar { transition: width 0.6s cubic-bezier(.2,.7,.2,1), height 0.6s cubic-bezier(.2,.7,.2,1); }
+}
+@media (max-width: 980px) {
+  .card.quarter { grid-column: span 6; }
+  .card.third { grid-column: span 6; }
+}
+@media (max-width: 820px) {
+  .card, .card.quarter, .card.third { grid-column: span 12; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .split { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .check-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+}
+@media (max-width: 440px) {
+  .hero { padding-block: 32px 20px; }
+  .card { padding: 18px 16px 12px; }
+  .bar-row { grid-template-columns: minmax(0, 44%) minmax(0, 1fr); gap: 8px; }
+  .column-axis { font-size: 11.5px; }
+}
+</style>
+</head>
+<body>
+
+<!--
+  Network Insights
+  ================
+  Every number on this page comes from a SPARQL query against the NDE Dataset Knowledge Graph.
+  Each query lives in its own <script type="application/sparql-query"> block below, right above
+  the card that draws it. Edit a query there and reload the page: the card, the query shown
+  on the page and the “Open in QLever” link all read the same text.
+  A comment line starting with “# Columns:” lists the result columns the card’s drawing reads.
+  A query whose id ends in “-datasets” lists the datasets behind a bar: clicking the bar runs it
+  with a VALUES clause appended for that bar, and the list links to the query it ran.
+-->
+
+<header class="wrap hero">
+  <p class="eyebrow"><a href="https://docs.nde.nl/services/dataset-knowledge-graph/">Dataset Knowledge Graph</a> · Netwerk Digitaal Erfgoed</p>
+  <h1>Network Insights</h1>
+  <p class="lede">What the NDE Dataset Knowledge Graph finds in the RDF datasets of the Dataset Register.</p>
+  <p class="status-line" id="status-line">Summaries generated between <span class="draw" data-draw="oldest"></span> and <span class="draw" data-draw="latest"></span>. Queried live from the Knowledge Graph when you open this page.</p>
+
+  <script type="application/sparql-query" id="q-totals">
+# Columns: datasets, triples, subjects, withSubjects, linked, oldest, latest
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+SELECT ?datasets ?triples ?subjects ?withSubjects ?linked ?oldest ?latest WHERE {
+  {
+    SELECT
+      (COUNT(?dataset) AS ?datasets)
+      (SUM(?datasetTriples) AS ?triples)
+      (SUM(COALESCE(?datasetSubjects, 0)) AS ?subjects)
+      (COUNT(?datasetSubjects) AS ?withSubjects)
+      (MIN(?generated) AS ?oldest)
+      (MAX(?generated) AS ?latest)
+    WHERE {
+      ?dataset a void:Dataset ;
+        void:triples ?datasetTriples ;
+        prov:generatedAtTime ?generated .
+      OPTIONAL { ?dataset void:distinctSubjects ?datasetSubjects }
+      FILTER(!CONTAINS(STR(?dataset), "/.well-known/"))
+    }
+  }
+  {
+    # Datasets with at least one link to a terminology source
+    SELECT (COUNT(DISTINCT ?linkedDataset) AS ?linked) WHERE {
+      [] a void:Linkset ; void:subjectsTarget ?linkedDataset .
+    }
+  }
+}
+  </script>
+  <script type="application/sparql-query" id="q-dataset-sizes">
+# Columns: triples, subjects
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+SELECT ?triples ?subjects WHERE {
+  ?dataset a void:Dataset ;
+    void:triples ?triples ;
+    prov:generatedAtTime ?generated .
+  OPTIONAL { ?dataset void:distinctSubjects ?subjects }
+  FILTER(!CONTAINS(STR(?dataset), "/.well-known/"))
+}
+  </script>
+  <div class="tiles" data-query="q-totals q-dataset-sizes" id="headline">
+    <div class="tile">
+      <div class="tile-label">Datasets analysed</div>
+      <div class="tile-value hero-figure draw" data-draw="datasets"></div>
+      <div class="tile-note">with a readable RDF distribution</div>
+    </div>
+    <div class="tile">
+      <div class="tile-label">Triples analysed</div>
+      <div class="tile-value draw" data-draw="triples"></div>
+      <div class="tile-note">median dataset: <span class="draw" data-draw="triples-median"></span></div>
+    </div>
+    <div class="tile">
+      <div class="tile-label">Distinct subjects analysed</div>
+      <div class="tile-value draw" data-draw="subjects"></div>
+      <div class="tile-note">median dataset: <span class="draw" data-draw="subjects-median"></span></div>
+    </div>
+    <div class="tile">
+      <div class="tile-label">Linked to terminology sources</div>
+      <div class="tile-value draw" data-draw="linked"></div>
+      <div class="tile-note"><span class="draw" data-draw="linked-share"></span> of all datasets</div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="wrap chapter" id="shape">
+  <div class="chapter-head">
+    <h2>What the network looks like</h2>
+    <p>How big the datasets are, which models they use and which terminology sources they link to. It shows which terms the Network of Terms should cover first, which models besides SCHEMA-AP-NDE are common, and which datasets a service platform needs an endpoint for.</p>
+  </div>
+
+  <div class="grid">
+    <script type="application/sparql-query" id="q-size">
+# Columns: order, size, datasets, triples
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT ?order ?size (COUNT(?dataset) AS ?datasets) (SUM(?datasetTriples) AS ?triples) WHERE {
+  ?dataset a void:Dataset ;
+    void:triples ?datasetTriples .
+  FILTER(!CONTAINS(STR(?dataset), "/.well-known/"))
+  BIND(
+    IF(?datasetTriples < 10000, 1,
+    IF(?datasetTriples < 100000, 2,
+    IF(?datasetTriples < 1000000, 3,
+    IF(?datasetTriples < 10000000, 4,
+    IF(?datasetTriples < 100000000, 5, 6))))) AS ?order)
+  VALUES (?order ?size) {
+    (1 "< 10k") (2 "10k–100k") (3 "100k–1M") (4 "1M–10M") (5 "10M–100M") (6 "≥ 100M")
+  }
+}
+GROUP BY ?order ?size
+ORDER BY ?order
+    </script>
+    <article class="card wide" id="size" data-query="q-size">
+      <h3>Dataset size</h3>
+      <p class="card-desc">Datasets grouped by number of triples.</p>
+      <p class="finding"><b class="draw" data-draw="size-largest-count"></b> datasets of 100 million triples or more hold <b class="draw" data-draw="size-largest-share"></b> of all triples, while <b class="draw" data-draw="size-smallest-count"></b> datasets have fewer than 10,000.</p>
+      <div class="chart split">
+        <div>
+          <p class="chart-title">Datasets per size class</p>
+          <div class="draw-area" data-draw="size-columns"></div>
+        </div>
+        <div>
+          <p class="chart-title">Share of all triples</p>
+          <div class="draw-area" data-draw="size-strip"></div>
+        </div>
+      </div>
+    </article>
+
+    <script type="application/sparql-query" id="q-largest">
+# Columns: dataset, title, triples, subjects
+# Titles come from the Dataset Register, through federation.
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dct: <http://purl.org/dc/terms/>
+SELECT ?dataset (COALESCE(SAMPLE(?englishTitle), SAMPLE(?anyTitle)) AS ?title) ?triples ?subjects WHERE {
+  {
+    SELECT ?dataset ?triples ?subjects WHERE {
+      ?dataset a void:Dataset ; void:triples ?triples .
+      OPTIONAL { ?dataset void:distinctSubjects ?subjects }
+      FILTER(!CONTAINS(STR(?dataset), "/.well-known/"))
+    }
+    ORDER BY DESC(?triples)
+    LIMIT 10
+  }
+  OPTIONAL {
+    SERVICE <https://datasetregister.netwerkdigitaalerfgoed.nl/sparql> {
+      ?dataset dct:title ?anyTitle .
+      OPTIONAL { ?dataset dct:title ?englishTitle . FILTER(LANGMATCHES(LANG(?englishTitle), "en")) }
+    }
+  }
+}
+GROUP BY ?dataset ?triples ?subjects
+ORDER BY DESC(?triples)
+    </script>
+    <article class="card" id="largest" data-query="q-largest">
+      <h3>Largest datasets</h3>
+      <p class="card-desc">The ten datasets with the most triples. Open one in the Dataset Register to see its full summary.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dataset</th><th class="num">Triples</th><th class="num">Subjects</th></tr></thead>
+          <tbody class="draw-area" data-draw="largest-rows"></tbody>
+        </table>
+      </div>
+    </article>
+
+    <script type="application/sparql-query" id="q-vocabularies">
+# Columns: vocabulary, label, datasets
+# Leaves out the RDF, RDFS and OWL namespaces, which nearly every dataset uses.
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT ?vocabulary ?label (COUNT(DISTINCT ?dataset) AS ?datasets) WHERE {
+  ?dataset a void:Dataset ;
+    void:vocabulary ?vocabulary .
+  FILTER(?vocabulary NOT IN (
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>,
+    <http://www.w3.org/2000/01/rdf-schema#>,
+    <http://www.w3.org/2002/07/owl#>
+  ))
+  OPTIONAL {
+    VALUES (?vocabulary ?label) {
+      (<https://schema.org/> "Schema.org")
+      (<http://schema.org/> "Schema.org (old http:// namespace)")
+      (<http://www.w3.org/ns/prov#> "PROV")
+      (<http://purl.org/dc/terms/> "Dublin Core Terms")
+      (<http://purl.org/dc/elements/1.1/> "Dublin Core Elements")
+      (<http://www.cidoc-crm.org/cidoc-crm/> "CIDOC-CRM")
+      (<http://www.w3.org/2004/02/skos/core#> "SKOS")
+      (<http://xmlns.com/foaf/0.1/> "FOAF")
+      (<https://linked.art/ns/terms/> "Linked Art")
+      (<http://semanticweb.cs.vu.nl/2009/11/sem/> "Simple Event Model")
+      (<http://www.europeana.eu/schemas/edm/> "Europeana Data Model")
+      (<https://www.ica.org/standards/RiC/ontology#> "Records in Contexts")
+    }
+  }
+}
+GROUP BY ?vocabulary ?label
+ORDER BY DESC(?datasets)
+LIMIT 12
+    </script>
+    <article class="card" id="vocabularies" data-query="q-vocabularies">
+      <h3>Most used ontologies</h3>
+      <p class="card-desc">Number of datasets whose predicates come from each vocabulary. Click a bar to list its datasets.</p>
+      <p class="finding"><b class="draw" data-draw="legacy-schema"></b> datasets still use the old <code>http://schema.org/</code> namespace.</p>
+      <div class="chart draw-area" data-draw="vocabularies-bars"></div>
+      <script type="application/sparql-query" id="q-vocabularies-datasets">
+# Columns: dataset, vocabulary
+# The datasets behind each bar. Clicking a bar appends a VALUES clause with its
+# vocabulary; run as-is, it lists every dataset with its vocabularies.
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT ?dataset ?vocabulary WHERE {
+  ?dataset a void:Dataset ; void:vocabulary ?vocabulary .
+}
+      </script>
+      <div class="dataset-panel-slot"></div>
+    </article>
+
+    <script type="application/sparql-query" id="q-terminology-spread">
+# Columns: sources, datasets
+# Datasets by the number of terminology sources they link to; 5 means 5 or more.
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT ?sources (COUNT(?dataset) AS ?datasets) WHERE {
+  {
+    SELECT ?dataset (COUNT(DISTINCT ?terminologySource) AS ?sourceCount) WHERE {
+      ?dataset a void:Dataset ; void:triples ?triples .
+      FILTER(!CONTAINS(STR(?dataset), "/.well-known/"))
+      OPTIONAL { [] a void:Linkset ; void:subjectsTarget ?dataset ; void:objectsTarget ?terminologySource . }
+    }
+    GROUP BY ?dataset
+  }
+  BIND(IF(?sourceCount >= 5, 5, ?sourceCount) AS ?sources)
+}
+GROUP BY ?sources
+ORDER BY ?sources
+    </script>
+    <article class="card" id="terminology-spread" data-query="q-terminology-spread">
+      <h3>Terminology sources per dataset</h3>
+      <p class="card-desc">Datasets by the number of terminology sources they link to. Click a column to list its datasets.</p>
+      <p class="finding"><b class="draw" data-draw="spread-none"></b> of <b class="draw" data-draw="spread-total"></b> datasets link to none; <b class="draw" data-draw="spread-several"></b> link to two or more.</p>
+      <div class="chart draw-area" data-draw="spread-columns"></div>
+      <script type="application/sparql-query" id="q-terminology-spread-datasets">
+# Columns: dataset, sources
+# The datasets behind each column. Clicking a column appends a VALUES clause
+# with its number of sources; run as-is, it lists every dataset.
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT ?dataset ?sources WHERE {
+  {
+    SELECT ?dataset (COUNT(DISTINCT ?terminologySource) AS ?sourceCount) WHERE {
+      ?dataset a void:Dataset ; void:triples ?triples .
+      FILTER(!CONTAINS(STR(?dataset), "/.well-known/"))
+      OPTIONAL { [] a void:Linkset ; void:subjectsTarget ?dataset ; void:objectsTarget ?terminologySource . }
+    }
+    GROUP BY ?dataset
+  }
+  BIND(IF(?sourceCount >= 5, 5, ?sourceCount) AS ?sources)
+}
+      </script>
+      <div class="dataset-panel-slot"></div>
+    </article>
+
+    <script type="application/sparql-query" id="q-terminology">
+# Columns: terminologySource, label, datasets, links
+# Names of the terminology sources come from the Knowledge Graph (dct:title),
+# in English where available.
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dct: <http://purl.org/dc/terms/>
+SELECT ?terminologySource (COALESCE(SAMPLE(?englishTitle), SAMPLE(?anyTitle)) AS ?label) ?datasets ?links WHERE {
+  {
+    SELECT ?terminologySource (COUNT(DISTINCT ?dataset) AS ?datasets) (SUM(?linkTriples) AS ?links) WHERE {
+      [] a void:Linkset ;
+        void:subjectsTarget ?dataset ;
+        void:objectsTarget ?terminologySource ;
+        void:triples ?linkTriples .
+    }
+    GROUP BY ?terminologySource
+    ORDER BY DESC(?datasets)
+    LIMIT 12
+  }
+  OPTIONAL { ?terminologySource dct:title ?anyTitle }
+  OPTIONAL { ?terminologySource dct:title ?englishTitle . FILTER(LANGMATCHES(LANG(?englishTitle), "en")) }
+}
+GROUP BY ?terminologySource ?datasets ?links
+ORDER BY DESC(?datasets)
+    </script>
+    <article class="card" id="terminology" data-query="q-terminology">
+      <h3>Most linked terminology sources</h3>
+      <p class="card-desc">Number of datasets that link to each source. Point at a bar for the number of links; click it to list its datasets.</p>
+      <div class="chart draw-area" data-draw="terminology-bars"></div>
+      <script type="application/sparql-query" id="q-terminology-datasets">
+# Columns: dataset, terminologySource
+# The datasets behind each bar. Clicking a bar appends a VALUES clause with its
+# terminology source; run as-is, it lists every dataset with its sources.
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT DISTINCT ?dataset ?terminologySource WHERE {
+  [] a void:Linkset ; void:subjectsTarget ?dataset ; void:objectsTarget ?terminologySource .
+}
+      </script>
+      <div class="dataset-panel-slot"></div>
+    </article>
+
+    <script type="application/sparql-query" id="q-classes">
+# Columns: class, instances, datasets
+# Leaves out PROV classes, which describe provenance rather than heritage content.
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT ?class (SUM(?entities) AS ?instances) (COUNT(DISTINCT ?dataset) AS ?datasets) WHERE {
+  ?dataset a void:Dataset ;
+    void:classPartition [
+      void:class ?class ;
+      void:entities ?entities
+    ] .
+  FILTER(!STRSTARTS(STR(?class), "http://www.w3.org/ns/prov#"))
+}
+GROUP BY ?class
+ORDER BY DESC(?datasets)
+LIMIT 12
+    </script>
+    <article class="card" id="classes" data-query="q-classes">
+      <h3>Most common types by datasets</h3>
+      <p class="card-desc">Number of datasets with instances of each class. Point at a bar for the number of instances; click it to list its datasets.</p>
+      <div class="chart draw-area" data-draw="classes-bars"></div>
+      <script type="application/sparql-query" id="q-classes-datasets">
+# Columns: dataset, class
+# The datasets behind each bar. Clicking a bar appends a VALUES clause with its
+# class; run as-is, it lists every dataset with its classes.
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT DISTINCT ?dataset ?class WHERE {
+  ?dataset a void:Dataset ; void:classPartition [ void:class ?class ] .
+}
+      </script>
+      <div class="dataset-panel-slot"></div>
+    </article>
+
+    <script type="application/sparql-query" id="q-classes-instances">
+# Columns: class, instances, datasets
+# Ranks classes by their number of instances, summed over all datasets.
+# Leaves out PROV classes, which describe provenance rather than heritage content.
+PREFIX void: <http://rdfs.org/ns/void#>
+SELECT ?class (SUM(?entities) AS ?instances) (COUNT(DISTINCT ?dataset) AS ?datasets) WHERE {
+  ?dataset a void:Dataset ;
+    void:classPartition [
+      void:class ?class ;
+      void:entities ?entities
+    ] .
+  FILTER(!STRSTARTS(STR(?class), "http://www.w3.org/ns/prov#"))
+}
+GROUP BY ?class
+ORDER BY DESC(?instances)
+LIMIT 12
+    </script>
+    <article class="card" id="classes-instances" data-query="q-classes-instances">
+      <h3>Most common types by instances</h3>
+      <p class="card-desc">Number of instances of each class, over all datasets. Point at a bar for the number of datasets; click it to list them.</p>
+      <div class="chart draw-area" data-draw="classes-instances-bars"></div>
+      <div class="dataset-panel-slot"></div>
+    </article>
+
+    <script type="application/sparql-query" id="q-access">
+# Columns: format, datasets
+# Distributions come from the Dataset Register, through federation.
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+SELECT ?format (COUNT(DISTINCT ?dataset) AS ?datasets) WHERE {
+  ?dataset a void:Dataset ; void:triples [] .
+  FILTER(!CONTAINS(STR(?dataset), "/.well-known/"))
+  SERVICE <https://datasetregister.netwerkdigitaalerfgoed.nl/sparql> {
+    ?dataset dcat:distribution ?distribution .
+    {
+      ?distribution dct:conformsTo <https://www.w3.org/TR/sparql11-protocol/> .
+      BIND("SPARQL endpoint" AS ?format)
+    } UNION {
+      ?distribution dcat:mediaType ?mediaType .
+      VALUES (?mediaType ?format) {
+        (<https://www.iana.org/assignments/media-types/application/ld+json> "JSON-LD dump")
+        (<https://www.iana.org/assignments/media-types/application/n-triples> "N-Triples dump")
+        (<https://www.iana.org/assignments/media-types/application/n-quads> "N-Quads dump")
+        (<https://www.iana.org/assignments/media-types/text/turtle> "Turtle dump")
+        (<https://www.iana.org/assignments/media-types/application/rdf+xml> "RDF/XML dump")
+      }
+    }
+  }
+}
+GROUP BY ?format
+ORDER BY DESC(?datasets)
+    </script>
+    <article class="card wide" id="access" data-query="q-access">
+      <h3>How datasets are distributed</h3>
+      <p class="card-desc">Distribution types the analysed datasets offer, according to the Dataset Register. Many offer several, so the bars overlap.</p>
+      <div class="chart draw-area" data-draw="access-bars"></div>
+    </article>
+  </div>
+</section>
+
+<section class="wrap chapter" id="problems">
+  <div class="chapter-head">
+    <h2>Where it goes wrong</h2>
+    <p>The automated checks from the Dataset Register, per check and per organisation, and the profile rules that fail most. Use these figures in conversations with publishers and suppliers, and to set priorities for NDE.</p>
+    <div class="caveat" role="note">
+      <span><strong>These are samples.</strong> The Knowledge Graph checks the first records per class, a handful of URIs and a handful of IIIF manifests per dataset. Read the figures as a lower bound of the problems, not as a verdict on one publisher.</span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <script type="application/sparql-query" id="q-checks">
+# Columns: dataset, title, publisher, publisherName, pidScheme, registration, persistent, linkedData, terms, iiif
+# One row per dataset with the state of each automated check: met, warning,
+# failed or unmet (not applicable). The rules follow the Dataset Register’s
+# detail page (nde-compatibility.ts in the dataset-register repository).
+# Titles and organisations come from the Dataset Register, through federation.
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX void-ext: <http://ldf.fi/void-ext#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dqv: <http://www.w3.org/ns/dqv#>
+PREFIX nde: <https://def.nde.nl/metric#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX schema: <https://schema.org/>
+PREFIX reg: <https://def.nde.nl/registration#>
+SELECT ?dataset ?title ?publisher ?publisherName ?pidScheme ?registration ?persistent ?linkedData ?terms ?iiif WHERE {
+  ?dataset a void:Dataset ; void:triples ?triples .
+  FILTER(!CONTAINS(STR(?dataset), "/.well-known/"))
+
+  # Persistent URIs: the dataset’s own namespace, with a resolution outcome.
+  OPTIONAL {
+    SELECT ?dataset (MAX(?sampledUris) AS ?sampled) (MAX(?resolvedUris) AS ?resolved)
+           (MAX(IF(STR(COALESCE(?durableFlag, true)) = "false", 1, 0)) AS ?nonDurable)
+           (MAX(IF(STR(COALESCE(?failedFlag, false)) = "true", 1, 0)) AS ?samplingFailed) WHERE {
+      ?dataset void:subset ?namespace .
+      ?namespace void:uriSpace ?uriSpace .
+      OPTIONAL { ?namespace dqv:hasQualityMeasurement [ dqv:isMeasurementOf nde:subject-uris-sampled ; dqv:value ?sampledUris ] }
+      OPTIONAL { ?namespace dqv:hasQualityMeasurement [ dqv:isMeasurementOf nde:subject-uris-resolved ; dqv:value ?resolvedUris ] }
+      OPTIONAL { ?namespace dqv:hasQualityMeasurement [ dqv:isMeasurementOf nde:subject-namespace-durable ; dqv:value ?durableFlag ] }
+      OPTIONAL { ?namespace dqv:hasQualityMeasurement [ dqv:isMeasurementOf nde:subject-uris-sampling-failed ; dqv:value ?failedFlag ] }
+    } GROUP BY ?dataset
+  }
+
+  # Persistent identifier scheme (ARK or Handle) of the dataset’s own namespace, if any.
+  OPTIONAL {
+    SELECT ?dataset (SAMPLE(STRAFTER(STR(?scheme), "#")) AS ?pidScheme) WHERE {
+      ?dataset void:subset ?pidNamespace .
+      ?pidNamespace dcterms:conformsTo ?scheme .
+      FILTER(STRSTARTS(STR(?scheme), "https://def.nde.nl/pid-scheme#"))
+    }
+    GROUP BY ?dataset
+  }
+
+  # Title, organisation and registration from the Dataset Register, through federation.
+  OPTIONAL {
+    SELECT ?dataset (COALESCE(SAMPLE(?englishTitle), SAMPLE(?anyTitle)) AS ?title) (SAMPLE(?anyPublisher) AS ?publisher) (SAMPLE(?anyName) AS ?publisherName)
+      (SAMPLE(?anyRegistrationType) AS ?registrationType) (MAX(?anyWarningCount) AS ?warningCount) WHERE {
+      SERVICE <https://datasetregister.netwerkdigitaalerfgoed.nl/sparql> {
+        ?dataset dct:title ?anyTitle .
+        OPTIONAL { ?dataset dct:title ?englishTitle . FILTER(LANGMATCHES(LANG(?englishTitle), "en")) }
+        OPTIONAL { ?dataset dct:publisher ?anyPublisher . OPTIONAL { ?anyPublisher foaf:name ?anyName } }
+        OPTIONAL {
+          ?dataset schema:subjectOf ?registrationEntry .
+          OPTIONAL { ?registrationEntry schema:additionalType ?anyRegistrationType }
+          OPTIONAL { ?registrationEntry reg:warningCount ?anyWarningCount }
+        }
+      }
+    }
+    GROUP BY ?dataset
+  }
+
+  # Linked data: conforms to SCHEMA-AP-NDE, over at least one validated quad.
+  OPTIONAL {
+    ?dataset dqv:hasQualityMeasurement
+      [ dcterms:conformsTo <https://docs.nde.nl/schema-profile/> ; dqv:value ?conforms ] ,
+      [ dqv:isMeasurementOf nde:quads-validated ; dqv:value ?quads ] .
+  }
+
+  # Terms: links to terminology sources, or URI objects that could have been.
+  OPTIONAL {
+    SELECT ?dataset (COUNT(DISTINCT ?source) AS ?sources) WHERE {
+      [] a void:Linkset ; void:subjectsTarget ?dataset ; void:objectsTarget ?source .
+    } GROUP BY ?dataset
+  }
+  OPTIONAL { ?dataset void-ext:distinctIRIReferenceObjects ?uriObjects }
+
+  # IIIF: declared manifests, and how many of a sample validated.
+  OPTIONAL {
+    ?dataset void:subset ?iiifSubset .
+    ?iiifSubset dcterms:conformsTo <http://iiif.io/api/presentation/> ; void:entities ?manifests .
+    OPTIONAL { ?iiifSubset dqv:hasQualityMeasurement [ dqv:isMeasurementOf nde:manifests-sampled ; dqv:value ?manifestsSampled ] }
+    OPTIONAL { ?iiifSubset dqv:hasQualityMeasurement [ dqv:isMeasurementOf nde:manifests-validated ; dqv:value ?manifestsValidated ] }
+  }
+
+  # Registration: gone or invalid is failed; a description with warnings is a warning.
+  BIND(
+    IF(STRENDS(STR(COALESCE(?registrationType, "")), "/gone") || STRENDS(STR(COALESCE(?registrationType, "")), "/invalid"), "failed",
+    IF(COALESCE(?warningCount, 0) > 0, "warning", "met")) AS ?registration)
+  BIND(
+    IF(COALESCE(?sampled, 0) <= 0, IF(COALESCE(?samplingFailed, 0) = 1, "warning", "unmet"),
+    IF(COALESCE(?resolved, 0) < ?sampled, "failed",
+    IF(COALESCE(?nonDurable, 0) = 1, "warning", "met"))) AS ?persistent)
+  BIND(IF(?conforms = true && COALESCE(?quads, 0) > 0, "met", "warning") AS ?linkedData)
+  BIND(IF(COALESCE(?sources, 0) > 0, "met", IF(COALESCE(?uriObjects, 0) > 0, "failed", "unmet")) AS ?terms)
+  BIND(
+    IF(COALESCE(?manifests, 0) <= 0, "unmet",
+    IF(COALESCE(?manifestsValidated, 0) > 0, "met",
+    IF(COALESCE(?manifestsSampled, 0) > 0, "failed", "met"))) AS ?iiif)
+}
+    </script>
+    <article class="card wide" id="checks" data-query="q-checks">
+      <h3>Automated checks</h3>
+      <p class="card-desc">The checks the Dataset Register shows on each dataset’s page, counted over all analysed datasets. Click a bar segment to list its datasets.</p>
+      <p class="finding"><span class="draw" data-draw="checks-all"></span> of <span class="draw" data-draw="checks-total"></span> datasets pass all five checks.</p>
+      <div class="draw-area" data-draw="checks-rows"></div>
+      <div class="check-legend" aria-label="What the colours mean">
+        <span><span class="checkbox met" aria-hidden="true"></span>Met</span>
+        <span><span class="checkbox warning" aria-hidden="true"></span>Warning</span>
+        <span><span class="checkbox failed" aria-hidden="true"></span>Failed</span>
+        <span><span class="checkbox unmet" aria-hidden="true"></span>Not applicable</span>
+      </div>
+      <p class="score-note">Registration comes from the Dataset Register; the other checks from the Knowledge Graph. <span class="draw" data-draw="pid-total"></span> datasets mint persistent identifiers: <span class="draw" data-draw="pid-ark"></span> ARK and <span class="draw" data-draw="pid-handle"></span> Handle.</p>
+      <div class="dataset-panel-slot"></div>
+    </article>
+
+    <article class="card wide" id="organisations" data-query="q-checks">
+      <h3>Per organisation</h3>
+      <p class="card-desc">Datasets per organisation that meet each check. Click an organisation to list its datasets.</p>
+      <div class="table-scroll draw-area" data-draw="organisations-table"></div>
+      <div class="dataset-panel-slot"></div>
+    </article>
+
+    <script type="application/sparql-query" id="q-violations">
+# Columns: path, constraint, message, valueDatatype, datasets
+# Counts datasets per violated rule in the per-dataset SHACL report graphs.
+# The message is the profile’s own English sh:message, or the validator’s
+# untagged default where the shape has none. For datatype errors,
+# valueDatatype is the datatype the data actually uses.
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+SELECT ?path ?constraint ?message ?valueDatatype (COUNT(DISTINCT ?graph) AS ?datasets) WHERE {
+  GRAPH ?graph {
+    ?result a sh:ValidationResult ;
+      sh:resultSeverity sh:Violation ;
+      sh:sourceConstraintComponent ?constraint ;
+      sh:resultPath ?path ;
+      sh:resultMessage ?message .
+    OPTIONAL { ?result sh:value ?value }
+  }
+  FILTER(LANG(?message) = "" || LANGMATCHES(LANG(?message), "en"))
+  BIND(IF(?constraint = sh:DatatypeConstraintComponent && isLiteral(?value), DATATYPE(?value), ?nothing) AS ?valueDatatype)
+}
+GROUP BY ?path ?constraint ?message ?valueDatatype
+ORDER BY DESC(?datasets)
+LIMIT 10
+    </script>
+    <article class="card" id="violations" data-query="q-violations">
+      <h3>Most broken profile rules</h3>
+      <p class="card-desc">SCHEMA-AP-NDE rules broken in the sample, by number of datasets. Click a bar to list its datasets.</p>
+      <div class="chart draw-area" data-draw="violations-bars"></div>
+      <script type="application/sparql-query" id="q-violations-datasets">
+# Columns: dataset, path, constraint, message, valueDatatype
+# The datasets behind each rule. Clicking a bar appends a VALUES clause with
+# its path, constraint, message and value datatype; run as-is, it lists every
+# rule’s datasets.
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+SELECT DISTINCT ?dataset ?path ?constraint ?message ?valueDatatype WHERE {
+  ?dataset a void:Dataset ; void:triples ?triples .
+  # Each dataset’s SHACL report is in a graph named after its IRI, encoded with
+  # JavaScript’s encodeURIComponent, which leaves ! ' ( ) * as they are.
+  BIND(IRI(CONCAT("https://data.netwerkdigitaalerfgoed.nl/dkg/shacl-validation/",
+    REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ENCODE_FOR_URI(STR(?dataset)),
+      "%21", "!"), "%27", "'"), "%28", "("), "%29", ")"), "%2A", "*"))) AS ?graph)
+  GRAPH ?graph {
+    ?result sh:resultSeverity sh:Violation ;
+      sh:sourceConstraintComponent ?constraint ;
+      sh:resultPath ?path ;
+      sh:resultMessage ?resultMessage .
+    OPTIONAL { ?result sh:value ?value }
+  }
+  BIND(STR(?resultMessage) AS ?message)
+  BIND(IF(?constraint = sh:DatatypeConstraintComponent && isLiteral(?value), DATATYPE(?value), ?nothing) AS ?valueDatatype)
+}
+      </script>
+      <div class="dataset-panel-slot"></div>
+    </article>
+
+    <script type="application/sparql-query" id="q-license-families">
+# Columns: family, datasets
+# Licenses from the dataset descriptions in the Dataset Register, which the
+# records inherit. SCHEMA-AP-NDE asks for a license on media, not on records.
+# Groups license IRIs (http/https, with or without “deed.nl”) into families.
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dct: <http://purl.org/dc/terms/>
+SELECT ?family (COUNT(DISTINCT ?dataset) AS ?datasets) WHERE {
+  ?dataset a void:Dataset ; void:triples ?triples .
+  FILTER(!CONTAINS(STR(?dataset), "/.well-known/"))
+  OPTIONAL {
+    SERVICE <https://datasetregister.netwerkdigitaalerfgoed.nl/sparql> {
+      ?dataset dct:license ?license .
+    }
+  }
+  BIND(LCASE(STR(COALESCE(?license, ""))) AS ?iri)
+  BIND(
+    IF(?iri = "", "No license",
+    IF(CONTAINS(?iri, "zero"), "CC0",
+    IF(CONTAINS(?iri, "publicdomain/mark"), "Public Domain Mark",
+    IF(CONTAINS(?iri, "/by-nc"), "CC BY-NC (all variants)",
+    IF(CONTAINS(?iri, "/by-sa"), "CC BY-SA",
+    IF(CONTAINS(?iri, "/by-nd"), "CC BY-ND",
+    IF(CONTAINS(?iri, "/by/"), "CC BY",
+    IF(CONTAINS(?iri, "rightsstatements.org"), "RightsStatements.org",
+    "Other")))))))) AS ?family)
+}
+GROUP BY ?family
+ORDER BY DESC(?datasets)
+    </script>
+    <article class="card" id="licenses" data-query="q-license-families">
+      <h3>Dataset licenses</h3>
+      <p class="card-desc">Number of datasets per license family, from the dataset descriptions. Records inherit their dataset’s license. Click a bar to list its datasets.</p>
+      <div class="chart draw-area" data-draw="license-bars"></div>
+      <script type="application/sparql-query" id="q-license-datasets">
+# Columns: dataset
+# The datasets behind each bar. Clicking a bar appends a VALUES clause with its
+# family; run as-is, it lists every dataset with its license family.
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dct: <http://purl.org/dc/terms/>
+SELECT DISTINCT ?dataset ?family WHERE {
+  ?dataset a void:Dataset ; void:triples ?triples .
+  FILTER(!CONTAINS(STR(?dataset), "/.well-known/"))
+  OPTIONAL {
+    SERVICE <https://datasetregister.netwerkdigitaalerfgoed.nl/sparql> {
+      ?dataset dct:license ?license .
+    }
+  }
+  BIND(LCASE(STR(COALESCE(?license, ""))) AS ?iri)
+  BIND(
+    IF(?iri = "", "No license",
+    IF(CONTAINS(?iri, "zero"), "CC0",
+    IF(CONTAINS(?iri, "publicdomain/mark"), "Public Domain Mark",
+    IF(CONTAINS(?iri, "/by-nc"), "CC BY-NC (all variants)",
+    IF(CONTAINS(?iri, "/by-sa"), "CC BY-SA",
+    IF(CONTAINS(?iri, "/by-nd"), "CC BY-ND",
+    IF(CONTAINS(?iri, "/by/"), "CC BY",
+    IF(CONTAINS(?iri, "rightsstatements.org"), "RightsStatements.org",
+    "Other")))))))) AS ?family)
+}
+      </script>
+      <div class="dataset-panel-slot"></div>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <p>Data: the <a href="https://docs.nde.nl/services/dataset-knowledge-graph/">NDE Dataset Knowledge Graph</a>, queried at <code>https://sparql.netwerkdigitaalerfgoed.nl/dataset-knowledge-graph</code>. The pipeline runs every night and reanalyses only datasets that changed. Datasets without a readable RDF distribution get no summary.</p>
+  <p>Try your own queries in the <a href="https://qlever.netwerkdigitaalerfgoed.nl/dataset-knowledge-graph">query UI</a>, or look up datasets in the <a href="https://datasetregister.netwerkdigitaalerfgoed.nl/">Dataset Register</a>.</p>
+</footer>
+
+<script>
+(() => {
+  const ENDPOINT = 'https://sparql.netwerkdigitaalerfgoed.nl/dataset-knowledge-graph';
+  const QUERY_UI = 'https://qlever.netwerkdigitaalerfgoed.nl/dataset-knowledge-graph';
+  const REGISTER_DATASET = 'https://datasetregister.netwerkdigitaalerfgoed.nl/dataset?uri=';
+  const NUMERIC_TYPES = /#(integer|int|long|short|decimal|double|float|nonNegativeInteger|positiveInteger|unsignedInt|unsignedLong)$/;
+
+  const integerFormat = new Intl.NumberFormat('en');
+  const compactFormat = new Intl.NumberFormat('en', {notation: 'compact', maximumFractionDigits: 1});
+  const percentFormat = new Intl.NumberFormat('en', {style: 'percent', maximumFractionDigits: 0});
+  const dateFormat = new Intl.DateTimeFormat('en-GB', {day: 'numeric', month: 'long', year: 'numeric'});
+
+  const PREFIXES = [
+    ['https://schema.org/', 'schema:'],
+    ['http://schema.org/', 'schema (http):'],
+    ['http://www.cidoc-crm.org/cidoc-crm/', 'crm:'],
+    ['http://www.ics.forth.gr/isl/CRMdig/', 'crmdig:'],
+    ['https://www.openarch.nl/def/a2a#', 'a2a:'],
+    ['http://www.w3.org/2004/02/skos/core#', 'skos:'],
+    ['http://xmlns.com/foaf/0.1/', 'foaf:'],
+    ['http://purl.org/dc/terms/', 'dct:'],
+    ['http://www.europeana.eu/schemas/edm/', 'edm:'],
+    ['http://www.w3.org/ns/shacl#', 'sh:'],
+    ['https://linked.art/ns/terms/', 'la:'],
+    ['https://www.ica.org/standards/RiC/ontology#', 'rico:'],
+    ['http://semanticweb.cs.vu.nl/2009/11/sem/', 'sem:'],
+    ['http://www.w3.org/2000/01/rdf-schema#', 'rdfs:'],
+    ['http://www.w3.org/1999/02/22-rdf-syntax-ns#', 'rdf:'],
+    ['http://www.w3.org/2001/XMLSchema#', 'xsd:'],
+  ];
+  const CONSTRAINT_LABELS = {
+    DatatypeConstraintComponent: 'wrong datatype',
+    MinCountConstraintComponent: 'missing',
+    MaxCountConstraintComponent: 'too many values',
+    NodeConstraintComponent: 'invalid value',
+    OrConstraintComponent: 'none of the allowed types',
+    ClassConstraintComponent: 'wrong class',
+    PatternConstraintComponent: 'wrong pattern',
+    NodeKindConstraintComponent: 'wrong kind of value',
+    InConstraintComponent: 'value not allowed',
+  };
+
+  // The profile’s own message says what to do; the validator’s untagged defaults
+  // (“Value does not have datatype …”, “Less than 1 values”) are rewritten here.
+  function describeViolation(row) {
+    const component = row.constraint.split('#').pop();
+    const expected = row.message.match(/datatype <([^>]+)>/);
+    if (component === 'DatatypeConstraintComponent' && expected) {
+      const actual = row.valueDatatype ? shorten(row.valueDatatype) : 'not a literal';
+      if (row.valueDatatype?.endsWith('#string') && expected[1].endsWith('#langString')) {
+        return 'missing language tag';
+      }
+      return `${actual} instead of ${shorten(expected[1])}`;
+    }
+    if (component === 'MinCountConstraintComponent') return 'missing';
+    return row.message || CONSTRAINT_LABELS[component] || shorten(row.constraint);
+  }
+
+  function shorten(iri) {
+    for (const [namespace, prefix] of PREFIXES) {
+      if (iri.startsWith(namespace)) return prefix + iri.slice(namespace.length);
+    }
+    return iri;
+  }
+
+  function queryText(queryId) {
+    const element = document.getElementById(queryId);
+    return element ? element.textContent.replace(/^\n+|\s+$/g, '') : '';
+  }
+
+  // Run a query once, however many cards read it.
+  const results = new Map();
+  function runQuery(queryId) {
+    if (!results.has(queryId)) results.set(queryId, runText(queryText(queryId)));
+    return results.get(queryId);
+  }
+  function runText(text) {
+    const body = new URLSearchParams({query: text});
+    return fetch(ENDPOINT, {
+      method: 'POST',
+      headers: {Accept: 'application/sparql-results+json'},
+      body,
+    }).then(async (response) => {
+      if (!response.ok) throw new Error(`The endpoint answered ${response.status}`);
+      const json = await response.json();
+      return json.results.bindings.map((binding) => {
+        const row = {};
+        for (const [name, term] of Object.entries(binding)) {
+          if (term.datatype && NUMERIC_TYPES.test(term.datatype)) row[name] = Number(term.value);
+          else if (term.datatype && term.datatype.endsWith('#boolean')) row[name] = term.value === 'true';
+          else row[name] = term.value;
+        }
+        return row;
+      });
+    });
+  }
+
+  // Draw targets: elements stored with data-draw="name".
+  function targets(name) {
+    return document.querySelectorAll(`[data-draw="${name}"]`);
+  }
+  function setText(name, text) {
+    targets(name).forEach((element) => { element.textContent = text; });
+  }
+  function fill(name, build) {
+    targets(name).forEach((element) => { element.replaceChildren(...build()); });
+  }
+  function make(tag, className, text) {
+    const element = document.createElement(tag);
+    if (className) element.className = className;
+    if (text !== undefined) element.textContent = text;
+    return element;
+  }
+  function skeleton(rowCount) {
+    const wrapper = make('div', 'skeleton');
+    for (let index = 0; index < rowCount; index++) {
+      const bar = make('span');
+      bar.style.width = `${90 - index * 11}%`;
+      wrapper.append(bar);
+    }
+    return wrapper;
+  }
+
+  // Tooltip, positioned inside the card it belongs to.
+  function attachTooltip(element, title, lines) {
+    let tooltip;
+    const show = (event) => {
+      // Looked up on hover: the element may not have been in the page when this was attached.
+      const card = element.closest('.card');
+      if (!card) return;
+      if (!tooltip) {
+        tooltip = make('div', 'tooltip');
+        tooltip.append(make('b', '', title), ...lines.map((line) => make('span', '', line)));
+      }
+      // Pointer moves only reposition the tooltip; it is added to the card once per hover.
+      if (!tooltip.isConnected) card.append(tooltip);
+      const cardBox = card.getBoundingClientRect();
+      const rowBox = element.getBoundingClientRect();
+      const pointerX = event && event.clientX ? event.clientX : rowBox.left + rowBox.width / 2;
+      const left = Math.min(Math.max(pointerX - cardBox.left + 12, 8), cardBox.width - tooltip.offsetWidth - 8);
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${rowBox.bottom - cardBox.top + 6}px`;
+    };
+    const hide = () => { if (tooltip) tooltip.remove(); };
+    element.addEventListener('pointermove', show);
+    element.addEventListener('pointerleave', hide);
+    element.addEventListener('focus', show);
+    element.addEventListener('blur', hide);
+  }
+
+  // Horizontal bars, one series.
+  function bars(rows, {label, sublabel, value, valueText, tooltip, flag, select}) {
+    const maximum = Math.max(...rows.map(value), 1);
+    const list = make('div', 'bars');
+    if (!select) list.setAttribute('role', 'list');
+    for (const row of rows) {
+      const item = make('div', 'bar-row');
+      item.setAttribute('role', select ? 'button' : 'listitem');
+      item.tabIndex = 0;
+      if (select) {
+        item.classList.add('selectable');
+        item.setAttribute('aria-pressed', 'false');
+        item.addEventListener('click', () => select(row, item));
+        item.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); select(row, item); }
+        });
+      }
+      const labelCell = make('div', 'bar-label');
+      labelCell.append(make('span', '', label(row)));
+      if (sublabel && sublabel(row)) labelCell.append(make('span', 'sub', sublabel(row)));
+      const barCell = make('div', 'bar-cell');
+      const bar = make('div', flag && flag(row) ? 'bar flag' : 'bar');
+      bar.style.width = '0%';
+      requestAnimationFrame(() => { bar.style.width = `${(value(row) / maximum) * 82}%`; });
+      barCell.append(bar, make('span', 'bar-value', valueText ? valueText(row) : integerFormat.format(value(row))));
+      item.append(labelCell, barCell);
+      item.setAttribute('aria-label', `${label(row)}: ${valueText ? valueText(row) : integerFormat.format(value(row))}`);
+      if (tooltip) attachTooltip(item, label(row), tooltip(row));
+      list.append(item);
+    }
+    return [list];
+  }
+
+  function failed(names) {
+    for (const name of names) {
+      targets(name).forEach((element) => {
+        if (element.classList.contains('draw-area')) {
+          element.replaceChildren(make('p', 'load-error', 'Failed to load. Open the query in QLever to see why.'));
+        } else {
+          element.textContent = '–';
+        }
+      });
+    }
+  }
+
+  // Vertical columns, one series; clickable when select is given.
+  function columns(rows, {label, value, tooltip, select}) {
+    const maximum = Math.max(...rows.map(value), 1);
+    const chart = make('div', 'columns');
+    const axis = make('div', 'column-axis');
+    for (const row of rows) {
+      const column = make(select ? 'button' : 'div', select ? 'column selectable' : 'column');
+      if (select) {
+        column.type = 'button';
+        column.setAttribute('aria-pressed', 'false');
+        column.addEventListener('click', () => select(row, column));
+      }
+      column.setAttribute('aria-label', `${label(row)}: ${integerFormat.format(value(row))} datasets`);
+      const bar = make('div', 'column-bar');
+      bar.style.height = '0%';
+      requestAnimationFrame(() => { bar.style.height = `${(value(row) / maximum) * 85}%`; });
+      column.append(make('span', 'column-value', integerFormat.format(value(row))), bar);
+      if (tooltip) attachTooltip(column, label(row), tooltip(row));
+      chart.append(column);
+      axis.append(make('span', '', label(row)));
+    }
+    return [chart, axis];
+  }
+
+  // Values for the VALUES clause appended to a “-datasets” query.
+  function iri(value) { return `<${value}>`; }
+  function literal(value) { return JSON.stringify(String(value)); }
+
+  // The checks the Dataset Register shows on each dataset’s page.
+  const CHECKS = [
+    {key: 'registration', name: 'Registered', states: {
+      met: 'Registered in the Dataset Register',
+      warning: 'Registered, but the description raised warnings',
+      failed: 'Registration gone or no longer valid',
+    }},
+    {key: 'persistent', name: 'Persistent URIs', states: {
+      met: 'Sampled URIs resolve, on a durable domain',
+      warning: 'On a non-durable domain, or could not be checked',
+      failed: 'Some sampled URIs do not resolve',
+      unmet: 'No URIs found to check',
+    }},
+    {key: 'linkedData', name: 'Linked data', states: {
+      met: 'Conforms to SCHEMA-AP-NDE',
+      warning: 'Does not conform to SCHEMA-AP-NDE',
+    }},
+    {key: 'terms', name: 'Terms', states: {
+      met: 'Links to terminology sources',
+      failed: 'Links to URIs, but none in terminology sources',
+      unmet: 'No URI links to assess',
+    }},
+    {key: 'iiif', name: 'IIIF', states: {
+      met: 'Working IIIF manifests',
+      failed: 'Every sampled manifest fails',
+      unmet: 'No IIIF',
+    }},
+  ];
+  const STATES = ['met', 'warning', 'failed', 'unmet'];
+  const STATE_NAMES = {met: 'met', warning: 'warning', failed: 'failed', unmet: 'not applicable'};
+  const STATE_ICONS = {
+    met: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    warning: '<path d="M12 5.5v8.5M12 18.5h.01"/>',
+    failed: '<path d="M7 7l10 10M17 7L7 17"/>',
+    unmet: '',
+  };
+  // The register’s status box: shape and colour both carry the state.
+  function checkbox(state, small) {
+    const box = make('span', `checkbox ${state}${small ? ' small' : ''}`);
+    box.setAttribute('aria-hidden', 'true');
+    if (STATE_ICONS[state]) {
+      box.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${STATE_ICONS[state]}</svg>`;
+    }
+    return box;
+  }
+
+  function checkRows(checks) {
+    const rows = make('div', 'check-rows');
+    for (const check of CHECKS) {
+      const row = make('div', 'check-row');
+      const name = make('div', 'check-name');
+      const met = checks.filter((dataset) => dataset[check.key] === 'met').length;
+      const title = make('span', '', check.name);
+      title.append(make('small', '', `${integerFormat.format(met)} of ${integerFormat.format(checks.length)} met`));
+      name.append(title);
+      const segments = make('div', 'segments');
+      segments.setAttribute('role', 'group');
+      segments.setAttribute('aria-label', check.name);
+      for (const state of STATES) {
+        const matching = checks.filter((dataset) => dataset[check.key] === state);
+        if (!matching.length) continue;
+        const description = check.states[state] || STATE_NAMES[state];
+        const segment = make('button', `segment ${state}`, integerFormat.format(matching.length));
+        segment.type = 'button';
+        segment.style.flex = `${matching.length} 0 0`;
+        segment.style.minWidth = '10px';
+        segment.setAttribute('aria-pressed', 'false');
+        segment.setAttribute('aria-label', `${check.name}, ${STATE_NAMES[state]}: ${matching.length} datasets. ${description}.`);
+        attachTooltip(segment, `${check.name}: ${STATE_NAMES[state]}`, [description, `${integerFormat.format(matching.length)} datasets`]);
+        segment.addEventListener('click', () => showDatasets('checks', `${check.name}: ${description}`, () => Promise.resolve(matching.map((dataset) => dataset.dataset)), segment));
+        segments.append(segment);
+      }
+      row.append(name, segments);
+      rows.append(row);
+    }
+    // A count that does not fit its segment moves to the tooltip.
+    requestAnimationFrame(() => rows.querySelectorAll('.segment').forEach((segment) => {
+      if (segment.scrollWidth > segment.clientWidth) segment.textContent = '';
+    }));
+    return rows;
+  }
+
+  function organisationTable(checks) {
+    const organisations = new Map();
+    for (const dataset of checks) {
+      const key = dataset.publisher || '';
+      if (!organisations.has(key)) {
+        organisations.set(key, {name: dataset.publisherName || dataset.publisher || 'Unknown organisation', datasets: []});
+      }
+      organisations.get(key).datasets.push(dataset);
+    }
+    const sorted = [...organisations.values()].sort((first, second) => second.datasets.length - first.datasets.length || first.name.localeCompare(second.name));
+    const visibleRows = 15;
+    const table = make('table', 'org-table');
+    const thead = make('thead');
+    const head = make('tr');
+    head.append(make('th', '', 'Organisation'), make('th', 'num', 'Datasets'), ...CHECKS.map((check) => make('th', 'num', check.name)));
+    thead.append(head);
+    const tbody = make('tbody');
+    const countCell = (value) => {
+      const cell = make('td', 'num');
+      const content = make('span', value ? 'org-count' : 'org-count none');
+      if (value) content.append(checkbox('met', true));
+      content.append(integerFormat.format(value));
+      cell.append(content);
+      return cell;
+    };
+    sorted.forEach((organisation, index) => {
+      const tableRow = make('tr');
+      tableRow.tabIndex = 0;
+      tableRow.hidden = index >= visibleRows;
+      const count = (predicate) => organisation.datasets.filter(predicate).length;
+      tableRow.append(
+        make('td', '', organisation.name),
+        make('td', 'num', integerFormat.format(organisation.datasets.length)),
+        ...CHECKS.map((check) => countCell(count((dataset) => dataset[check.key] === 'met'))),
+      );
+      const open = () => showDatasets('organisations', organisation.name, () => Promise.resolve(organisation.datasets.map((dataset) => dataset.dataset)), tableRow);
+      tableRow.addEventListener('click', (event) => { if (!event.target.closest('a')) open(); });
+      tableRow.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); open(); }
+      });
+      tbody.append(tableRow);
+    });
+    table.append(thead, tbody);
+    const parts = [table];
+    if (sorted.length > visibleRows) {
+      const more = make('button', 'panel-button show-all', `Show all ${integerFormat.format(sorted.length)} organisations`);
+      more.type = 'button';
+      more.addEventListener('click', () => {
+        tbody.querySelectorAll('tr[hidden]').forEach((tableRow) => { tableRow.hidden = false; });
+        more.remove();
+      });
+      parts.push(more);
+    }
+    return parts;
+  }
+
+  // The list of datasets behind a clicked bar, segment or row, under its card.
+  const openPanels = new Map();
+  function setSelected(element, selected) {
+    element.classList.toggle('is-selected', selected);
+    if (element.hasAttribute('aria-pressed')) element.setAttribute('aria-pressed', String(selected));
+  }
+  function closePanel(cardId) {
+    const trigger = openPanels.get(cardId);
+    if (trigger) setSelected(trigger, false);
+    openPanels.delete(cardId);
+    document.getElementById(cardId).querySelector('.dataset-panel-slot').replaceChildren();
+    return trigger;
+  }
+  function showDatasets(cardId, title, loadDatasets, trigger, query) {
+    if (closePanel(cardId) === trigger) return;
+    openPanels.set(cardId, trigger);
+    setSelected(trigger, true);
+    const panel = make('div', 'dataset-panel');
+    panel.setAttribute('role', 'region');
+    panel.setAttribute('aria-label', `Datasets: ${title}`);
+    const head = make('div', 'dataset-panel-head');
+    const heading = make('h4', '', title);
+    const count = make('small', '', ' · loading…');
+    heading.append(count);
+    const actions = make('span', 'query-links');
+    if (query) {
+      const link = make('a', '', 'Open in QLever ↗');
+      link.href = `${QUERY_UI}?query=${encodeURIComponent(query)}`;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      actions.append(link);
+    }
+    const close = make('button', 'panel-button', 'Close');
+    close.type = 'button';
+    close.addEventListener('click', () => { closePanel(cardId); trigger.focus(); });
+    actions.append(close);
+    head.append(heading, actions);
+    const list = make('ul', 'dataset-list');
+    panel.append(head, list);
+    document.getElementById(cardId).querySelector('.dataset-panel-slot').replaceChildren(panel);
+
+    // Titles and check states are a bonus: list the bare IRIs if the checks query fails.
+    Promise.all([loadDatasets(), runQuery('q-checks').catch(() => [])]).then(([datasetIris, checks]) => {
+      if (openPanels.get(cardId) !== trigger) return;
+      const known = new Map(checks.map((row) => [row.dataset, row]));
+      const items = [...new Set(datasetIris)].map((datasetIri) => known.get(datasetIri) || {dataset: datasetIri});
+      items.sort((first, second) => (first.title || first.dataset).localeCompare(second.title || second.dataset));
+      count.textContent = ` · ${integerFormat.format(items.length)} datasets`;
+      list.replaceChildren(...items.map((item) => {
+        const entry = make('li');
+        const name = make('span');
+        const link = make('a', '', item.title || item.dataset);
+        link.href = REGISTER_DATASET + encodeURIComponent(item.dataset);
+        link.target = '_blank';
+        link.rel = 'noopener';
+        name.append(link);
+        if (item.publisherName) name.append(make('span', 'publisher', item.publisherName));
+        entry.append(name);
+        if (item.persistent) {
+          const states = make('span', 'states');
+          for (const check of CHECKS) {
+            const state = item[check.key];
+            const box = checkbox(state, true);
+            box.removeAttribute('aria-hidden');
+            box.setAttribute('role', 'img');
+            box.setAttribute('aria-label', `${check.name}: ${STATE_NAMES[state]}`);
+            attachTooltip(box, `${check.name}: ${STATE_NAMES[state]}`, [check.states[state] || STATE_NAMES[state]]);
+            states.append(box);
+          }
+          entry.append(states);
+        }
+        return entry;
+      }));
+    }).catch((error) => {
+      console.error(error);
+      list.replaceChildren(make('li', 'load-error', 'Failed to load. Open the query in QLever to see why.'));
+    });
+  }
+  function showQueryDatasets(cardId, title, queryId, bindings, trigger) {
+    const names = Object.keys(bindings);
+    const query = `${queryText(queryId)}\nVALUES (${names.map((name) => `?${name}`).join(' ')}) { (${names.map((name) => bindings[name]).join(' ')}) }`;
+    showDatasets(cardId, title, () => runText(query).then((rows) => rows.map((row) => row.dataset)), trigger, query);
+  }
+
+  // Each drawing: the queries it reads, the targets it fills, and how.
+  const drawings = [
+    {
+      queries: ['q-totals', 'q-dataset-sizes'],
+      names: ['datasets', 'triples', 'triples-median', 'subjects', 'subjects-median', 'linked', 'linked-share', 'oldest', 'latest'],
+      draw([[totals], datasetSizes]) {
+        const median = (values) => {
+          const sorted = values.filter((value) => value !== undefined).sort((left, right) => left - right);
+          const middle = Math.floor(sorted.length / 2);
+          return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
+        };
+        setText('triples-median', compactFormat.format(median(datasetSizes.map((row) => row.triples))));
+        setText('subjects-median', compactFormat.format(median(datasetSizes.map((row) => row.subjects))));
+        setText('datasets', integerFormat.format(totals.datasets));
+        setText('triples', compactFormat.format(totals.triples));
+        setText('subjects', compactFormat.format(totals.subjects));
+        setText('linked', integerFormat.format(totals.linked));
+        setText('linked-share', percentFormat.format(totals.linked / totals.datasets));
+        setText('oldest', dateFormat.format(new Date(totals.oldest)));
+        setText('latest', dateFormat.format(new Date(totals.latest)));
+      },
+    },
+    {
+      queries: ['q-size'],
+      names: ['size-largest-count', 'size-largest-share', 'size-smallest-count', 'size-columns', 'size-strip'],
+      skeleton: ['size-columns', 'size-strip'],
+      draw([sizes]) {
+        const totalTriples = sizes.reduce((sum, row) => sum + row.triples, 0);
+        const largest = sizes.find((row) => row.order === 6) || {datasets: 0, triples: 0};
+        const smallest = sizes.find((row) => row.order === 1) || {datasets: 0};
+        setText('size-largest-count', integerFormat.format(largest.datasets));
+        setText('size-largest-share', percentFormat.format(largest.triples / totalTriples));
+        setText('size-smallest-count', integerFormat.format(smallest.datasets));
+
+        fill('size-columns', () => columns(sizes, {
+          label: (row) => row.size,
+          value: (row) => row.datasets,
+          tooltip: (row) => [
+            `${integerFormat.format(row.datasets)} datasets`,
+            `${compactFormat.format(row.triples)} triples (${percentFormat.format(row.triples / totalTriples)})`,
+          ],
+        }));
+
+        fill('size-strip', () => {
+          // Ordinal ramp, largest class darkest; labels inside are dark on the four light steps and
+          // white on the two dark ones, for a WCAG AA contrast of at least 4.5:1 on every step.
+          const ramp = ['#86b6ef', '#5598e7', '#3987e5', '#2a78d6', '#1c5cab', '#104281'];
+          const rampInk = ['#0f1f28', '#0f1f28', '#0f1f28', '#0f1f28', '#ffffff', '#ffffff'];
+          const strip = make('div', 'strip');
+          strip.setAttribute('role', 'img');
+          strip.setAttribute('aria-label', sizes.map((row) => `${row.size}: ${percentFormat.format(row.triples / totalTriples)} of triples`).join('; '));
+          const legend = make('div', 'strip-legend');
+          for (const row of [...sizes].reverse()) {
+            const share = row.triples / totalTriples;
+            const part = make('div', 'strip-part', share >= 0.08 ? percentFormat.format(share) : '');
+            part.style.flex = `${Math.max(share, 0.004)} 0 0`;
+            part.style.background = ramp[row.order - 1];
+            part.style.color = rampInk[row.order - 1];
+            attachTooltip(part, `${row.size} triples`, [`${percentFormat.format(share)} of all triples`, `${integerFormat.format(row.datasets)} datasets`]);
+            strip.append(part);
+            const legendRow = make('div');
+            const swatch = make('span', 'swatch');
+            swatch.style.background = ramp[row.order - 1];
+            legendRow.append(swatch, make('span', '', `${row.size} triples · ${integerFormat.format(row.datasets)} datasets`), make('span', 'num', share < 0.01 ? '< 1%' : percentFormat.format(share)));
+            legend.append(legendRow);
+          }
+          return [strip, legend];
+        });
+      },
+    },
+    {
+      queries: ['q-largest'],
+      names: ['largest-rows'],
+      draw([largest]) {
+        fill('largest-rows', () => largest.map((row, index) => {
+          const tableRow = make('tr');
+          const nameCell = make('td');
+          const link = make('a', '', row.title || row.dataset);
+          link.href = REGISTER_DATASET + encodeURIComponent(row.dataset);
+          link.target = '_blank';
+          link.rel = 'noopener';
+          nameCell.append(make('span', 'rank', `${index + 1}. `), link);
+          tableRow.append(
+            nameCell,
+            make('td', 'num', compactFormat.format(row.triples)),
+            make('td', 'num', row.subjects === undefined ? '–' : compactFormat.format(row.subjects)),
+          );
+          return tableRow;
+        }));
+      },
+    },
+    {
+      queries: ['q-vocabularies'],
+      names: ['vocabularies-bars', 'legacy-schema'],
+      skeleton: ['vocabularies-bars'],
+      draw([vocabularies]) {
+        const legacy = vocabularies.find((row) => row.vocabulary === 'http://schema.org/');
+        setText('legacy-schema', legacy ? integerFormat.format(legacy.datasets) : '0');
+        fill('vocabularies-bars', () => bars(vocabularies, {
+          label: (row) => row.label || row.vocabulary,
+          value: (row) => row.datasets,
+          valueText: (row) => integerFormat.format(row.datasets),
+          tooltip: (row) => [row.vocabulary, `${integerFormat.format(row.datasets)} datasets`],
+          flag: (row) => row.vocabulary === 'http://schema.org/',
+          select: (row, trigger) => showQueryDatasets('vocabularies', row.label || row.vocabulary, 'q-vocabularies-datasets', {vocabulary: iri(row.vocabulary)}, trigger),
+        }));
+      },
+    },
+    {
+      queries: ['q-terminology'],
+      names: ['terminology-bars'],
+      skeleton: ['terminology-bars'],
+      draw([sources]) {
+        fill('terminology-bars', () => bars(sources, {
+          label: (row) => row.label || row.terminologySource,
+          value: (row) => row.datasets,
+          tooltip: (row) => [`${integerFormat.format(row.datasets)} datasets`, `${integerFormat.format(row.links)} links`, row.terminologySource],
+          select: (row, trigger) => showQueryDatasets('terminology', row.label || row.terminologySource, 'q-terminology-datasets', {terminologySource: iri(row.terminologySource)}, trigger),
+        }));
+      },
+    },
+    {
+      queries: ['q-classes'],
+      names: ['classes-bars'],
+      skeleton: ['classes-bars'],
+      draw([classes]) {
+        fill('classes-bars', () => bars(classes, {
+          label: (row) => shorten(row.class),
+          value: (row) => row.datasets,
+          tooltip: (row) => [`${integerFormat.format(row.datasets)} datasets`, `${integerFormat.format(row.instances)} instances`, row.class],
+          select: (row, trigger) => showQueryDatasets('classes', shorten(row.class), 'q-classes-datasets', {class: iri(row.class)}, trigger),
+        }));
+      },
+    },
+    {
+      queries: ['q-classes-instances'],
+      names: ['classes-instances-bars'],
+      skeleton: ['classes-instances-bars'],
+      draw([classes]) {
+        fill('classes-instances-bars', () => bars(classes, {
+          label: (row) => shorten(row.class),
+          value: (row) => row.instances,
+          valueText: (row) => compactFormat.format(row.instances),
+          tooltip: (row) => [`${integerFormat.format(row.instances)} instances`, `${integerFormat.format(row.datasets)} datasets`, row.class],
+          select: (row, trigger) => showQueryDatasets('classes-instances', shorten(row.class), 'q-classes-datasets', {class: iri(row.class)}, trigger),
+        }));
+      },
+    },
+    {
+      queries: ['q-access'],
+      names: ['access-bars'],
+      skeleton: ['access-bars'],
+      draw([formats]) {
+        fill('access-bars', () => bars(formats, {
+          label: (row) => row.format,
+          value: (row) => row.datasets,
+          tooltip: (row) => [`${integerFormat.format(row.datasets)} datasets`],
+        }));
+      },
+    },
+    {
+      queries: ['q-terminology-spread'],
+      names: ['spread-columns', 'spread-none', 'spread-total', 'spread-several'],
+      skeleton: ['spread-columns'],
+      draw([spread]) {
+        const total = spread.reduce((sum, row) => sum + row.datasets, 0);
+        const label = (row) => (row.sources >= 5 ? '5 or more' : String(row.sources));
+        setText('spread-total', integerFormat.format(total));
+        setText('spread-none', integerFormat.format((spread.find((row) => row.sources === 0) || {datasets: 0}).datasets));
+        setText('spread-several', integerFormat.format(spread.filter((row) => row.sources >= 2).reduce((sum, row) => sum + row.datasets, 0)));
+        fill('spread-columns', () => columns(spread, {
+          label,
+          value: (row) => row.datasets,
+          tooltip: (row) => {
+            const atLeast = spread.filter((other) => other.sources >= row.sources).reduce((sum, other) => sum + other.datasets, 0);
+            return [`${integerFormat.format(row.datasets)} datasets`, `${integerFormat.format(atLeast)} link to at least ${row.sources}`];
+          },
+          select: (row, trigger) => showQueryDatasets('terminology-spread', `Linked to ${label(row)} terminology sources`, 'q-terminology-spread-datasets', {sources: String(row.sources)}, trigger),
+        }));
+      },
+    },
+    {
+      queries: ['q-checks'],
+      names: ['checks-all', 'checks-total', 'checks-rows', 'pid-total', 'pid-ark', 'pid-handle', 'organisations-table'],
+      skeleton: ['checks-rows', 'organisations-table'],
+      draw([checks]) {
+        const allMet = checks.filter((row) => CHECKS.every((check) => row[check.key] === 'met'));
+        const scheme = (name) => checks.filter((row) => row.pidScheme === name).length;
+        setText('checks-all', integerFormat.format(allMet.length));
+        setText('checks-total', integerFormat.format(checks.length));
+        setText('pid-ark', integerFormat.format(scheme('ark')));
+        setText('pid-handle', integerFormat.format(scheme('handle')));
+        setText('pid-total', integerFormat.format(checks.filter((row) => row.pidScheme).length));
+        fill('checks-rows', () => [checkRows(checks)]);
+        fill('organisations-table', () => organisationTable(checks));
+      },
+    },
+    {
+      queries: ['q-violations'],
+      names: ['violations-bars'],
+      skeleton: ['violations-bars'],
+      draw([violations]) {
+        fill('violations-bars', () => bars(violations, {
+          label: (row) => shorten(row.path),
+          sublabel: describeViolation,
+          value: (row) => row.datasets,
+          tooltip: (row) => [`${integerFormat.format(row.datasets)} datasets`, row.message],
+          select: (row, trigger) => showQueryDatasets('violations', `${shorten(row.path)}: ${describeViolation(row)}`, 'q-violations-datasets', {
+            path: iri(row.path),
+            constraint: iri(row.constraint),
+            message: literal(row.message),
+            valueDatatype: row.valueDatatype ? iri(row.valueDatatype) : 'UNDEF',
+          }, trigger),
+        }));
+      },
+    },
+    {
+      queries: ['q-license-families'],
+      names: ['license-bars'],
+      skeleton: ['license-bars'],
+      draw([families]) {
+        fill('license-bars', () => bars(families, {
+          label: (row) => row.family,
+          value: (row) => row.datasets,
+          tooltip: (row) => [`${integerFormat.format(row.datasets)} datasets`],
+          select: (row, trigger) => showQueryDatasets('licenses', row.family, 'q-license-datasets', {family: literal(row.family)}, trigger),
+        }));
+      },
+    },
+  ];
+
+  // SPARQL highlighting: escape first, then wrap tokens.
+  const TOKEN = /(#[^\n]*)|("(?:[^"\\\n]|\\.)*")|(<[^\s<>"]*>)|([?$][A-Za-z_][\w]*)|\b(PREFIX|SELECT|DISTINCT|WHERE|OPTIONAL|FILTER|BIND|AS|GROUP|BY|ORDER|DESC|ASC|LIMIT|OFFSET|VALUES|UNION|GRAPH|SERVICE|COUNT|SUM|MIN|MAX|SAMPLE|IF|COALESCE|NOT|IN|STR|LCASE|CONTAINS|STRSTARTS|LANG|LANGMATCHES|a)\b/g;
+  function highlight(text) {
+    const fragment = document.createDocumentFragment();
+    let position = 0;
+    for (const match of text.matchAll(TOKEN)) {
+      // A “#” inside an IRI is not a comment; the IRI alternative matches first only from “<”.
+      if (match[1] && /<[^>\s]*$/.test(text.slice(text.lastIndexOf('\n', match.index) + 1, match.index))) continue;
+      if (match.index > position) fragment.append(text.slice(position, match.index));
+      const kind = match[1] ? 'comment' : match[2] ? 'str' : match[3] ? 'iri' : match[4] ? 'var' : 'kw';
+      fragment.append(make('span', kind, match[0]));
+      position = match.index + match[0].length;
+    }
+    fragment.append(text.slice(position));
+    return fragment;
+  }
+
+  // Under each card: the full query text and links to run it in QLever.
+  function attachQueryPanels() {
+    document.querySelectorAll('[data-query]').forEach((owner) => {
+      const ids = owner.dataset.query.split(/\s+/);
+      const container = owner.classList.contains('tiles') ? owner.parentElement : owner;
+      // Also show queries nested in the card that drawings read.
+      owner.querySelectorAll('script[type="application/sparql-query"]').forEach((script) => {
+        // Queries ending in “-datasets” list the datasets behind a clicked bar; the list links them.
+        if (!ids.includes(script.id) && !script.id.endsWith('-datasets')) ids.push(script.id);
+      });
+      const bar = make('div', 'query-bar');
+      const links = make('span', 'query-links');
+      const details = make('details');
+      details.append(make('summary', '', ids.length > 1 ? `SPARQL queries (${ids.length})` : 'SPARQL query'));
+      ids.forEach((queryId, index) => {
+        const text = queryText(queryId);
+        const link = make('a', '', ids.length > 1 ? `Open query ${index + 1} in QLever ↗` : 'Open in QLever ↗');
+        link.href = `${QUERY_UI}?query=${encodeURIComponent(text)}`;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        links.append(link);
+        const heading = make('div', 'query-heading');
+        if (ids.length > 1) heading.append(make('span', '', `Query ${index + 1}`));
+        const copy = make('button', 'copy-button', 'Copy');
+        copy.type = 'button';
+        copy.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(text);
+            copy.textContent = 'Copied';
+          } catch {
+            const selection = window.getSelection();
+            selection.selectAllChildren(code);
+            copy.textContent = 'Selected – press Ctrl/⌘+C';
+          }
+          setTimeout(() => { copy.textContent = 'Copy'; }, 2000);
+        });
+        heading.append(copy);
+        const pre = make('pre', 'sparql');
+        const code = make('code');
+        code.append(highlight(text));
+        pre.append(code);
+        details.append(heading, pre);
+      });
+      bar.append(details, links);
+      container.append(bar);
+    });
+  }
+
+  attachQueryPanels();
+  document.querySelectorAll('.check-legend .checkbox').forEach((box) => {
+    box.replaceWith(checkbox(STATES.find((state) => box.classList.contains(state))));
+  });
+  for (const drawing of drawings) {
+    for (const name of drawing.skeleton || []) fill(name, () => [skeleton(5)]);
+    Promise.all(drawing.queries.map(runQuery))
+      .then((answers) => drawing.draw(answers))
+      .catch((error) => {
+        console.error(drawing.queries.join(', '), error);
+        failed(drawing.names);
+      });
+  }
+})();
+</script>
+</body>
+</html>
